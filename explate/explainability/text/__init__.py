@@ -20,7 +20,14 @@ class Explainer(Readable):
                  train,
                  test,
                  labelprovider):
-        """..."""
+        """Single object to create explanations corresponding to a model and dataset (with ground-truth labels).
+
+        Args:
+            model: ...
+            train: ...
+            test: ...
+            labelprovider: ...
+        """
         self.model = model
         self.train = train
         self.test = test
@@ -56,7 +63,12 @@ class Explainer(Readable):
     @add_callargs
     def model_performance(self, metrics=["f1", "accuracy", "precision", "recall"], **kwargs) -> Performance:
         """Determine performance metrics, the amount of predictions for each label in the test set
-        and the values for the confusion matrix for each label in the test set.""" 
+        and the values for the confusion matrix for each label in the test set.
+
+        Args:
+            metrics: ...
+            **kwargs: ...
+        """ 
         callargs = kwargs.pop('__callargs__', None)
         return Performance(labels=self.labels, metrics=self._performance, callargs=callargs, **kwargs)
 
@@ -64,6 +76,12 @@ class Explainer(Readable):
     def descriptives(self, **kwargs) -> Descriptives:
         """Describe features such as the amount per label for the train, test and model predictions
         and text data specific features such as the maximum/minimum/mean amount of words in a sample and the standard deviation.
+    
+        Args:
+            **kwargs: ...
+    
+        Returns:
+            ...
         """
         callargs = kwargs.pop('__callargs__', None)
 
@@ -104,7 +122,17 @@ class Explainer(Readable):
                            *args,
                            methods: List[str] = ["lime"],
                            **kwargs) -> Optional[MultipleReturn]:
-        """Explain specific sample locally."""
+        """Explain specific sample locally.
+
+        Args:
+            sample: Identifier of sample in dataset (int) or input (str).
+            methods: List of methods to get explanations from. Choose from 'lime', 'shap', 'tree', 'rules', 'foil_tree'.
+            *args: Positional arguments passed to local explanation technique.
+            **kwargs: Keyword arguments passed to local explanation technique.
+
+        Returns:
+            ...
+        """
         if isinstance(methods, str):
             methods = [methods]
         if isinstance(sample, int):
@@ -155,8 +183,23 @@ class Explainer(Readable):
                         k: int = 10,
                         include_ground_truth: bool = True,
                         include_model_predictions: bool = True):
-        """Calculate the most frequent tokens for the train and test set for each label."""
+        """Calculate the most frequent tokens for the train and test set for each label.
+
+        Args:
+            ...
+
+        Returns:
+            ...
+        """
         raise NotImplementedError()
 
     def token_information(self, *args, **kwargs):
+        """...
+
+        Args:
+            ...
+
+        Returns:
+            ...
+        """
         raise NotImplementedError()
