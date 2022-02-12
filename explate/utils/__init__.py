@@ -10,7 +10,7 @@ class MultipleReturn:
         self.return_values = return_values
 
     def _repr_html_(self):
-        return ''.join(v._repr_html_() for v in self.return_values)
+        return "".join(v._repr_html_() for v in self.return_values)
 
     def __repr__(self):
         return repr(self.return_values)

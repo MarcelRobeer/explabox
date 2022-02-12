@@ -4,7 +4,7 @@ from os import path
 import setuptools
 
 main_ns = {}
-with open(convert_path('explicate/_version.py')) as ver_file:
+with open(convert_path('explate/_version.py')) as ver_file:
     exec(ver_file.read(), main_ns)  # nosec
 
 with open(path.join(path.abspath(path.dirname(__file__)), 'README.md'), encoding='utf-8') as f:
@@ -14,7 +14,7 @@ with open(path.join(path.abspath(path.dirname(__file__)), 'requirements.txt'), e
     requirements = f.read().splitlines()
 
 setuptools.setup( # type: ignore
-    name = 'explicate',
+    name = 'explate',
     version = main_ns['__version__'],
     description = 'Let me explicate your AI model!',
     long_description = long_description,

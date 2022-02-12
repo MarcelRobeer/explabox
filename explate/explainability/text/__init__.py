@@ -1,25 +1,20 @@
 """Add explainability to your text model/dataset."""
 
-from typing import List, Optional, Union
 import warnings
+from typing import List, Optional, Union
 
 import numpy as np
-
 from genbase import Readable, add_callargs
-from instancelib.labels.memory import MemoryLabelProvider
 from instancelib.analysis.base import get_keys, label_metrics
+from instancelib.labels.memory import MemoryLabelProvider
 
-from ..ui.notebook import restyle
-from ..utils import MultipleReturn
-from ..return_types import Descriptives, Performance
+from ...return_types import Descriptives, Performance
+from ...ui.notebook import restyle
+from ...utils import MultipleReturn
 
 
 class Explainer(Readable):
-    def __init__(self,
-                 model,
-                 train,
-                 test,
-                 labelprovider):
+    def __init__(self, model, train, test, labelprovider):
         """Single object to create explanations corresponding to a model and dataset (with ground-truth labels).
 
         Args:
@@ -45,7 +40,7 @@ class Explainer(Readable):
     @property
     def splits(self):
         return list(zip(["train", "test"], [self.train, self.test]))
-    
+
     def __performance(self) -> dict:
         """Determine TPs, FPs, TNs and FNs for each item in the test set for each label."""
         if not self.is_classifier:
@@ -61,29 +56,34 @@ class Explainer(Readable):
         return performance
 
     @add_callargs
-    def model_performance(self, metrics=["f1", "accuracy", "precision", "recall"], **kwargs) -> Performance:
+    def model_performance(
+        self, metrics=["f1", "accuracy", "precision", "recall"], **kwargs
+    ) -> Performance:
         """Determine performance metrics, the amount of predictions for each label in the test set
         and the values for the confusion matrix for each label in the test set.
 
         Args:
             metrics: ...
             **kwargs: ...
-        """ 
-        callargs = kwargs.pop('__callargs__', None)
-        return Performance(labels=self.labels, metrics=self._performance, callargs=callargs, **kwargs)
+        """
+        callargs = kwargs.pop("__callargs__", None)
+        return Performance(
+            labels=self.labels, metrics=self._performance, callargs=callargs, **kwargs
+        )
 
     @add_callargs
     def descriptives(self, **kwargs) -> Descriptives:
         """Describe features such as the amount per label for the train, test and model predictions
-        and text data specific features such as the maximum/minimum/mean amount of words in a sample and the standard deviation.
-    
+        and text data specific features such as the maximum/minimum/mean amount of words in a sample and
+        the standard deviation.
+
         Args:
             **kwargs: ...
-    
+
         Returns:
             ...
         """
-        callargs = kwargs.pop('__callargs__', None)
+        callargs = kwargs.pop("__callargs__", None)
 
         label_counts = {
             split_name: {
@@ -96,6 +96,7 @@ class Explainer(Readable):
         }
 
         from text_explainability import default_tokenizer
+
         tokenized_lengths = {}
         for split_name, split in self.splits:
             token_lengths = np.array(
@@ -110,18 +111,18 @@ class Explainer(Readable):
                 "min": np.min(token_lengths),
                 "std": np.std(token_lengths),
             }
-        return Descriptives(labels=self.labels,
-                            label_counts=label_counts,
-                            tokenized_lengths=tokenized_lengths,
-                            callargs=callargs,
-                            **kwargs)
+        return Descriptives(
+            labels=self.labels,
+            label_counts=label_counts,
+            tokenized_lengths=tokenized_lengths,
+            callargs=callargs,
+            **kwargs,
+        )
 
     @restyle
-    def explain_prediction(self,
-                           sample: Union[int, str],
-                           *args,
-                           methods: List[str] = ["lime"],
-                           **kwargs) -> Optional[MultipleReturn]:
+    def explain_prediction(
+        self, sample: Union[int, str], *args, methods: List[str] = ["lime"], **kwargs
+    ) -> Optional[MultipleReturn]:
         """Explain specific sample locally.
 
         Args:
@@ -144,31 +145,45 @@ class Explainer(Readable):
                 raise Exception(f"Unknown instance identifier {sample}.")
         elif isinstance(sample, str):
             from text_explainability import from_string
+
             sample = from_string(sample)
 
-        if 'labels' not in kwargs:
-            kwargs['labels'] = self.labels
+        if "labels" not in kwargs:
+            kwargs["labels"] = self.labels
 
         res = []
         for method in [str.lower(m) for m in methods]:
             cls = None
             if method in ["lime"]:
                 from text_explainability.local_explanation import LIME
+
                 cls = LIME
             elif method in ["shap", "shapley", "kernelshap", "kernel_shap"]:
                 from text_explainability.local_explanation import KernelSHAP
+
                 cls = KernelSHAP
             elif method in ["localtree", "tree"]:
                 from text_explainability.local_explanation import LocalTree
+
                 cls = LocalTree
             elif method in ["localrules", "rules"]:
                 from text_explainability.local_explanation import LocalRules
+
                 cls = LocalRules
-            elif method in ["foil", "foiltree", "foil_tree", "contrastive", "contrastive_explanation"]:
+            elif method in [
+                "foil",
+                "foiltree",
+                "foil_tree",
+                "contrastive",
+                "contrastive_explanation",
+            ]:
                 from text_explainability.local_explanation import FoilTree
+
                 cls = FoilTree
             if cls is not None:
-                res.append(cls(env=None, labelset=self.labels)(sample, self.model, **kwargs))
+                res.append(
+                    cls(env=None, labelset=self.labels)(sample, self.model, **kwargs)
+                )
             else:
                 warnings.warn(f'Unknown method "{method}". Skipping to next one')
         return MultipleReturn(*res) if res else None
@@ -177,12 +192,14 @@ class Explainer(Readable):
         """Give all wrongly classified samples."""
         raise NotImplementedError()
 
-    def token_frequency(self,
-                        splits: List[str] = ['train', 'test'],
-                        labelwise: bool = True,
-                        k: int = 10,
-                        include_ground_truth: bool = True,
-                        include_model_predictions: bool = True):
+    def token_frequency(
+        self,
+        splits: List[str] = ["train", "test"],
+        labelwise: bool = True,
+        k: int = 10,
+        include_ground_truth: bool = True,
+        include_model_predictions: bool = True,
+    ):
         """Calculate the most frequent tokens for the train and test set for each label.
 
         Args:
