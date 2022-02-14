@@ -16,7 +16,7 @@ with open(path.join(path.abspath(path.dirname(__file__)), 'requirements.txt'), e
 setuptools.setup( # type: ignore
     name = 'explate',
     version = main_ns['__version__'],
-    description = 'Let me explicate your AI model!',
+    description = 'Let me explate your AI model!',
     long_description = long_description,
     long_description_content_type = 'text/markdown',
     author = 'NPAI',
