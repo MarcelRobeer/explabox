@@ -7,3 +7,6 @@
 </h3>
 
 ---
+
+> *Like Solon's self **explatest** the knotty laws.* <br>
+> &nbsp;&nbsp;&nbsp;&nbsp;- B. Jonson
