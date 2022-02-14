@@ -27,7 +27,7 @@ setuptools.setup( # type: ignore
         'License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)',
         'Topic :: Scientific/Engineering :: Artificial Intelligence'
     ],
-    url = 'https://git.science.uu.nl/m.j.robeer/explicate',
+    url = 'https://git.science.uu.nl/m.j.robeer/explabox',
     packages = setuptools.find_packages(), # type : ignore
     install_requires = requirements,
     python_requires = '>=3.8',
