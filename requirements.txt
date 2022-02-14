@@ -1,4 +1,5 @@
 genbase>=0.1.18
 instancelib>=0.3.6.2
+instancelib-onnx>=0.1.2
 text_explainability>=0.5.8
 text_sensitivity>=0.2.6
