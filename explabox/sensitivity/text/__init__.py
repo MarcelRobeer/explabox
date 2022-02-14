@@ -1,9 +1,9 @@
 """Functions/classes for sensitivity testing (fairness and robustness) for text data."""
 
 from text_sensitivity import (OneToManyPerturbation, OneToOnePerturbation,
-                              compare_metric, compare_precision,
-                              compare_recall, input_space_robustness,
-                              invariance, mean_score, ompare_accuracy,
+                              compare_accuracy, compare_metric,
+                              compare_precision, compare_recall,
+                              input_space_robustness, invariance, mean_score,
                               perturbation)
 
 from ...ui.notebook import restyle

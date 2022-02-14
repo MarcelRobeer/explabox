@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 { Explain | Debug | Test | Validate } your model with the explabox!
-===================================
+===================================================================
 
 .. toctree::
    :maxdepth: 2
