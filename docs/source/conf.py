@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'explate'
+project = 'explabox'
 copyright = '2022, NPAI'
 author = 'NPAI'
 
