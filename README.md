@@ -3,7 +3,7 @@
 </p>
 
 **<h3 align="center">
-"Explain your model with the *explabox*!"**
+"{`Explain` | `Debug` | `Test` | `Validate`} your model with the *explabox*!"**
 </h3>
 
 ---
