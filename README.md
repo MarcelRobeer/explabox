@@ -3,7 +3,7 @@
 </p>
 
 **<h3 align="center">
-Let me <i>explate</i> your AI model!**
+"Let me <i>explate</i> your AI model!"**
 </h3>
 
 ---
