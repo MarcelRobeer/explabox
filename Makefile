@@ -1,6 +1,6 @@
 .PHONY: quality style
 
-check_dirs := explate
+check_dirs := explabox
 
 # Check style quality
 quality:

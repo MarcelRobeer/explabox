@@ -1,12 +1,9 @@
 *<p align="center">
-  <img src="https://git.science.uu.nl/m.j.robeer/explate/-/raw/main/img/explate.png" alt="explate logo">*
+  <img src="https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/explabox.png" alt="explate logo">*
 </p>
 
 **<h3 align="center">
-"Let me <i>explate</i> your AI model!"**
+"Explain your model with the *explabox*!"
 </h3>
 
 ---
-
-> *Like Solon's self **explatest** the knotty laws.* <br>
-> &nbsp;&nbsp;&nbsp;&nbsp;- B. Jonson
