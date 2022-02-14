@@ -1,3 +1,5 @@
+precommit: docs style quality
+
 .PHONY: docs quality style
 
 package := explabox
