@@ -1,6 +1,11 @@
-.PHONY: quality style
+.PHONY: docs quality style
 
-check_dirs := explabox
+package := explabox
+check_dirs := $(package)
+
+# Build documentation files
+docs:
+	sphinx-apidoc --module-first --no-toc --force -o docs/source/api $(package)
 
 # Check style quality
 quality:
