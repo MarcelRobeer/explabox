@@ -1,4 +1,4 @@
-precommit: docs style quality
+precommit: style quality docs
 
 .PHONY: docs html quality style
 
@@ -11,6 +11,8 @@ source_dir := $(docs_dir)/source
 # Build documentation files
 docs:
 	sphinx-apidoc --module-first --no-toc --force -o $(docs_dir)/$(source_dir)/api $(package)
+	m2r CHANGELOG.md --dry-run > $(source_dir)/changelog.rst
+	m2r CONTRIBUTING.md --dry-run > $(source_dir)/contributing.rst
 
 # Convert docs to HTML
 html:

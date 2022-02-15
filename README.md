@@ -33,7 +33,9 @@ The `explabox` requires _Python 3.8_ or above.
 ## Releases
 The `explabox` is officially released through [PyPI](https://pypi.org/project/explabox/).
 
-See [CHANGELOG.md](CHANGELOG.md) for a full overview of the changes for each version.
+See [changelog](CHANGELOG.md) for a full overview of the changes for each version.
 
 ## Contributing
 ...
+
+See [contributing](CONTRIBUTING.md) for a full contribution guide.
