@@ -14,7 +14,7 @@ The `explabox` aims to support data scientists and machine learning (ML) enginee
 - __Model performance__: Calculating quantitative metrics on how the model performs.
 - __Explainability__: Various methods for explaining the whole dataset (_global_), model behavior on the dataset (_global_), and specific predictions/decisions (_local_).
 - __Sensitivity (robustness)__: The effect of random inputs on the model (_robustness_) and testing model generalizability (_robustness_).
-- __Sensitivity (fairness)__: The effect of adjustments of attributes in the inputs (e.g. swapping male pronouns for female pronouns; _fairness__), for the dataset as a whole (_global_) as well as for individual instances (_local_).
+- __Sensitivity (fairness)__: The effect of adjustments of attributes in the inputs (e.g. swapping male pronouns for female pronouns; _fairness_), for the dataset as a whole (_global_) as well as for individual instances (_local_).
 
 A number of tools in the `explabox` can also be used to provide transparency and explanations for local/global explanations to stakeholders, such as end-users or clients.
 
