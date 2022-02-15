@@ -4,17 +4,18 @@ precommit: docs style quality
 
 package := explabox
 check_dirs := $(package)
-source_dir := source
-build_dir := build
+docs_dir := docs
+build_dir := $(docs_dir)/build
+source_dir := $(docs_dir)/source
 
 # Build documentation files
 docs:
-	sphinx-apidoc --module-first --no-toc --force -o docs/$(source_dir)/api $(package)
+	sphinx-apidoc --module-first --no-toc --force -o $(docs_dir)/$(source_dir)/api $(package)
 
 # Convert docs to HTML
 html:
-	sphinx-build -M clean docs/$(source_dir) docs/$(build_dir)
-	sphinx-build -M html docs/$(source_dir) docs/$(build_dir)
+	sphinx-build -M clean $(source_dir) $(build_dir)
+	sphinx-build -M html $(source_dir) $(build_dir)
 
 # Check style quality
 quality:
