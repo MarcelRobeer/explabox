@@ -22,20 +22,40 @@ A number of tools in the `explabox` can also be used to provide transparency and
 
 &copy; National Police Lab AI (NPAI), 2022
 
+<a name="quick-tour"/></a>
 ## Quick tour
 ...
 
+# Contents
+- [Quick tour](#quick-tour)
+- [Installation](#installation)
+- [Example usage](#example-usage)
+- [Releases](#releases)
+- [Contributing](#contributing)
+- [Citation](#citation)
+
+<a name="installation"/></a>
 ## Installation
 Before installation, check if the required packages (in `requirements.txt`) have been installed. Installation can be done via `pip install -r requirements.txt`.
 
 The `explabox` requires _Python 3.8_ or above.
 
+<a name="example-usage"/></a>
+## Example usage
+...
+
+<a name="releases"/></a>
 ## Releases
 The `explabox` is officially released through [PyPI](https://pypi.org/project/explabox/).
 
 See [changelog](CHANGELOG.md) for a full overview of the changes for each version.
 
+<a name="contributing"/></a>
 ## Contributing
 ...
 
 See [contributing](CONTRIBUTING.md) for a full contribution guide.
+
+<a name="citation"></a>
+## Citation
+...
