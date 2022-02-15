@@ -8,8 +8,8 @@ from text_sensitivity.ui.notebook import Render as TSRender
 from ..utils import MultipleReturn
 
 MAIN_COLOR = "#004682"
-PACKAGE_LINK = "https://xai-documentation.apps.ota.haas.politie/"
-PACKAGE_NAME = "xai-toolkit"
+PACKAGE_LINK = "https://git.science.uu.nl/m.j.robeer/explabox/"
+PACKAGE_NAME = "explabox"
 
 
 class RestyleMixin:
@@ -46,7 +46,7 @@ class TSRenderRestyled(TSRender, RestyleMixin):
 
 
 class Render(GBRenderRestyled):
-    """Custom renderer for `xai-toolkit`."""
+    """Custom renderer for `explabox`."""
 
     def __init__(self, *configs):
         super().__init__(*configs)
