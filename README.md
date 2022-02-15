@@ -18,7 +18,7 @@ The `explabox` aims to support data scientists and machine learning (ML) enginee
 
 A number of tools in the `explabox` can also be used to provide transparency and explanations for local/global explanations to stakeholders, such as end-users or clients.
 
-> :information_source: The `explabox` currently only supports natural language text as a modality. In the future, we intend to extend the toolkit to other modalities.
+> :information_source: The `explabox` currently only supports natural language text as a modality. In the future, we intend to extend to other modalities.
 
 &copy; National Police Lab AI (NPAI), 2022
 
