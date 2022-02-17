@@ -16,7 +16,7 @@ with open(path.join(path.abspath(path.dirname(__file__)), 'requirements.txt'), e
 setuptools.setup( # type: ignore
     name = 'explabox',
     version = main_ns['__version__'],
-    description = 'Explain your model with the explabox!',
+    description = 'Explore/examine/explain/expose your model with the explabox!',
     long_description = long_description,
     long_description_content_type = 'text/markdown',
     author = 'NPAI',
