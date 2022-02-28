@@ -1,4 +1,8 @@
-"""..."""
+"""Ingestibles are your model and data, which can be turned into digestibles that explore/examine/explain/expose
+your data and/or model."""
+
+from pathlib import Path
+from typing import List
 
 from .data import import_data, train_test_split
 from .model import from_sklearn
@@ -37,7 +41,23 @@ class Ingestible(dict):
         self.ingestibles['labelprovider'] = labelprovider
 
     def __init_model__(self, model):
-        # TODO: convert a model, e.g. scikit-learn to instancelib
+        if isinstance(model, str):
+            model = Path(model)
+            if not model.is_file():
+                raise FileNotFoundError(f'Unknown file "{model}')
+            file_type = str.lower(model.suffix)
+            model = str(model.absolute())
+            if file_type == '.pkl':
+                import pickle
+                model = pickle.loads(model)
+            elif file_type == '.onnx':
+                import ilonnx
+                model = ilonnx.build_data_model(model, classes=[])
+            else:
+                raise ValueError(f'Unknown file format for "{model}"')
+
+        # TODO: convert a trained model, e.g. scikit-learn or filepath to instancelib
+
         self.ingestibles['model'] = model
 
     @property
@@ -81,7 +101,15 @@ class Ingestible(dict):
     def model(self, model):
         self.ingestibles['model'] = model
 
-    def check_requirements(self, elements=['data', 'labelprovider', 'model']):
+    def check_requirements(self, elements: List[str] = ['data', 'labelprovider', 'model']):
+        """Check if the required elements are in the ingestibles.
+
+        Args:
+            elements (List[str], optional): _description_. Defaults to ['data', 'labelprovider', 'model'].
+
+        Raises:
+            ValueError: The required element is not in the ingestibles.
+        """
         for elem in elements:
             if elem not in self.ingestibles:
                 raise ValueError(f'"{elem}" should be provided.')

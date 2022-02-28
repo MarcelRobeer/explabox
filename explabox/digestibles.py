@@ -1,4 +1,4 @@
-"""..."""
+"""Ingestibles are turned into digestibles, containing information to explore/examine/explain/expose your model."""
 
 from genbase import MetaInfo
 
