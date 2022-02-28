@@ -7,8 +7,8 @@ from text_sensitivity import (OneToManyPerturbation, OneToOnePerturbation,
                               input_space_robustness, invariance, mean_score,
                               perturbation)
 
-from explabox.mixins import IngestiblesMixin
-
+from ...ingestibles import Ingestible
+from ...mixins import IngestiblesMixin
 from ...ui.notebook import restyle
 
 compare_metric = restyle(compare_metric)
@@ -18,9 +18,8 @@ perturbation = restyle(perturbation)
 
 
 class Exposer(Readable, IngestiblesMixin):
-    def __init__(self, data, model, ingestibles=None):
-        if ingestibles is not None:
-            self.from_ingestibles(ingestibles, required=["data", "model"])
-        else:
-            self.data = data
-            self.model = model
+    def __init__(self, data, model, labelprovider, ingestibles=None):
+        if ingestibles is None:
+            ingestibles = Ingestible(data=data, model=model, labelprovider=labelprovider)
+        self.ingestibles = ingestibles
+        self.check_requirements(['data', 'labelprovider', 'model'])

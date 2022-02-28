@@ -4,15 +4,16 @@ import numpy as np
 from genbase import Readable, add_callargs
 
 from ..digestibles import Descriptives
+from ..ingestibles import Ingestible
 from ..mixins import IngestiblesMixin
 
 
 class Explorer(Readable, IngestiblesMixin):
     def __init__(self, data, ingestibles=None):
-        if ingestibles is not None:
-            self.from_ingestibles(ingestibles, required=["data"])
-        else:
-            self.data = data
+        if ingestibles is None:
+            ingestibles = Ingestible(data=data)
+        self.ingestibles = ingestibles
+        self.check_requirements(['data'])
 
     @add_callargs
     def __call__(self, **kwargs) -> Descriptives:

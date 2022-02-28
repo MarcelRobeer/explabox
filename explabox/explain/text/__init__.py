@@ -5,6 +5,7 @@ from typing import List, Optional, Union
 
 from genbase import Readable
 
+from ...ingestibles import Ingestible
 from ...mixins import IngestiblesMixin
 from ...ui.notebook import restyle
 from ...utils import MultipleReturn
@@ -18,16 +19,10 @@ class Explainer(Readable, IngestiblesMixin):
             model: ...
             labelprovider: ...
         """
-        if ingestibles is not None:
-            self.from_ingestibles(ingestibles, required=["data", "model", "labelprovider"])
-        else:
-            self.data = data
-            self.model = model
-            self.labelprovider = labelprovider
-
-    @property
-    def labels(self):
-        return list(self.labelprovider.labelset)
+        if ingestibles is None:
+            ingestibles = Ingestible(data=data, model=model, labelprovider=labelprovider)
+        self.ingestibles = ingestibles
+        self.check_requirements(['data', 'labelprovider', 'model'])
 
     @restyle
     def explain_prediction(

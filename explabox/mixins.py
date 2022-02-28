@@ -8,19 +8,21 @@ class ModelMixin:
 
 
 class IngestiblesMixin:
-    def from_ingestibles(ingestibles, required=["data", "model", "labelprovider"]):
-        for ingestible in required:
-            if ingestible not in ingestibles:
-                raise Exception(f"{ingestible} is required but not provided")
-            exec(f'self.{ingestible} = ingestibles["{ingestible}"]')
+    def check_requirements(self, elements=['data', 'labelprovider', 'model']):
+        return self.ingestibles.check_requirements(elements)
 
     @property
-    def ingestibles(self):
-        elems = {}
-        if hasattr(self, "data"):
-            elems["data"] = self.data
-        if hasattr(self, "model"):
-            elems["model"] = self.model
-        if hasattr(self, "labelprovider"):
-            elems["labelprovider"] = self.labelprovider
-        return elems
+    def data(self):
+        return self.ingestibles.data
+
+    @property
+    def labelprovider(self):
+        return self.ingestibles.labelprovider
+
+    @property
+    def labels(self):
+        return self.ingestibles.labels
+
+    @property
+    def model(self):
+        return self.ingestibles.model
