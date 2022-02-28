@@ -10,6 +10,8 @@
    :maxdepth: 2
    :caption: Reference
 
+   changelog.rst
+   contributing.rst
    api/explabox.rst
 
 

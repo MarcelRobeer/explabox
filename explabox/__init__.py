@@ -1,11 +1,22 @@
 """..."""
 
+from genbase import Readable
+
 from explabox._version import __version__
-from explabox.data import import_data, train_test_split
-from explabox.explainability import Explainer
-from explabox.model import from_sklearn
-from explabox.sensitivity import (OneToManyPerturbation, OneToOnePerturbation,
-                                  compare_accuracy, compare_metric,
-                                  compare_precision, compare_recall,
-                                  input_space_robustness, invariance,
-                                  mean_score, perturbation)
+from explabox.examine import Examiner
+from explabox.explain import Explainer
+from explabox.explore import Explorer
+from explabox.expose import Exposer
+from explabox.ingestibles import from_sklearn, import_data, train_test_split
+from explabox.mixins import IngestiblesMixin
+
+
+class Explabox(Readable, IngestiblesMixin):
+    def __init__(self):
+        self.data = None
+        self.model = None
+        self.labelprovider = None
+        self.examine = Examiner(ingestibles=self.ingestibles)
+        self.explain = Explainer(ingestibles=self.ingestibles)
+        self.explore = Explorer(ingestibles=self.ingestibles)
+        self.expose = Exposer(ingestibles=self.ingestibles)

@@ -6,14 +6,7 @@ from .ui.notebook import Render
 
 
 class Performance(MetaInfo):
-    def __init__(
-        self,
-        labels,
-        metrics,
-        type: str = "model_performance",
-        subtype: str = "classification",
-        **kwargs
-    ):
+    def __init__(self, labels, metrics, type: str = "model_performance", subtype: str = "classification", **kwargs):
         """..."""
         super().__init__(type=type, subtype=subtype, renderer=Render, **kwargs)
         self.labels = labels
@@ -29,14 +22,7 @@ class Performance(MetaInfo):
 
 
 class Descriptives(MetaInfo):
-    def __init__(
-        self,
-        labels,
-        label_counts,
-        tokenized_lengths,
-        type: str = "descriptives",
-        **kwargs
-    ):
+    def __init__(self, labels, label_counts, tokenized_lengths, type: str = "descriptives", **kwargs):
         """..."""
         super().__init__(type=type, renderer=Render, **kwargs)
         self.labels = labels
