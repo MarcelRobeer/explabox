@@ -9,7 +9,7 @@ from ..mixins import IngestiblesMixin
 
 
 class Explorer(Readable, IngestiblesMixin):
-    def __init__(self, data, ingestibles=None):
+    def __init__(self, data=None, ingestibles=None, **kwargs):
         if ingestibles is None:
             ingestibles = Ingestible(data=data)
         self.ingestibles = ingestibles

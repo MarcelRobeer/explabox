@@ -18,8 +18,8 @@ perturbation = restyle(perturbation)
 
 
 class Exposer(Readable, IngestiblesMixin):
-    def __init__(self, data, model, labelprovider, ingestibles=None):
+    def __init__(self, data=None, model=None, ingestibles=None):
         if ingestibles is None:
-            ingestibles = Ingestible(data=data, model=model, labelprovider=labelprovider)
+            ingestibles = Ingestible(data=data, model=model)
         self.ingestibles = ingestibles
-        self.check_requirements(['data', 'labelprovider', 'model'])
+        self.check_requirements(['data', 'model'])

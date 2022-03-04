@@ -14,8 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dataset descriptives
 - Text sensitivity tests (`text_sensitivity`)
 - Text explainability (`text_explainability`)
-- Model importing (`instancelib`)
-- Dataset handling (`instancelib`)
+- Model importing (`genbase`)
+- Dataset handling (`genbase`)
 - Basic UI (`genbase`)
 - `git` setup
 

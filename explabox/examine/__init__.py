@@ -6,15 +6,15 @@ from instancelib.labels.memory import MemoryLabelProvider
 
 from ..digestibles import Performance
 from ..ingestibles import Ingestible
-from ..mixins import ModelMixin
+from ..mixins import IngestiblesMixin, ModelMixin
 
 
-class Examiner(Readable, ModelMixin):
-    def __init__(self, model, data, labelprovider, ingestibles=None):
+class Examiner(Readable, ModelMixin, IngestiblesMixin):
+    def __init__(self, data=None, model=None, ingestibles=None):
         if ingestibles is None:
-            ingestibles = Ingestible(data=data, model=model, labelprovider=labelprovider)
+            ingestibles = Ingestible(data=data, model=model)
         self.ingestibles = ingestibles
-        self.check_requirements(['data', 'labelprovider', 'model'])
+        self.check_requirements(['data', 'model'])
 
     def __validate_split(self, split):
         if split not in self.splits:

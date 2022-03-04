@@ -8,7 +8,7 @@ class ModelMixin:
 
 
 class IngestiblesMixin:
-    def check_requirements(self, elements=['data', 'labelprovider', 'model']):
+    def check_requirements(self, elements=['data', 'model']):
         return self.ingestibles.check_requirements(elements)
 
     @property
@@ -26,3 +26,7 @@ class IngestiblesMixin:
     @property
     def model(self):
         return self.ingestibles.model
+
+    @property
+    def splits(self):
+        return self.ingestibles.splits

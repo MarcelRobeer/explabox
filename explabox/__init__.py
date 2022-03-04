@@ -18,7 +18,7 @@ class Explabox(Readable, IngestiblesMixin):
         if ingestibles is None:
             ingestibles = Ingestible(**kwargs)
         self.ingestibles = ingestibles
-        self.check_requirements(['data', 'labelprovider', 'model'])
+        self.check_requirements(['data', 'model'])
 
         self.examine = Examiner(ingestibles=self.ingestibles)
         self.explain = Explainer(ingestibles=self.ingestibles)
