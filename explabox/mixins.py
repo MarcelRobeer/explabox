@@ -16,12 +16,12 @@ class IngestiblesMixin:
         return self.ingestibles.data
 
     @property
-    def labelprovider(self):
-        return self.ingestibles.labelprovider
-
-    @property
     def labels(self):
         return self.ingestibles.labels
+
+    @property
+    def labelset(self):
+        return self.ingestibles.labelset
 
     @property
     def model(self):

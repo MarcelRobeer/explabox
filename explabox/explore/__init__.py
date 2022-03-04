@@ -31,16 +31,16 @@ class Explorer(Readable, IngestiblesMixin):
 
         label_counts = {
             split_name: {
-                label: len(self.labelprovider.get_instances_by_label(label).intersection(split))
-                for label in self.labels
+                label: len(self.labels.get_instances_by_label(label).intersection(split))
+                for label in self.labelset
             }
-            for split_name, split in self.data
+            for split_name, split in self.data.items()
         }
 
         from text_explainability import default_tokenizer
 
         tokenized_lengths = {}
-        for split_name, split in self.data:
+        for split_name, split in self.data.items():
             token_lengths = np.array([len(default_tokenizer(instance.data)) for _, instance in iter(split.items())])
             tokenized_lengths[split_name] = {
                 "mean": np.mean(token_lengths),
@@ -49,7 +49,7 @@ class Explorer(Readable, IngestiblesMixin):
                 "std": np.std(token_lengths),
             }
         return Descriptives(
-            labels=self.labels,
+            labels=self.labelset,
             label_counts=label_counts,
             tokenized_lengths=tokenized_lengths,
             callargs=callargs,

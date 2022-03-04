@@ -49,7 +49,7 @@ class Explainer(Readable, IngestiblesMixin):
             sample = from_string(sample)
 
         if "labels" not in kwargs:
-            kwargs["labels"] = self.labels
+            kwargs["labels"] = self.labelset
 
         res = []
         for method in [str.lower(m) for m in methods]:
@@ -81,7 +81,7 @@ class Explainer(Readable, IngestiblesMixin):
 
                 cls = FoilTree
             if cls is not None:
-                res.append(cls(env=None, labelset=self.labels)(sample, self.model, **kwargs))
+                res.append(cls(env=None, labelset=self.labelset)(sample, self.model, **kwargs))
             else:
                 warnings.warn(f'Unknown method "{method}". Skipping to next one')
         return MultipleReturn(*res) if res else None

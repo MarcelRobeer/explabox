@@ -53,6 +53,6 @@ class Examiner(Readable, ModelMixin, IngestiblesMixin):
         keys = get_keys(self.data[split])
         predictions = self.model.predict(self.data[split])
         self.predictions = MemoryLabelProvider.from_tuples(predictions)
-        performance = {label: label_metrics(self.labelprovider, self.predictions, keys, label) for label in self.labels}
+        performance = {label: label_metrics(self.labels, self.predictions, keys, label) for label in self.labelset}
 
-        return Performance(labels=self.labels, metrics=performance, callargs=callargs, **kwargs)
+        return Performance(labels=self.labelset, metrics=performance, callargs=callargs, **kwargs)

@@ -7,7 +7,7 @@ from explabox.examine import Examiner
 from explabox.explain import Explainer
 from explabox.explore import Explorer
 from explabox.expose import Exposer
-from explabox.ingestibles import Ingestible, from_sklearn, import_data, train_test_split
+from explabox.ingestibles import Ingestible, import_data, import_model, train_test_split
 from explabox.mixins import IngestiblesMixin
 
 
