@@ -8,7 +8,7 @@ class ModelMixin:
 
 
 class IngestiblesMixin:
-    def check_requirements(self, elements=['data', 'model']):
+    def check_requirements(self, elements=["data", "model"]):
         return self.ingestibles.check_requirements(elements)
 
     @property

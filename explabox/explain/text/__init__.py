@@ -17,7 +17,7 @@ class Explainer(Readable, IngestiblesMixin):
         if ingestibles is None:
             ingestibles = Ingestible(data=data, model=model)
         self.ingestibles = ingestibles
-        self.check_requirements(['data', 'model'])
+        self.check_requirements(["data", "model"])
 
     @restyle
     def explain_prediction(

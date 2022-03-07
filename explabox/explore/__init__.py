@@ -13,7 +13,7 @@ class Explorer(Readable, IngestiblesMixin):
         if ingestibles is None:
             ingestibles = Ingestible(data=data)
         self.ingestibles = ingestibles
-        self.check_requirements(['data'])
+        self.check_requirements(["data"])
 
     @add_callargs
     def __call__(self, **kwargs) -> Descriptives:
@@ -31,8 +31,7 @@ class Explorer(Readable, IngestiblesMixin):
 
         label_counts = {
             split_name: {
-                label: len(self.labels.get_instances_by_label(label).intersection(split))
-                for label in self.labelset
+                label: len(self.labels.get_instances_by_label(label).intersection(split)) for label in self.labelset
             }
             for split_name, split in self.data.items()
         }

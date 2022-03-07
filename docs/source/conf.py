@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'explabox'
-copyright = '2022, NPAI'
-author = 'NPAI'
+copyright = '2022, National Police Lab AI (NPAI)'
+author = 'National Police Lab AI (NPAI)'
 
 
 # -- General configuration ---------------------------------------------------
@@ -31,6 +31,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'sphinx.ext.napoleon',
+    'sphinx_rtd_theme',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -47,10 +48,11 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'furo'
+html_theme = 'sphinx_rtd_theme'
+html_logo = '_static/explabox-logo.png'
 html_theme_options = {
     'style_external_links': True,
-    'gitlab_url': 'https://git.science.uu.nl/m.j.robeer/explate',
+    'gitlab_url': 'https://git.science.uu.nl/m.j.robeer/explabox',
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -66,3 +68,7 @@ intersphinx_mapping = {
     'text_explainability': ('https://git.io/text_explainability/', None),
     'text_sensitivity': ('https://git.io/text_sensitivity/', None),
 }
+
+
+def setup(app):
+    app.add_css_file('custom.css')

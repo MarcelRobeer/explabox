@@ -4,6 +4,7 @@ from genbase.ui.notebook import Render as GBRender
 from text_explainability.ui.notebook import Render as TERender
 from text_explainability.ui.notebook import get_meta_descriptors
 from text_sensitivity.ui.notebook import Render as TSRender
+from text_sensitivity.ui.notebook import metrics_renderer
 
 from ..utils import MultipleReturn
 
@@ -19,6 +20,7 @@ class RestyleMixin:
         self.main_color = MAIN_COLOR
         self.package_link = PACKAGE_LINK
         self.package_name = PACKAGE_NAME
+        self.default_title = "Digestible"
 
 
 class GBRenderRestyled(GBRender, RestyleMixin):
@@ -50,6 +52,12 @@ class Render(GBRenderRestyled):
 
     def __init__(self, *configs):
         super().__init__(*configs)
+        self.extra_css = """
+        #--var(tabs_id) .table-wrapper td:nth-child(2),
+        #--var(tabs_id) .table-wrapper th:nth-child(2) {
+            width: auto;
+        }
+        """
 
     def get_renderer(self, meta: dict):
         """Get a render function (Callable taking `meta`, `content` and `**renderargs` and returning a `str`).
@@ -68,8 +76,22 @@ class Render(GBRenderRestyled):
 
         if type == "descriptives":
             return descriptives_renderer
+        elif type == "model_performance":
+            return metrics_renderer
 
         return default_renderer
+
+    def format_title(self, title: str, h: str = "h1", **renderargs) -> str:
+        """Format title in HTML format.
+
+        Args:
+            title (str): Title contents.
+            h (str, optional): h-tag (h1, h2, ...). Defaults to 'h1'.
+
+        Returns:
+            str: Formatted title.
+        """
+        return f'<{h}>{title.replace("_", " ").title()}</{h}>'
 
 
 def replace_renderer(res):

@@ -12,10 +12,11 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   explabox.data
-   explabox.explainability
-   explabox.models
-   explabox.sensitivity
+   explabox.examine
+   explabox.explain
+   explabox.explore
+   explabox.expose
+   explabox.ingestibles
    explabox.ui
    explabox.utils
 
@@ -30,10 +31,18 @@ explabox.config module
    :undoc-members:
    :show-inheritance:
 
-explabox.return\_types module
------------------------------
+explabox.digestibles module
+---------------------------
 
-.. automodule:: explabox.return_types
+.. automodule:: explabox.digestibles
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+explabox.mixins module
+----------------------
+
+.. automodule:: explabox.mixins
    :members:
    :undoc-members:
    :show-inheritance:

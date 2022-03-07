@@ -14,7 +14,7 @@ class Examiner(Readable, ModelMixin, IngestiblesMixin):
         if ingestibles is None:
             ingestibles = Ingestible(data=data, model=model)
         self.ingestibles = ingestibles
-        self.check_requirements(['data', 'model'])
+        self.check_requirements(["data", "model"])
 
     def __validate_split(self, split):
         if split not in self.splits:
@@ -32,10 +32,7 @@ class Examiner(Readable, ModelMixin, IngestiblesMixin):
         raise NotImplementedError()
 
     @add_callargs
-    def __call__(self,
-                 metrics=["f1", "accuracy", "precision", "recall"],
-                 split="test",
-                 **kwargs) -> Performance:
+    def __call__(self, metrics=["f1", "accuracy", "precision", "recall"], split="test", **kwargs) -> Performance:
         """Determine performance metrics, the amount of predictions for each label in the test set
         and the values for the confusion matrix for each label in the test set.
 

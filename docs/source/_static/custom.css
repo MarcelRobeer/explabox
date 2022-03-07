@@ -1,0 +1,82 @@
+a.icon-home {
+    color: #000;
+    font-size: 120%;
+}
+
+.wy-menu-vertical header, .wy-menu-vertical p.caption {
+    color: #646776;
+}
+
+.wy-nav-top i {
+    color: #646776;
+}
+
+.wy-side-nav-search, .wy-nav-top, .wy-nav-side {
+    background: #f8f8f8;
+}
+
+a, .wy-menu-vertical a, .wy-menu-vertical a:visited {
+    color: #4974ad;
+}
+
+.wy-menu-vertical li.toctree-l1.current>a {
+    font-weight: 700;
+    border: none;
+    background-color: #eee;
+}
+
+a:hover, .wy-menu-vertical a:hover {
+    color: #354a8a;
+}
+
+a:visited {
+    color: #312781;
+}
+
+.wy-menu-vertical a:hover {
+    background-color: #efeff4;
+}
+
+.wy-side-nav-search input[type=text] {
+    background: transparent;
+    border: none;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+    border-bottom: 1px solid #eeebee;
+    border-top: 1px solid #eeebee;
+    box-sizing: border-box;
+    color: #646776;
+    padding: 0.5rem 0.5rem;
+    width: 100%;
+    z-index: 10;
+}
+
+.rst-content code.literal, .rst-content tt.literal {
+    color: #312781;
+}
+
+.rst-content .toctree-wrapper>p.caption, h1, h2, h3, h4, h5, h6, legend {
+    font-family: -apple-system, "Segoe UI", Roboto, "Noto Sans", Ubuntu, "Helvetica Neue", sans-serif;
+}
+
+html.writer-html4 .rst-content dl:not(.docutils)>dt,
+html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple)>dt {
+    margin: 6px 3px;
+    color: #fff;
+    border-top: 0;
+    background: #312781;
+}
+
+html.writer-html4 .rst-content dl:not(.docutils) dl:not(.field-list)>dt,
+html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) dl:not(.field-list)>dt {
+    border-left: 0;
+}
+
+.btn {
+    border: none;
+}
+
+.fa-home:before, .icon-home:before {
+    content: "";
+}

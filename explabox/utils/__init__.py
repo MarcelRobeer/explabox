@@ -23,3 +23,8 @@ class MultipleReturn:
 
     def __len__(self):
         return len(self.return_values)
+
+    def to_config(self):
+        if len(self.return_values) == 1:
+            return self.return_values[0].to_config()
+        return [v.to_config() for v in self.return_values]
