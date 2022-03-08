@@ -1,0 +1,23 @@
+image: python:3.9
+
+stages:
+  - format
+  - security
+
+before_script:
+  - python3 setup.py install
+
+flake8:
+  stage: format
+  script:
+    - flake8 . --config .flake8
+
+isort:
+  stage: format
+  script:
+    - python3 -m isort --check --diff explabox
+
+bandit:
+  stage: security
+  script:
+    - bandit -r ./explabox

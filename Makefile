@@ -23,11 +23,11 @@ html:
 
 # Check style quality
 quality:
-	black --line-length 120 --check $(check_dirs)
+	black --line-length=120 --check $(check_dirs)
 	isort --check-only $(check_dirs)
 	flake8 --config .flake8 $(check_dirs)
 
 # Fix styles
 style:
-	black --line-length 120 $(check_dirs)
+	black --line-length=120 $(check_dirs)
 	isort $(check_dirs)
