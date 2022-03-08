@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - License
 - Requirements
 - Dataset descriptives
+- Installation guide
 - Text sensitivity tests (`text_sensitivity`)
 - Text explainability (`text_explainability`)
 - Model importing (`genbase`)

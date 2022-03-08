@@ -27,29 +27,33 @@ A number of experiments in the `explabox` can also be used to provide transparen
 
 <a name="quick-tour"/></a>
 ## Quick tour
-...
+The `explabox` is distributed on [PyPI](https://pypi.org/project/explabox/). To use the package with Python, install it (`pip install explabox`), import your `data` and `model` and wrap them in the `Explabox`:
 
 ```python
 >>> from explabox import import_data, import_model
 >>> data = import_data('./example.csv', data_cols='', label_cols='')
 >>> model = import_model('model.onnx', label_map={0: ..., 1: ...})
-```
 
-```python
 >>> from explabox import Explabox
 >>> box = Explabox(data=data, model=model)
+```
+
+Then `.explore`, `.examine`, `.expose` and `.explain` your model:
+```python
 >>> box.explore()
 ...
 
 >>> box.examine()
 ...
 
->>> box.explain.local_explanation('...')
-...
-
 >>> box.expose.input_space()
 ...
+
+>>> box.explain.local_explanation('...')
+...
 ```
+
+For more information, visit the [explabox documentation](https://explabox.rtfd.io).
 
 # Contents
 - [Quick tour](#quick-tour)
@@ -62,11 +66,19 @@ A number of experiments in the `explabox` can also be used to provide transparen
 
 <a name="installation"/></a>
 ## Installation
-Before installation, check if the required packages (in `requirements.txt`) have been installed. Installation can be done via `pip install -r requirements.txt`.
+The easiest way to install the latest release of the `explabox` is through `pip`:
 
-The `explabox` requires _Python 3.8_ or above.
+```console
+user@terminal:~$ pip3 install explabox
+Collecting explabox
+...
+Installing collected packages: explabox
+Successfully installed explabox
+```
 
-See the [full installation guide](INSTALLATION.md) for troubleshooting the installation.
+> :information_source: The `explabox` requires _Python 3.8_ or above.
+
+See the [full installation guide](INSTALLATION.md) for troubleshooting the installation and other installation methods.
 
 <a name="documentation"/></a>
 ## Documentation
@@ -78,16 +90,15 @@ Documentation for the `explabox` is hosted externally on [explabox.rtfd.io](http
 
 <a name="releases"/></a>
 ## Releases
-The `explabox` is officially released through [PyPI](https://pypi.org/project/explabox/).
-
-See the [changelog](CHANGELOG.md) for a full overview of the changes for each version.
+The `explabox` is officially released through [PyPI](https://pypi.org/project/explabox/). The [changelog](CHANGELOG.md) includes a full overview of the changes for each version.
 
 <a name="contributing"/></a>
 ## Contributing
-...
-
-See [contributing](CONTRIBUTING.md) for a full contribution guide.
+The `explabox` is an open-source project developed and maintained primarily by the Netherlands *National Police Lab AI* (NPAI). However, your contributions and improvements are still required! See [contributing](CONTRIBUTING.md) for a full contribution guide.
 
 <a name="citation"></a>
 ## Citation
 ...
+
+```bibtex
+```
