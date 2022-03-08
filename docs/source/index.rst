@@ -56,12 +56,18 @@ Citation
 .. _`Explabox @ GIT`: https://git.science.uu.nl/m.j.robeer/explabox
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
    :caption: Using explabox
    :hidden:
 
    installation.rst
    example-usage.rst
+
+.. toctree::
+   :maxdepth: 4
+   :caption: API reference
+   :hidden:
+
    api/explabox.rst
 
 .. toctree::

@@ -1,13 +1,12 @@
-explabox.ingestibles package
-============================
+explabox.ingestibles 
+=====================
 
 .. automodule:: explabox.ingestibles
    :members:
    :undoc-members:
    :show-inheritance:
 
-Subpackages
------------
+*Subpackages*:
 
 .. toctree::
    :maxdepth: 4

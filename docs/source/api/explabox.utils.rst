@@ -1,13 +1,13 @@
-explabox.utils package
-======================
+explabox.utils 
+===============
 
 .. automodule:: explabox.utils
    :members:
    :undoc-members:
    :show-inheritance:
 
-Submodules
-----------
+*Submodules*:
+
 
 explabox.utils.io module
 ------------------------

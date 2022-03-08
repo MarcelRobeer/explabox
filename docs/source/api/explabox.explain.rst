@@ -1,13 +1,12 @@
-explabox.explain package
-========================
+explabox.explain 
+=================
 
 .. automodule:: explabox.explain
    :members:
    :undoc-members:
    :show-inheritance:
 
-Subpackages
------------
+*Subpackages*:
 
 .. toctree::
    :maxdepth: 4

@@ -1,13 +1,13 @@
-explabox.ui package
-===================
+explabox.ui 
+============
 
 .. automodule:: explabox.ui
    :members:
    :undoc-members:
    :show-inheritance:
 
-Submodules
-----------
+*Submodules*:
+
 
 explabox.ui.notebook module
 ---------------------------

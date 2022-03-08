@@ -1,13 +1,12 @@
-explabox package
-================
+explabox 
+=========
 
 .. automodule:: explabox
    :members:
    :undoc-members:
    :show-inheritance:
 
-Subpackages
------------
+*Subpackages*:
 
 .. toctree::
    :maxdepth: 4
@@ -20,8 +19,8 @@ Subpackages
    explabox.ui
    explabox.utils
 
-Submodules
-----------
+*Submodules*:
+
 
 explabox.config module
 ----------------------

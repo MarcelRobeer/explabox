@@ -1,5 +1,5 @@
-explabox.ingestibles.data package
-=================================
+explabox.ingestibles.data 
+==========================
 
 .. automodule:: explabox.ingestibles.data
    :members:

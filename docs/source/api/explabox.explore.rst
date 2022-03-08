@@ -1,5 +1,5 @@
-explabox.explore package
-========================
+explabox.explore 
+=================
 
 .. automodule:: explabox.explore
    :members:

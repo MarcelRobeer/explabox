@@ -1,5 +1,5 @@
-explabox.explain.text package
-=============================
+explabox.explain.text 
+======================
 
 .. automodule:: explabox.explain.text
    :members:

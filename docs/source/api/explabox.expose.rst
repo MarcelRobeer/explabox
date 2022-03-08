@@ -1,13 +1,12 @@
-explabox.expose package
-=======================
+explabox.expose 
+================
 
 .. automodule:: explabox.expose
    :members:
    :undoc-members:
    :show-inheritance:
 
-Subpackages
------------
+*Subpackages*:
 
 .. toctree::
    :maxdepth: 4

@@ -1,5 +1,5 @@
-explabox.examine package
-========================
+explabox.examine 
+=================
 
 .. automodule:: explabox.examine
    :members:

@@ -1,13 +1,13 @@
-explabox.expose.text package
-============================
+explabox.expose.text 
+=====================
 
 .. automodule:: explabox.expose.text
    :members:
    :undoc-members:
    :show-inheritance:
 
-Submodules
-----------
+*Submodules*:
+
 
 explabox.expose.text.characters module
 --------------------------------------

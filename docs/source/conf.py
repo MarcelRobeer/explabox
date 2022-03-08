@@ -17,9 +17,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'explabox'
-copyright = '2022, National Police Lab AI (NPAI)'
-author = 'National Police Lab AI (NPAI)'
+project = "explabox"
+copyright = "2022, National Police Lab AI (NPAI)"
+author = "National Police Lab AI (NPAI)"
 
 
 # -- General configuration ---------------------------------------------------
@@ -28,15 +28,15 @@ author = 'National Police Lab AI (NPAI)'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.napoleon',
-    'sphinx_autodoc_typehints',
-    'sphinx_rtd_theme',
+    "sphinx.ext.autodoc",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.napoleon",
+    "sphinx_autodoc_typehints",
+    "sphinx_rtd_theme",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ["_templates"]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -49,30 +49,29 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
-html_logo = '_static/explabox-logo-text.png'
+html_theme = "sphinx_rtd_theme"
+html_logo = "_static/explabox-logo-text.png"
 html_theme_options = {
-    'include_hidden': True,
-    'display_version': True,
-    'style_external_links': True,
-    'logo_only': True,
-    'gitlab_url': 'https://git.science.uu.nl/m.j.robeer/explabox',
+    "display_version": True,
+    "style_external_links": True,
+    "logo_only": True,
+    "gitlab_url": "https://git.science.uu.nl/m.j.robeer/explabox",
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ["_static"]
 
 # -- External documentation --------------------------------------------------
 
 intersphinx_mapping = {
-    'genbase': ('https://git.science.uu.nl/m.j.robeer/genbase/', None),
-    'instancelib': ('https://instancelib.readthedocs.io/en/latest/', None),
-    'text_explainability': ('https://git.io/text_explainability/', None),
-    'text_sensitivity': ('https://git.io/text_sensitivity/', None),
+    "genbase": ("https://git.science.uu.nl/m.j.robeer/genbase/", None),
+    "instancelib": ("https://instancelib.readthedocs.io/en/latest/", None),
+    "text_explainability": ("https://git.io/text_explainability/", None),
+    "text_sensitivity": ("https://git.io/text_sensitivity/", None),
 }
 
 
 def setup(app):
-    app.add_css_file('custom.css')
+    app.add_css_file("custom.css")
