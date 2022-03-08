@@ -29,9 +29,32 @@ A number of experiments in the `explabox` can also be used to provide transparen
 ## Quick tour
 ...
 
+```python
+>>> from explabox import import_data, import_model
+>>> data = import_data('./example.csv', data_cols='', label_cols='')
+>>> model = import_model('model.onnx', label_map={0: ..., 1: ...})
+```
+
+```python
+>>> from explabox import Explabox
+>>> box = Explabox(data=data, model=model)
+>>> box.explore()
+...
+
+>>> box.examine()
+...
+
+>>> box.explain.local_explanation('...')
+...
+
+>>> box.expose.input_space()
+...
+```
+
 # Contents
 - [Quick tour](#quick-tour)
 - [Installation](#installation)
+- [Documentation](#documentation)
 - [Example usage](#example-usage)
 - [Releases](#releases)
 - [Contributing](#contributing)
@@ -43,6 +66,12 @@ Before installation, check if the required packages (in `requirements.txt`) have
 
 The `explabox` requires _Python 3.8_ or above.
 
+See the [full installation guide](INSTALLATION.md) for troubleshooting the installation.
+
+<a name="documentation"/></a>
+## Documentation
+Documentation for the `explabox` is hosted externally on [explabox.rtfd.io](https://explabox.rtfd.io).
+
 <a name="example-usage"/></a>
 ## Example usage
 ...
@@ -51,7 +80,7 @@ The `explabox` requires _Python 3.8_ or above.
 ## Releases
 The `explabox` is officially released through [PyPI](https://pypi.org/project/explabox/).
 
-See [changelog](CHANGELOG.md) for a full overview of the changes for each version.
+See the [changelog](CHANGELOG.md) for a full overview of the changes for each version.
 
 <a name="contributing"/></a>
 ## Contributing
