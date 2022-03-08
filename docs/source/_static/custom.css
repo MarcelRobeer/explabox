@@ -76,7 +76,3 @@ html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(
 .btn {
     border: none;
 }
-
-.fa-home:before, .icon-home:before {
-    content: "";
-}

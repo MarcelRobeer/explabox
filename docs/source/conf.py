@@ -50,11 +50,12 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
-html_logo = '_static/explabox-logo.png'
+html_logo = '_static/explabox-logo-text.png'
 html_theme_options = {
     'include_hidden': True,
     'display_version': True,
     'style_external_links': True,
+    'logo_only': True,
     'gitlab_url': 'https://git.science.uu.nl/m.j.robeer/explabox',
 }
 
