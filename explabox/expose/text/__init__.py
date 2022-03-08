@@ -3,28 +3,14 @@
 from typing import List, Optional, Union
 
 from genbase import Readable
-from text_sensitivity import (
-    OneToManyPerturbation,
-    OneToOnePerturbation,
-    RandomAscii,
-    RandomCyrillic,
-    RandomDigits,
-    RandomEmojis,
-    RandomLower,
-    RandomPunctuation,
-    RandomSpaces,
-    RandomString,
-    RandomUpper,
-    RandomWhitespace,
-    compare_accuracy,
-    compare_metric,
-    compare_precision,
-    compare_recall,
-    input_space_robustness,
-    invariance,
-    mean_score,
-    perturbation,
-)
+from text_sensitivity import (OneToManyPerturbation, OneToOnePerturbation,
+                              RandomAscii, RandomCyrillic, RandomDigits,
+                              RandomEmojis, RandomLower, RandomPunctuation,
+                              RandomSpaces, RandomString, RandomUpper,
+                              RandomWhitespace, compare_accuracy,
+                              compare_metric, compare_precision,
+                              compare_recall, input_space_robustness,
+                              invariance, mean_score, perturbation)
 from text_sensitivity.return_types import SuccessTest
 
 from ...ingestibles import Ingestible
