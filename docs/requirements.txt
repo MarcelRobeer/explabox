@@ -1,0 +1,5 @@
+sphinx>=4.1.1
+sphinx-rtd-theme>=0.5.2
+sphinx-autodoc-typehints>=1.17.0
+sphinxcontrib-apidoc>=0.3.0
+sphinxcontrib-fulltoc>=1.0.2

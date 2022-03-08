@@ -31,6 +31,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'sphinx.ext.napoleon',
+    'sphinx_autodoc_typehints',
     'sphinx_rtd_theme',
 ]
 
@@ -51,6 +52,8 @@ exclude_patterns = []
 html_theme = 'sphinx_rtd_theme'
 html_logo = '_static/explabox-logo.png'
 html_theme_options = {
+    'include_hidden': True,
+    'display_version': True,
     'style_external_links': True,
     'gitlab_url': 'https://git.science.uu.nl/m.j.robeer/explabox',
 }
