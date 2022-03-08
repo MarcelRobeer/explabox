@@ -30,15 +30,15 @@ Using explabox
     Installation guide, directly installing it via `pip`_ or through the `git`_.
 
 :doc:`example-usage`
-    ...
+    An extended usage example, showcasing how you can *explore*, *examine*, *expose* and *explain* your AI model.
 
 :doc:`Explabox API reference <api/explabox>`
-    ...
+    A reference to all classes and functions included in the `explabox`.
 
 Development
 -----------
 `Explabox @ GIT`_
-    ...
+    The `git`_ includes the open-source code and the most recent development version.
 
 :doc:`changelog`
     Changes for each version are recorded in the changelog.

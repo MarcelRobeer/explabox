@@ -20,6 +20,7 @@ Added
 * License
 * Requirements
 * Dataset descriptives
+* Installation guide
 * Text sensitivity tests (\ ``text_sensitivity``\ )
 * Text explainability (\ ``text_explainability``\ )
 * Model importing (\ ``genbase``\ )

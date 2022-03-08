@@ -69,7 +69,7 @@ For more information, visit the [explabox documentation](https://explabox.rtfd.i
 The easiest way to install the latest release of the `explabox` is through `pip`:
 
 ```console
-user@terminal:~$ pip3 install explabox
+user@terminal:~$ pip install explabox
 Collecting explabox
 ...
 Installing collected packages: explabox
