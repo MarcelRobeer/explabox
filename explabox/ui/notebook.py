@@ -24,33 +24,29 @@ class RestyleMixin:
 
 
 class GBRenderRestyled(GBRender, RestyleMixin):
-    """Restyle the `genbase` renderer."""
-
     def __init__(self, *configs):
+        """Restyle the `genbase` renderer."""
         super().__init__(*configs)
         self.restyle()
 
 
 class TERenderRestyled(TERender, RestyleMixin):
-    """Restyle the `text_explainability` renderer."""
-
     def __init__(self, *configs):
+        """Restyle the `text_explainability` renderer."""
         super().__init__(*configs)
         self.restyle()
 
 
 class TSRenderRestyled(TSRender, RestyleMixin):
-    """Restyle the `text_sensitivity` renderer."""
-
     def __init__(self, *configs):
+        """Restyle the `text_sensitivity` renderer."""
         super().__init__(*configs)
         self.restyle()
 
 
 class Render(GBRenderRestyled):
-    """Custom renderer for `explabox`."""
-
     def __init__(self, *configs):
+        """Custom renderer for `explabox`."""
         super().__init__(*configs)
         self.extra_css = """
         #--var(tabs_id) .table-wrapper td:nth-child(2),

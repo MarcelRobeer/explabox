@@ -66,7 +66,7 @@ a:visited {
     border-top: 1px solid #eeebee;
     box-sizing: border-box;
     color: #646776;
-    padding: 0.5rem 0.5rem;
+    padding: 0.75rem 1.25rem;
     width: 100%;
     z-index: 10;
 }
@@ -82,14 +82,23 @@ a:visited {
 html.writer-html4 .rst-content dl:not(.docutils)>dt,
 html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple)>dt {
     margin: 6px 3px;
-    color: #fff;
+    color: #312781;
     border-top: 0;
-    background: #312781;
+    background: #dbdaed;
 }
 
 html.writer-html4 .rst-content dl:not(.docutils) dl:not(.field-list)>dt,
 html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) dl:not(.field-list)>dt {
     border-left: 0;
+}
+
+html.writer-html4 .rst-content dl:not(.docutils) .sig-name,
+html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) .sig-name,
+html.writer-html4 .rst-content dl:not(.docutils) .descclassname,
+html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) .descclassname,
+html.writer-html4 .rst-content dl:not(.docutils) .descname,
+html.writer-html5 .rst-content dl[class]:not(.option-list):not(.field-list):not(.footnote):not(.glossary):not(.simple) .descname {
+    color: #1a1445;
 }
 
 .btn {

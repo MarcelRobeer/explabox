@@ -63,6 +63,11 @@ html_theme_options = {
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 
+# -- Autodoc -----------------------------------------------------------------
+autodoc_inherit_docstrings = False
+autodoc_typehints = 'both'
+autoclass_content = 'both'
+
 # -- External documentation --------------------------------------------------
 
 intersphinx_mapping = {

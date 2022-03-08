@@ -17,8 +17,8 @@ The ``explabox`` can be used to:
 
 A number of experiments in the ``explabox`` can also be used to provide transparency and explanations to stakeholders, such as end-users or clients.
 
-..
-   :information_source: The ``explabox`` currently only supports natural language text as a modality. In the future, we intend to extend to other modalities.
+.. note::
+    The ``explabox`` currently only supports natural language text as a modality. In the future, we intend to extend to other modalities.
 
 
 Quick tour
