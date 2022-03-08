@@ -1,6 +1,6 @@
 .. image:: https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/explabox.png
   :alt: Explabox logo
-  :align:center
+  :align: center
 
 
 { ``Explore`` | ``Examine`` | ``Expose`` | ``Explain`` } your model with the *explabox*!
@@ -66,7 +66,7 @@ Citation
 
 .. toctree::
    :maxdepth: 1
-   :caption:Development
+   :caption: Development
    :hidden:
 
    changelog.rst
