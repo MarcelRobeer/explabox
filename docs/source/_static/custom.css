@@ -7,6 +7,11 @@ a.icon-home {
     color: #646776;
 }
 
+.wy-nav-top a, .wy-nav-top a:visited, .wy-nav-top a:hover {
+    color: #646776;
+    font-weight: 700;
+}
+
 .wy-nav-top i {
     color: #646776;
 }
