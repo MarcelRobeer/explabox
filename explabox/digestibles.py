@@ -1,7 +1,7 @@
 """Ingestibles are turned into digestibles, containing information to explore/examine/explain/expose your model."""
 
 from genbase import MetaInfo
-from genbase.utils import extract_metrics, recursive_to_dict
+from genbase.utils import extract_metrics
 
 from .ui.notebook import Render
 
