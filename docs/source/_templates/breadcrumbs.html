@@ -22,9 +22,9 @@
 <div role="navigation" aria-label="{{ _('Page navigation') }}">
   <ul class="wy-breadcrumbs">
     {%- block breadcrumbs %}
-      <li><a href="{{ pathto(master_doc) }}" class="icon fa-search flip-horizontal"></a>{{ _(' ') }}<span class="fa fa-angle-right" aria-hidden="true"></span>&nbsp;</li>
+      <li><a href="{{ pathto(master_doc) }}" class="icon fa-search flip-horizontal"></a>{{ _(' ') }}<span class="icon fa-angle-right" aria-hidden="true"></span>&nbsp;</li>
         {%- for doc in parents %}
-          <li><a href="{{ doc.link|e }}">{{ doc.title }}</a> <span class="fa fa-angle-right" aria-hidden="true"></span></li>
+          <li><a href="{{ doc.link|e }}">{{ doc.title }}</a> <span class="icon fa-angle-right" aria-hidden="true"></span></li>
         {%- endfor %}
       <li>{{ title }}</li>
     {%- endblock %}
@@ -34,23 +34,23 @@
           {%- if display_github %}
             {%- if check_meta and 'github_url' in meta %}
               <!-- User defined GitHub URL -->
-              <a href="{{ meta['github_url'] }}" class="fa fa-github"> {{ _('Edit on GitHub') }}</a>
+              <a href="{{ meta['github_url'] }}" class="icon fa-github"> {{ _('Edit on GitHub') }}</a>
             {%- else %}
-              <a href="https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/{{ theme_vcs_pageview_mode or "blob" }}/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ page_source_suffix }}" class="fa fa-github"> {{ _('Edit on GitHub') }}</a>
+              <a href="https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/{{ theme_vcs_pageview_mode or "blob" }}/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ page_source_suffix }}" class="icon fa-github"> {{ _('Edit on GitHub') }}</a>
             {%- endif %}
           {%- elif display_bitbucket %}
             {%- if check_meta and 'bitbucket_url' in meta %}
               <!-- User defined Bitbucket URL -->
-              <a href="{{ meta['bitbucket_url'] }}" class="fa fa-bitbucket"> {{ _('Edit on Bitbucket') }}</a>
+              <a href="{{ meta['bitbucket_url'] }}" class="icon fa-bitbucket"> {{ _('Edit on Bitbucket') }}</a>
             {%- else %}
-              <a href="https://bitbucket.org/{{ bitbucket_user }}/{{ bitbucket_repo }}/src/{{ bitbucket_version}}{{ conf_py_path }}{{ pagename }}{{ page_source_suffix }}?mode={{ theme_vcs_pageview_mode or "view" }}" class="fa fa-bitbucket"> {{ _('Edit on Bitbucket') }}</a>
+              <a href="https://bitbucket.org/{{ bitbucket_user }}/{{ bitbucket_repo }}/src/{{ bitbucket_version}}{{ conf_py_path }}{{ pagename }}{{ page_source_suffix }}?mode={{ theme_vcs_pageview_mode or "view" }}" class="icon fa-bitbucket"> {{ _('Edit on Bitbucket') }}</a>
             {%- endif %}
           {%- elif display_gitlab %}
             {%- if check_meta and 'gitlab_url' in meta %}
               <!-- User defined GitLab URL -->
-              <a href="{{ meta['gitlab_url'] }}" class="fa fa-gitlab"> {{ _('Edit on GitLab') }}</a>
+              <a href="{{ meta['gitlab_url'] }}" class="icon fa-gitlab"> {{ _('Edit on GitLab') }}</a>
             {%- else %}
-              <a href="https://{{ gitlab_host|default("gitlab.com") }}/{{ gitlab_user }}/{{ gitlab_repo }}/{{ theme_vcs_pageview_mode or "blob" }}/{{ gitlab_version }}{{ conf_py_path }}{{ pagename }}{{ page_source_suffix }}" class="fa fa-gitlab"> {{ _('Edit on GitLab') }}</a>
+              <a href="https://{{ gitlab_host|default("gitlab.com") }}/{{ gitlab_user }}/{{ gitlab_repo }}/{{ theme_vcs_pageview_mode or "blob" }}/{{ gitlab_version }}{{ conf_py_path }}{{ pagename }}{{ page_source_suffix }}" class="icon fa-gitlab"> {{ _('Edit on GitLab') }}</a>
             {%- endif %}
           {%- elif show_source and source_url_prefix %}
             <a href="{{ source_url_prefix }}{{ pagename }}{{ page_source_suffix }}" class="icon fa-code"></a>
@@ -66,10 +66,10 @@
   {#- Translators: This is an ARIA section label for sequential page links, such as previous and next page links. -#}
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="{{ _('Sequential page navigation') }}">
       {%- if prev %}
-        <a href="{{ prev.link|e }}" class="btn btn-neutral float-left" title="{{ prev.title|striptags|e }}" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> {{ _('Previous') }}</a>
+        <a href="{{ prev.link|e }}" class="btn btn-neutral float-left" title="{{ prev.title|striptags|e }}" accesskey="p"><span class="icon fa-arrow-circle-left" aria-hidden="true"></span> {{ _('Previous') }}</a>
       {%- endif %}
       {%- if next %}
-        <a href="{{ next.link|e }}" class="btn btn-neutral float-right" title="{{ next.title|striptags|e }}" accesskey="n">{{ _('Next') }} <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="{{ next.link|e }}" class="btn btn-neutral float-right" title="{{ next.title|striptags|e }}" accesskey="n">{{ _('Next') }} <span class="icon fa-arrow-circle-right" aria-hidden="true"></span></a>
       {%- endif %}
   </div>
   {%- endif %}

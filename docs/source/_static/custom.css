@@ -178,3 +178,8 @@ footer .footer p {
     margin-top: 6px;
     margin-bottom: 6px;
 }
+
+.wy-side-nav-search > div.version {
+    color: #646776;
+}
+

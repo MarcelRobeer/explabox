@@ -1,6 +1,2 @@
-
-Example usage
-=============
-
+# Example usage
 *The example usage will be added soon* ...
-

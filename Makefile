@@ -15,6 +15,7 @@ docs:
 	m2r CHANGELOG.md --dry-run > $(source_dir)/changelog.rst
 	m2r CONTRIBUTING.md --dry-run > $(source_dir)/contributing.rst
 	m2r INSTALLATION.md --dry-run > $(source_dir)/installation.rst
+	m2r EXAMPLE_USAGE.md --dry-run > $(source_dir)/example-usage.rst
 
 # Convert docs to HTML
 html:
