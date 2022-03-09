@@ -162,15 +162,15 @@ footer .footer p {
     font-size: .9em;
 }
 
-.wy-menu-vertical li.current>a span.toctree-expand:before,
-.wy-menu-vertical li.on a span.toctree-expand:before {
+.wy-menu-vertical li.current>a .toctree-expand:before,
+.wy-menu-vertical li.on a .toctree-expand:before {
     font-size: 120%;
-    content: "";
+    content: "" !important;
 }
 
-.wy-menu-vertical li span.toctree-expand:before {
+.wy-menu-vertical li .toctree-expand:before {
     font-size: 120%;
-    content: "";
+    content: "" !important;
 }
 
 .rst-content .section ol li>*,
