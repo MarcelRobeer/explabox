@@ -1,3 +1,3 @@
-"""Functions to import models from the text_explainability library."""
+"""Functions to import models from the genbase library."""
 
-from text_explainability.model import import_model
+from genbase.model import import_model

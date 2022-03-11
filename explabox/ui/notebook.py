@@ -1,4 +1,12 @@
-"""User interface for Jupyter notebook."""
+"""User interface for Jupyter notebook.
+
+Attributes:
+    MAIN_COLOR (str): Default color for the notebook UI.
+    PACKAGE_LINK (str): URL to package.
+    PACKAGE_NAME (str): Name of package.
+"""
+
+from typing import Callable
 
 from genbase.ui.notebook import Render as GBRender
 from text_explainability.ui.notebook import Render as TERender
@@ -103,7 +111,7 @@ def replace_renderer(res):
     return res
 
 
-def restyle(function):
+def restyle(function: Callable):
     """Apply a decorator for restyling the returned renderer."""
 
     def inner(*args, **kwargs):

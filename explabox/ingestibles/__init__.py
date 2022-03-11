@@ -3,19 +3,15 @@ your data and/or model."""
 
 from typing import Dict, List, Optional
 
-from instancelib import InstanceProvider, MemoryEnvironment
+from instancelib import AbstractClassifier, Environment, InstanceProvider, MemoryEnvironment
 from instancelib.typehints import KT
-from sklearn.exceptions import NotFittedError
-
-from .data import import_data, rename_labels, train_test_split
-from .model import import_model
 
 
 class Ingestible(dict):
     def __init__(
         self,
-        data=None,
-        model=None,
+        data: Optional[Environment] = None,
+        model: Optional[AbstractClassifier] = None,
         splits: Dict[KT, KT] = {"train": "train", "test": "test", "validation": "validation"},
     ):
         self["data"] = data
@@ -23,16 +19,18 @@ class Ingestible(dict):
         self.__splits = splits
 
     @property
-    def environment(self):
-        if hasattr(self, "_environment"):
-            return self._environment
-        return MemoryEnvironment(self.data, self.labelprovider)
-
-    @property
     def data(self):
         return self["data"]
 
     def get_named_split(self, name: KT) -> Optional[InstanceProvider]:
+        """Get split by name.
+
+        Args:
+            name (KT): Name of split.
+
+        Returns:
+            Optional[InstanceProvider]: Provider of split if it exists, else None.
+        """
         if name in self.__splits.keys() and self.__splits[name] in self.data.keys():
             return self.data[self.__splits[name]]
         elif name in self.data.keys():
@@ -41,22 +39,27 @@ class Ingestible(dict):
 
     @property
     def train(self):
+        """Train data split."""
         return self.get_named_split("train")
 
     @property
     def test(self):
+        """Test data split."""
         return self.get_named_split("test")
 
     @property
     def validation(self):
+        """Validation data split."""
         return self.get_named_split("validation")
 
     @property
     def splits(self):
+        """Names of splits."""
         return [k for k, v in self.__splits.items() if v in self.data._named_providers]
 
     @property
     def labels(self):
+        """Labelprovider."""
         return self.data.labels
 
     @labels.setter
@@ -65,10 +68,12 @@ class Ingestible(dict):
 
     @property
     def labelset(self):
+        """Label names."""
         return list(self.labels.labelset) if self.labels else None
 
     @property
     def model(self):
+        """Predictive model."""
         return self["model"]
 
     @model.setter

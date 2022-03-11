@@ -1,6 +1,9 @@
 """..."""
 
+from typing import Optional
+
 from genbase import Readable, add_callargs
+from instancelib import AbstractClassifier, Environment
 from instancelib.analysis.base import get_keys, label_metrics
 from instancelib.labels.memory import MemoryLabelProvider
 
@@ -10,7 +13,12 @@ from ..mixins import IngestiblesMixin, ModelMixin
 
 
 class Examiner(Readable, ModelMixin, IngestiblesMixin):
-    def __init__(self, data=None, model=None, ingestibles=None):
+    def __init__(
+        self,
+        data: Optional[Environment] = None,
+        model: Optional[AbstractClassifier] = None,
+        ingestibles: Optional[Ingestible] = None,
+    ):
         if ingestibles is None:
             ingestibles = Ingestible(data=data, model=model)
         self.ingestibles = ingestibles

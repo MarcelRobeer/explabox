@@ -4,6 +4,7 @@ import warnings
 from typing import List, Optional, Union
 
 from genbase import Readable
+from instancelib import AbstractClassifier, Environment
 
 from ...ingestibles import Ingestible
 from ...mixins import IngestiblesMixin
@@ -12,8 +13,13 @@ from ...utils import MultipleReturn
 
 
 class Explainer(Readable, IngestiblesMixin):
-    def __init__(self, data=None, model=None, ingestibles=None):
-        """Single object to create explanations corresponding to a model and dataset (with ground-truth labels)."""
+    def __init__(
+        self,
+        data: Optional[Environment] = None,
+        model: Optional[AbstractClassifier] = None,
+        ingestibles: Optional[Ingestible] = None,
+    ):
+        """Create explanations corresponding to a model and dataset (with ground-truth labels)."""
         if ingestibles is None:
             ingestibles = Ingestible(data=data, model=model)
         self.ingestibles = ingestibles
@@ -32,7 +38,7 @@ class Explainer(Readable, IngestiblesMixin):
             **kwargs: Keyword arguments passed to local explanation technique.
 
         Returns:
-            ...
+            Optional[MultipleReturn]: ...
         """
         if isinstance(methods, str):
             methods = [methods]

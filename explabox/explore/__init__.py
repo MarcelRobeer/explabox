@@ -1,7 +1,10 @@
 """..."""
 
+from typing import Optional
+
 import numpy as np
 from genbase import Readable, add_callargs
+from instancelib import Environment
 
 from ..digestibles import Descriptives
 from ..ingestibles import Ingestible
@@ -9,7 +12,7 @@ from ..mixins import IngestiblesMixin
 
 
 class Explorer(Readable, IngestiblesMixin):
-    def __init__(self, data=None, ingestibles=None, **kwargs):
+    def __init__(self, data: Optional[Environment] = None, ingestibles: Optional[Ingestible] = None, **kwargs):
         if ingestibles is None:
             ingestibles = Ingestible(data=data)
         self.ingestibles = ingestibles
@@ -25,7 +28,7 @@ class Explorer(Readable, IngestiblesMixin):
             **kwargs: ...
 
         Returns:
-            ...
+            Descriptives: ...
         """
         callargs = kwargs.pop("__callargs__", None)
 

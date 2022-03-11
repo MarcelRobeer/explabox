@@ -1,4 +1,4 @@
-"""..."""
+"""Extensions to classes."""
 
 
 class ModelMixin:

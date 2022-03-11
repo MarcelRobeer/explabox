@@ -31,6 +31,7 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
+    "sphinx.ext.todo",
     "sphinx_autodoc_typehints",
     "sphinx_rtd_theme",
 ]
@@ -65,8 +66,8 @@ html_static_path = ["_static"]
 
 # -- Autodoc -----------------------------------------------------------------
 autodoc_inherit_docstrings = False
-autodoc_typehints = 'both'
-autoclass_content = 'both'
+autodoc_typehints = "both"
+autoclass_content = "both"
 
 # -- External documentation --------------------------------------------------
 
