@@ -5,28 +5,14 @@ from typing import List, Literal, Optional, Union
 from genbase import Readable
 from instancelib import AbstractClassifier, Environment
 from instancelib.typehints import LT
-from text_sensitivity import (
-    OneToManyPerturbation,
-    OneToOnePerturbation,
-    RandomAscii,
-    RandomCyrillic,
-    RandomDigits,
-    RandomEmojis,
-    RandomLower,
-    RandomPunctuation,
-    RandomSpaces,
-    RandomString,
-    RandomUpper,
-    RandomWhitespace,
-    compare_accuracy,
-    compare_metric,
-    compare_precision,
-    compare_recall,
-    input_space_robustness,
-    invariance,
-    mean_score,
-    perturbation,
-)
+from text_sensitivity import (OneToManyPerturbation, OneToOnePerturbation,
+                              RandomAscii, RandomCyrillic, RandomDigits,
+                              RandomEmojis, RandomLower, RandomPunctuation,
+                              RandomSpaces, RandomString, RandomUpper,
+                              RandomWhitespace, compare_accuracy,
+                              compare_metric, compare_precision,
+                              compare_recall, input_space_robustness,
+                              invariance, mean_score, perturbation)
 from text_sensitivity.return_types import MeanScore, SuccessTest
 
 from explabox.utils import MultipleReturn

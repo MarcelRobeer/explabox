@@ -3,7 +3,8 @@ your data and/or model."""
 
 from typing import Dict, List, Optional
 
-from instancelib import AbstractClassifier, Environment, InstanceProvider, MemoryEnvironment
+from instancelib import (AbstractClassifier, Environment, InstanceProvider,
+                         MemoryEnvironment)
 from instancelib.typehints import KT
 
 

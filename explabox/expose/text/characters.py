@@ -2,15 +2,10 @@
 
 import warnings
 
-from text_sensitivity.perturbation import (
-    add_typos,
-    delete_random,
-    random_case_swap,
-    random_lower,
-    random_spaces,
-    random_upper,
-    swap_random,
-)
+from text_sensitivity.perturbation import (add_typos, delete_random,
+                                           random_case_swap, random_lower,
+                                           random_spaces, random_upper,
+                                           swap_random)
 
 
 def random_string(n: int = 10, min_length: int = 10, max_length: int = 100, special_characters=None):
@@ -32,17 +27,9 @@ def random_string(n: int = 10, min_length: int = 10, max_length: int = 100, spec
     if isinstance(special_characters, str):
         special_characters = [special_characters]
 
-    from text_sensitivity import (
-        RandomAscii,
-        RandomCyrillic,
-        RandomDigits,
-        RandomEmojis,
-        RandomLower,
-        RandomPunctuation,
-        RandomSpaces,
-        RandomUpper,
-        RandomWhitespace,
-    )
+    from text_sensitivity import (RandomAscii, RandomCyrillic, RandomDigits,
+                                  RandomEmojis, RandomLower, RandomPunctuation,
+                                  RandomSpaces, RandomUpper, RandomWhitespace)
 
     generator_set = set()
     warnings.simplefilter("always", UserWarning)
