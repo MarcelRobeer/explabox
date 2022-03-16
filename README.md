@@ -43,7 +43,9 @@ Then `.explore`, `.examine`, `.expose` and `.explain` your model:
 >>> # Explore the descriptive statistics for each split
 >>> box.explore()
 ```
-<img align="center" src="https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_explore.png" alt="drugscom_explore" width="400"/>
+<centering>
+<img src="https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_explore.png" alt="drugscom_explore" width="400"/>
+</centering>
 
 ```python
 >>> # Show wrongly classified instances
