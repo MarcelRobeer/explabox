@@ -43,25 +43,25 @@ Then `.explore`, `.examine`, `.expose` and `.explain` your model:
 >>> # Explore the descriptive statistics for each split
 >>> box.explore()
 ```
-![drugscom_explore](img/example/drugscom_explore.png)
+<img src="https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_explore.png" alt="drugscom_explore" width="400"/>
 
 ```python
 >>> # Show wrongly classified instances
 >>> box.examine.wrongly_classified()
 ```
-![drugscom_examine](img/example/drugscom_examine.png)
+<img src="https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_examine.png" alt="drugscom_examine" width="400"/>
 
 ```python
 >>> # Compare the performance on the test split before and after transforming all tokens to uppercase
 >>> box.expose.compare_metrics(split='test', perturbation='upper')
 ```
-![drugscom_expose](img/example/drugscom_expose.png)
+<img src="https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_expose.png" alt="drugscom_expose" width="400"/>
 
 ```python
 >>> # Get a local explanation (uses LIME by default)
 >>> box.explain.local_explanation('Hate this medicine so much!')
 ```
-![drugscom_explain](img/example/drugscom_explain.png)
+<img src="https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_explain.png" alt="drugscom_explain" width="400"/>
 
 
 For more information, visit the [explabox documentation](https://explabox.rtfd.io).
