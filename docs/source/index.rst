@@ -24,6 +24,59 @@ A number of experiments in the ``explabox`` can also be used to provide transpar
 Quick tour
 ----------
 
+The ``explabox`` is distributed on `PyPI <https://pypi.org/project/explabox/>`_. To use the package with Python, install it (\ ``pip install explabox``\ ), import your ``data`` and ``model`` and wrap them in the ``Explabox``\ :
+
+.. code-block:: python
+
+   >>> from explabox import import_data, import_model
+   >>> data = import_data('./example.csv', data_cols='', label_cols='')
+   >>> model = import_model('model.onnx', label_map={0: ..., 1: ...})
+
+   >>> from explabox import Explabox
+   >>> box = Explabox(data=data, model=model)
+
+Then ``.explore``\ , ``.examine``\ , ``.expose`` and ``.explain`` your model:
+
+.. code-block:: python
+
+   >>> # Explore the descriptive statistics for each split
+   >>> box.explore()
+
+
+.. image:: https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_explore.png
+   :alt: drugscom_explore
+
+
+.. code-block:: python
+
+   >>> # Show wrongly classified instances
+   >>> box.examine.wrongly_classified()
+
+
+.. image::https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_examine.png
+   :alt: drugscom_examine
+
+
+.. code-block:: python
+
+   >>> # Compare the performance on the test split before and after transforming all tokens to uppercase
+   >>> box.expose.compare_metrics(split='test', perturbation='upper')
+
+
+.. image:: https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_expose.png
+   :alt: drugscom_expose
+
+
+.. code-block:: python
+
+   >>> # Get a local explanation (uses LIME by default)
+   >>> box.explain.local_explanation('Hate this medicine so much!')
+
+
+.. image:: https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_explain.png
+   :alt: drugscom_explain
+
+
 Using explabox
 --------------
 :doc:`installation`

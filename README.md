@@ -1,5 +1,5 @@
 *<p align="center">
-  <img src="https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/explabox.png" alt="explate logo">*
+  <img src="https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/explabox.png" alt="explabox logo">*
 </p>
 
 **<h3 align="center">
@@ -40,18 +40,29 @@ The `explabox` is distributed on [PyPI](https://pypi.org/project/explabox/). To 
 
 Then `.explore`, `.examine`, `.expose` and `.explain` your model:
 ```python
+>>> # Explore the descriptive statistics for each split
 >>> box.explore()
-...
-
->>> box.examine()
-...
-
->>> box.expose.input_space()
-...
-
->>> box.explain.local_explanation('...')
-...
 ```
+![drugscom_explore](img/example/drugscom_explore.png)
+
+```python
+>>> # Show wrongly classified instances
+>>> box.examine.wrongly_classified()
+```
+![drugscom_examine](img/example/drugscom_examine.png)
+
+```python
+>>> # Compare the performance on the test split before and after transforming all tokens to uppercase
+>>> box.expose.compare_metrics(split='test', perturbation='upper')
+```
+![drugscom_expose](img/example/drugscom_expose.png)
+
+```python
+>>> # Get a local explanation (uses LIME by default)
+>>> box.explain.local_explanation('Hate this medicine so much!')
+```
+![drugscom_explain](img/example/drugscom_explain.png)
+
 
 For more information, visit the [explabox documentation](https://explabox.rtfd.io).
 
