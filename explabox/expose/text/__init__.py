@@ -1,9 +1,9 @@
 """Functions/classes for sensitivity testing (fairness and robustness) for text data."""
 
-from typing import List, Literal, Optional, Union
+from typing import List, Optional, Union
 
 from genbase import Readable
-from instancelib import AbstractClassifier, Environment
+from instancelib import AbstractClassifier, Environment, TextEnvironment
 from instancelib.typehints import LT
 from text_sensitivity import (OneToManyPerturbation, OneToOnePerturbation,
                               RandomAscii, RandomCyrillic, RandomDigits,
@@ -13,7 +13,7 @@ from text_sensitivity import (OneToManyPerturbation, OneToOnePerturbation,
                               compare_metric, compare_precision,
                               compare_recall, input_space_robustness,
                               invariance, mean_score, perturbation)
-from text_sensitivity.return_types import MeanScore, SuccessTest
+from text_sensitivity.return_types import LabelMetrics, MeanScore, SuccessTest
 
 from explabox.utils import MultipleReturn
 
@@ -25,7 +25,6 @@ compare_metric = restyle(compare_metric)
 input_space_robustness = restyle(input_space_robustness)
 invariance = restyle(invariance)
 mean_score = restyle(mean_score)
-perturbation = restyle(perturbation)
 
 
 class Exposer(Readable, IngestiblesMixin):
@@ -42,12 +41,12 @@ class Exposer(Readable, IngestiblesMixin):
 
     def input_space(
         self,
-        generators: List[Union[RandomString, str]],
+        generators: Union[str, RandomString, List[Union[RandomString, str]]],
         n_samples: int = 100,
         min_length: int = 0,
         max_length: int = 100,
         seed: Optional[int] = 0,
-        **kwargs
+        **kwargs,
     ) -> SuccessTest:
         """Test the robustness of a machine learning model to different input types.
 
@@ -63,7 +62,9 @@ class Exposer(Readable, IngestiblesMixin):
             ...                        max_length=500)
 
         Args:
-            generators (List[RandomString]): Random character generators.
+            generators (Union[str, RandomString, List[Union[RandomString, str]]]): Random character generators. If 'all'
+                select all generators. For strings choose from 'ascii', 'emojis, 'whitespace', 'spaces', 'ascii_upper',
+                'ascii_lower', 'digits', 'punctuation', 'cyrillic'.
             n_samples (int, optional): Number of test samples. Defaults to 100.
             min_length (int, optional): Input minimum length. Defaults to 0.
             max_length (int, optional): Input maximum length. Defaults to 100.
@@ -73,21 +74,32 @@ class Exposer(Readable, IngestiblesMixin):
             SuccessTest: Percentage of success cases, list of succeeded/failed instances
         """
         GENERATORS = {
-            "ascii": RandomAscii(),
-            "emojis": RandomEmojis(),
-            "whitespaces": RandomWhitespace(),
-            "spaces": RandomSpaces(),
-            "ascii_upper": RandomUpper(),
-            "acii_lower": RandomLower(),
-            "digits": RandomDigits(),
-            "punctuation": RandomPunctuation(),
-            "cyrillic": RandomCyrillic(),
+            "ascii": RandomAscii,
+            "emojis": RandomEmojis,
+            "whitespace": RandomWhitespace,
+            "spaces": RandomSpaces,
+            "ascii_upper": RandomUpper,
+            "acii_lower": RandomLower,
+            "digits": RandomDigits,
+            "punctuation": RandomPunctuation,
+            "cyrillic": RandomCyrillic,
         }
-        generator = [
-            GENERATORS[str.lower(generator)]
+
+        if generators == "all":
+            generators = list(GENERATORS.keys())
+        if isinstance(generators, (str, RandomString)):
+            generators = [generators]
+
+        generators = [
+            GENERATORS[str.lower(generator)]()
             if isinstance(generator, str) and str.lower(generator) in GENERATORS
             else generator
+            for generator in generators
         ]
+
+        for generator in generators:
+            if not isinstance(generator, RandomString):
+                raise ValueError(f'Unknown generator "{generator}"')
 
         return input_space_robustness(
             model=self.model,
@@ -96,7 +108,7 @@ class Exposer(Readable, IngestiblesMixin):
             min_length=min_length,
             max_length=max_length,
             seed=seed,
-            **kwargs
+            **kwargs,
         )
 
     def invariance(self, pattern: str, expectation: Optional[LT], **kwargs) -> SuccessTest:
@@ -146,12 +158,74 @@ class Exposer(Readable, IngestiblesMixin):
         if isinstance(selected_labels, str) and str.lower(selected_labels) == "all" or selected_labels is None:
             selected_labels = self.labelset
 
-        if not isinstance(selected_labels, list):
-            return mean_score(pattern=pattern, model=self.model, selected_label=selected_labels, **kwargs)
+        def ms(label):
+            return mean_score(pattern=pattern, model=self.model, selected_label=label, **kwargs)
 
-        return MultipleReturn(
-            [
-                mean_score(pattern=pattern, model=self.model, selected_labels=label, **kwargs)
-                for label in selected_labels
-            ]
+        return (
+            ms(selected_labels)
+            if not isinstance(selected_labels, list)
+            else MultipleReturn(*[ms(label) for label in selected_labels])
         )
+
+    def compare_metric(
+        self,
+        perturbation: Union[OneToOnePerturbation, str],
+        splits: Union[str, List[str]] = "test",
+    ) -> Union[LabelMetrics, MultipleReturn]:
+        """Compare metrics for each ground-truth label and attribute after applying a dataset-wide perturbation.
+
+        Examples:
+            Compare metric of model performance (e.g. accuracy, precision) before and after mapping each instance
+            in the test dataset to uppercase:
+
+            >>> box.expose.compare_metric(splits='test', peturbation='upper')
+
+            Add '!!!' to the end of each text in the 'train' and 'test' split and see how it affects performance:
+
+            >>> from explabox.expose.text import OneToOnePerturbation
+            >>> perturbation_fn = OneToOnePerturbation(lambda x: f'{x}!!!')
+            >>> box.expose.compare_metrics(splits=['train', 'test'], perturbation=perturbation_fn)
+
+        Args:
+            perturbation (Union[OneToOnePerturbation, str]): Custom perturbation or one of the default ones, picked by
+                their string: 'lower', 'upper', 'random_lower', 'random_upper', 'add_typos', 'random_case_swap',
+                'swap_random' (swap characters), 'delete_random' (delete characters), 'repeat' (repeats twice).
+            splits (Union[str, List[str]], optional): Split to apply the perturbation to. Defaults to "test".
+
+        Raises:
+            ValueError: Unknown perturbation.
+
+        Returns:
+            Union[LabelMetrics, MultipleReturn]: Original label (before perturbation), perturbed label (after
+                perturbation) and metrics for label-attribute pair.
+        """
+        from text_sensitivity.perturbation import (add_typos, delete_random,
+                                                   random_case_swap,
+                                                   random_lower, random_upper,
+                                                   repeat_k_times, swap_random,
+                                                   to_lower, to_upper)
+
+        PERTURBATIONS = {
+            "lower": to_lower,
+            "upper": to_upper,
+            "random_lower": random_lower,
+            "random_upper": random_upper,
+            "add_typos": add_typos,
+            "random_case_swap": random_case_swap,
+            "swap_random": swap_random,
+            "delete_random": delete_random,
+            "repeat": repeat_k_times(k=2),
+        }
+
+        if isinstance(perturbation, str):
+            if perturbation not in PERTURBATIONS:
+                raise ValueError(f'Unknown perturbation "{perturbation}", choose from {list(PERTURBATIONS.keys())}')
+            perturbation = PERTURBATIONS[perturbation]
+
+        def cm(split):
+            env = TextEnvironment(
+                dataset=self.ingestibles.get_named_split(split, validate=True), labelprovider=self.labels
+            )
+            return compare_metric(env=env, model=self.model, perturbation=perturbation)
+
+        return cm(splits) if isinstance(splits, str) else MultipleReturn(*[cm(split) for split in splits])

@@ -6,7 +6,7 @@ import numpy as np
 from genbase import Readable, add_callargs
 from instancelib import Environment
 
-from ..digestibles import Descriptives
+from ..digestibles import Dataset, Descriptives
 from ..ingestibles import Ingestible
 from ..mixins import IngestiblesMixin
 
@@ -17,6 +17,15 @@ class Explorer(Readable, IngestiblesMixin):
             ingestibles = Ingestible(data=data)
         self.ingestibles = ingestibles
         self.check_requirements(["data"])
+
+    @add_callargs
+    def instances(self, split: str = "test", **kwargs):
+        callargs = kwargs.pop("__callargs__", None)
+
+        instances = self.ingestibles.get_named_split(split, validate=True)
+        labels = self.ingestibles.get_labels(instances)
+
+        return Dataset(instances == "test")
 
     @add_callargs
     def __call__(self, **kwargs) -> Descriptives:

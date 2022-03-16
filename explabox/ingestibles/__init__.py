@@ -3,9 +3,11 @@ your data and/or model."""
 
 from typing import Dict, List, Optional
 
-from instancelib import (AbstractClassifier, Environment, InstanceProvider,
-                         MemoryEnvironment)
+from instancelib import AbstractClassifier, Environment, InstanceProvider
 from instancelib.typehints import KT
+
+from .data import import_data, rename_labels, train_test_split
+from .model import import_model
 
 
 class Ingestible(dict):
@@ -23,11 +25,15 @@ class Ingestible(dict):
     def data(self):
         return self["data"]
 
-    def get_named_split(self, name: KT) -> Optional[InstanceProvider]:
+    def get_named_split(self, name: KT, validate: bool = False) -> Optional[InstanceProvider]:
         """Get split by name.
 
         Args:
             name (KT): Name of split.
+            validate (bool, optional): Return None if no split is found or throw an error. Defaults to False.
+
+        Raises:
+            ValueError: Unknown split
 
         Returns:
             Optional[InstanceProvider]: Provider of split if it exists, else None.
@@ -36,6 +42,8 @@ class Ingestible(dict):
             return self.data[self.__splits[name]]
         elif name in self.data.keys():
             return self.data[name]
+        if validate:
+            raise ValueError('Unknown split "{name}", choose from {self.splits}')
         return None
 
     @property

@@ -9,6 +9,7 @@ Attributes:
 from typing import Callable
 
 from genbase.ui.notebook import Render as GBRender
+from genbase.ui.notebook import format_instances, format_list
 from text_explainability.ui.notebook import Render as TERender
 from text_explainability.ui.notebook import get_meta_descriptors
 from text_sensitivity.ui.notebook import Render as TSRender
@@ -17,7 +18,7 @@ from text_sensitivity.ui.notebook import metrics_renderer
 from ..utils import MultipleReturn
 
 MAIN_COLOR = "#004682"
-PACKAGE_LINK = "https://git.science.uu.nl/m.j.robeer/explabox/"
+PACKAGE_LINK = "https://explabox.rtfd.io"
 PACKAGE_NAME = "explabox"
 
 
@@ -52,6 +53,53 @@ class TSRenderRestyled(TSRender, RestyleMixin):
         self.restyle()
 
 
+def format_table(header, content):
+    if isinstance(header, list):
+        header = "".join(str(h) for h in header)
+    if isinstance(content, list):
+        content = "".join(str(c) for c in content)
+    return f'<div class="table-wrapper"><table><tr>{header}</tr>{content}</table></div>'
+
+
+def wrongly_classified_renderer(meta, content, **renderargs):
+    html = ""
+
+    for c in content["wrongly_classified"]:
+        html += f'<h3>Should be <kbd>{c["ground_truth"]}</kbd> but predicted as <kbd>{c["predicted"]}</kbd>'
+        html += f' (n={len(c["instances"])})</h3>'
+        html += format_instances(c["instances"])
+    return html
+
+
+def descriptives_renderer(meta, content, **renderargs):
+    labels = content["labels"]
+
+    html = f"<h3>Labels ({len(labels)})</h3>"
+    html += format_list(labels, format_fn="kbd")
+
+    def fmt(x):
+        if isinstance(x, float):
+            x = round(x, 3)
+        return f"<td>{x}</td>"
+
+    html += "<h3>Label counts</h3>"
+    label_counts = [
+        "<tr>" + "".join(fmt(a) for a in [k] + [v[label] for label in labels]) + "</tr>"
+        for k, v in content["label_counts"].items()
+    ]
+    html += format_table(["<th>Split</th>"] + [f"<th><kbd>{label}</kbd></th>" for label in labels], label_counts)
+
+    html += "<h3>Tokenized lengths</h3>"
+    metrics = list(list(content["tokenized_lengths"].values())[0].keys())
+    tokenized_lengths = [
+        "<tr>" + "".join(fmt(a) for a in [k] + [v[metric] for metric in metrics]) + "</tr>"
+        for k, v in content["tokenized_lengths"].items()
+    ]
+    html += format_table(["<th>Split</th>"] + [f"<th>{metric}</th>" for metric in metrics], tokenized_lengths)
+
+    return html
+
+
 class Render(GBRenderRestyled):
     def __init__(self, *configs):
         """Custom renderer for `explabox`."""
@@ -60,6 +108,18 @@ class Render(GBRenderRestyled):
         #--var(tabs_id) .table-wrapper td:nth-child(2),
         #--var(tabs_id) .table-wrapper th:nth-child(2) {
             width: auto;
+        }
+        #--var(tabs_id) kbd,
+        p > kbd,
+        h3 > kbd,
+        table td > kbd {
+            background-color: #333;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 2px 4px;
+        }
+        #--var(tabs_id) ul > li:not(:last-child) {
+           margin-bottom: 3px;  
         }
         """
 
@@ -73,15 +133,14 @@ class Render(GBRenderRestyled):
         def default_renderer(meta, content, **renderargs):
             return f"<p>{content}</p>"
 
-        def descriptives_renderer(meta, content, **renderargs):
-            return f"<p>{content}</p>"
-
         type, _, _ = get_meta_descriptors(meta)
 
         if type == "descriptives":
             return descriptives_renderer
         elif type == "model_performance":
             return metrics_renderer
+        elif type == "wrongly_classified":
+            return wrongly_classified_renderer
 
         return default_renderer
 
@@ -96,6 +155,13 @@ class Render(GBRenderRestyled):
             str: Formatted title.
         """
         return f'<{h}>{title.replace("_", " ").title()}</{h}>'
+
+    def render_subtitle(self, meta: dict, content: dict, **renderargs) -> str:
+        html = ""
+        if "split" in meta["callargs"] and isinstance(meta["callargs"]["split"], str):
+            html += f'Digestible for split "{meta["callargs"]["split"]}".'
+
+        return self.format_subtitle(html) if html else ""
 
 
 def replace_renderer(res):
