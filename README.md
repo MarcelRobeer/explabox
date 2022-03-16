@@ -31,11 +31,13 @@ The `explabox` is distributed on [PyPI](https://pypi.org/project/explabox/). To 
 
 ```python
 >>> from explabox import import_data, import_model
->>> data = import_data('./example.csv', data_cols='', label_cols='')
->>> model = import_model('model.onnx', label_map={0: ..., 1: ...})
+>>> data = import_data('./drugsCom.zip', data_cols='review', label_cols='rating')
+>>> model = import_model('model.onnx', label_map={0: 'negative', 1: 'neutral', 2: 'positive'})
 
 >>> from explabox import Explabox
->>> box = Explabox(data=data, model=model)
+>>> box = Explabox(data=data,
+...                model=model,
+...                splits={'train': 'drugsComTrain.tsv', 'test': 'drugsComTest.tsv'})
 ```
 
 Then `.explore`, `.examine`, `.expose` and `.explain` your model:
@@ -43,9 +45,7 @@ Then `.explore`, `.examine`, `.expose` and `.explain` your model:
 >>> # Explore the descriptive statistics for each split
 >>> box.explore()
 ```
-<centering>
 <img src="https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_explore.png" alt="drugscom_explore" width="400"/>
-</centering>
 
 ```python
 >>> # Show wrongly classified instances
