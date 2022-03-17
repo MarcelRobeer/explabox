@@ -20,8 +20,35 @@ class Explainer(Readable, IngestiblesMixin):
         data: Optional[Environment] = None,
         model: Optional[AbstractClassifier] = None,
         ingestibles: Optional[Ingestible] = None,
+        **kwargs,
     ):
-        """Create explanations corresponding to a model and dataset (with ground-truth labels)."""
+        """The Explainer create explanations corresponding to a model and dataset (with ground-truth labels).
+
+        With the Explainer you can use explainble AI (XAI) methods for explaining the whole dataset (global), model
+        behavior on the dataset (global), and specific predictions/decisions (local).
+
+        The Explainer requires 'data' and 'model' defined. It is included in the Explabox under the `.explain` property.
+
+        Examples:
+            Construct the explainer:
+            >>> from explabox.explain import Explainer
+            >>> explainer = Explainer(data=data, model=model)
+
+            Get a local explanation with LIME (https://github.com/marcotcr/lime) and kernelSHAP
+            (https://github.com/slundberg/shap):
+            >>> explainer.explain_prediction('I love this so much!', methods=['lime', 'kernel_shap'])
+
+            See the top-25 tokens for predicted classifier labels on the test set:
+            >>> explainer.token_frequency(k=25, explain_model=True, splits='test')
+
+            Select the top-5 prototypical examples in the train set:
+            >>> explainer.prototypes(n=5, splits='train')
+
+        Args:
+            data (Optional[Environment], optional): Data for ingestibles. Defaults to None.
+            model (Optional[AbstractClassifier], optional): Model for ingestibles. Defaults to None.
+            ingestibles (Optional[Ingestible], optional): Ingestible. Defaults to None.
+        """
         if ingestibles is None:
             ingestibles = Ingestible(data=data, model=model)
         self.ingestibles = ingestibles
@@ -29,7 +56,7 @@ class Explainer(Readable, IngestiblesMixin):
 
     @restyle
     def explain_prediction(
-        self, sample: Union[int, str], *args, methods: List[str] = ["lime"], **kwargs
+        self, sample: Union[int, str], *args, methods: Union[str, List[str]] = ["lime"], **kwargs
     ) -> Optional[MultipleReturn]:
         """Explain specific sample locally.
 

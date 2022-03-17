@@ -89,7 +89,7 @@ class Ingestible(dict):
     def model(self, model):
         self["model"] = model
 
-    def check_requirements(self, elements: List[str] = ["data", "model"]):
+    def check_requirements(self, elements: List[str] = ["data", "model"]) -> bool:
         """Check if the required elements are in the ingestibles.
 
         Args:
@@ -97,7 +97,11 @@ class Ingestible(dict):
 
         Raises:
             ValueError: The required element is not in the ingestibles.
+
+        Returns:
+            bool: True if all requirements are included.
         """
         for elem in elements:
             if elem not in self:
                 raise ValueError(f'"{elem}" should be provided.')
+        return True

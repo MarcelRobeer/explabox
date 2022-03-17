@@ -9,7 +9,7 @@ from .ui.notebook import Render
 
 class Performance(MetaInfo):
     def __init__(self, labels, metrics, type: str = "model_performance", subtype: str = "classification", **kwargs):
-        """..."""
+        """Performance metrics."""
         super().__init__(type=type, subtype=subtype, renderer=Render, **kwargs)
         self.labels = labels
         self._metrics, self._properties = extract_metrics(metrics)
@@ -26,7 +26,7 @@ class Performance(MetaInfo):
 
 class Descriptives(MetaInfo):
     def __init__(self, labels, label_counts, tokenized_lengths, type: str = "descriptives", **kwargs):
-        """..."""
+        """Descriptive statistics."""
         super().__init__(type=type, renderer=Render, **kwargs)
         self.labels = labels
         self.label_counts = label_counts
@@ -43,12 +43,13 @@ class Descriptives(MetaInfo):
 
 class WronglyClassified(Instances):
     def __init__(self, instances, contingency_table, type: str = "wrongly_classified", **kwargs):
-        """..."""
+        """Wrongly classified instances."""
         super().__init__(instances=instances, type=type, subtype=None, renderer=Render, **kwargs)
         self.__contingency_table = contingency_table
 
     @property
     def wrongly_classified(self):
+        """Wrongly classified instances, grouped by their ground-truth value, predicted value and instances."""
         return [
             {"ground_truth": g, "predicted": p, "instances": [self.instances.get(v_) for v_ in list(v)]}
             for (g, p), v in self.__contingency_table.items()

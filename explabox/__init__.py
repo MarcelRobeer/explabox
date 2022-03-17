@@ -1,4 +1,16 @@
-"""..."""
+"""The Explabox aims to support data scientists and machine learning (ML) engineers in explaining, testing and 
+documenting AI/ML models, developed in-house or acquired externally. The explabox turns your ingestibles (AI/ML model 
+and/or dataset) into digestibles (statistics, explanations or sensitivity insights)!
+
+To install run:
+    $ pip install explabox
+
+Currently, the main interface for working with the Explabox is Jupyter Notebook. For more help, read the documentation 
+at https://explabox.rtfd.io.
+
+Explabox is developed by the Dutch National Police Lab AI (NPAI), and released under the GNU Lesser General Public 
+License v3.0 (LGPLv3).
+"""
 
 from typing import Optional
 
@@ -25,7 +37,7 @@ class Explabox(Readable, IngestiblesMixin):
         Args:
             ingestibles (Optional[Ingestible], optional): Ingestibles (data and model). Defaults to None.
             locale (str, optional): Language of dataset. Defaults to 'en'.
-            **kwargs: Arguments used to construct an Ingestible, if it is None.
+            **kwargs: Arguments used to construct an Ingestible (if the ingestibles argument is None).
         """
         if ingestibles is None:
             ingestibles = Ingestible(**kwargs)

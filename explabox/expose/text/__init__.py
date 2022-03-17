@@ -33,7 +33,28 @@ class Exposer(Readable, IngestiblesMixin):
         data: Optional[Environment] = None,
         model: Optional[AbstractClassifier] = None,
         ingestibles: Optional[Ingestible] = None,
+        **kwargs,
     ):
+        """The Exposer exposes your model and/or data, by performing sensitivty tests.
+
+        With the Exposer you can see model sensitivity to random inputs (robustness), test model generalizability
+        (robustness), and see the effect of adjustments of attributes in the inputs (e.g. swapping male pronouns for
+        female pronouns; fairness), for the dataset as a whole (global) as well as for individual instances (local).
+
+        The Exposer requires 'data' and 'model' defined. It is included in the Explabox under the `.expose` property.
+
+        Examples:
+            See how performance of a model on the test dataset is affected when text is randomly changed to uppercase:
+
+            >>> from explabox.expose import Exposer
+            >>> exposer = Exposer(data=data, model=model)
+            >>> exposer.compare_metric(splits='test', perturbation='random_upper')
+
+        Args:
+            data (Optional[Environment], optional): Data for ingestibles. Defaults to None.
+            model (Optional[AbstractClassifier], optional): Model for ingestibles. Defaults to None.
+            ingestibles (Optional[Ingestible], optional): Ingestible. Defaults to None.
+        """
         if ingestibles is None:
             ingestibles = Ingestible(data=data, model=model)
         self.ingestibles = ingestibles

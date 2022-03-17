@@ -1,6 +1,6 @@
-"""..."""
+"""Calculate quantitative metrics on how the model performs, and examine where the model went wrong."""
 
-from typing import Optional, Union
+from typing import Optional
 
 from genbase import Readable, add_callargs
 from instancelib import AbstractClassifier, Environment, MemoryLabelProvider
@@ -19,7 +19,28 @@ class Examiner(Readable, ModelMixin, IngestiblesMixin):
         data: Optional[Environment] = None,
         model: Optional[AbstractClassifier] = None,
         ingestibles: Optional[Ingestible] = None,
+        **kwargs,
     ):
+        """The Examiner calculates quantitative metrics on how the model performs.
+
+        The Examine requires 'data' and 'model' defined. It is included in the Explabox under the `.examine` property.
+
+        Examples:
+            Construct the examiner:
+            >>> from explabox.examine import Examiner
+            >>> examiner = Explainer(data=data, model=model)
+
+            Calculate model performance metrics on the validation set:
+            >>> examiner(split='validation')
+
+            See all wrongly classified examples in the test set:
+            >>> examiner.wrongly_classified(split='test')
+
+        Args:
+            data (Optional[Environment], optional): Data for ingestibles. Defaults to None.
+            model (Optional[AbstractClassifier], optional): Model for ingestibles. Defaults to None.
+            ingestibles (Optional[Ingestible], optional): Ingestible. Defaults to None.
+        """
         if ingestibles is None:
             ingestibles = Ingestible(data=data, model=model)
         self.ingestibles = ingestibles
@@ -39,11 +60,11 @@ class Examiner(Readable, ModelMixin, IngestiblesMixin):
         return named_split, self.predictions[split]
 
     @add_callargs
-    def wrongly_classified(self, split="test", **kwargs) -> WronglyClassified:
+    def wrongly_classified(self, split: str = "test", **kwargs) -> WronglyClassified:
         """Give all wrongly classified samples.
 
         Args:
-            split: Name of split.
+            split (str, optional): Name of split. Defaults to 'test'.
 
         Returns:
             WronglyClassified: Wrongly classified examples in this  split.
@@ -57,18 +78,19 @@ class Examiner(Readable, ModelMixin, IngestiblesMixin):
             named_split,
             contingency_table=contingency_table(ground_truth, predictions, named_split),
             callargs=callargs,
-            **kwargs
+            **kwargs,
         )
 
     @add_callargs
-    def __call__(self, metrics=["f1", "accuracy", "precision", "recall"], split="test", **kwargs) -> Performance:
+    def __call__(self, split: str = "test", **kwargs) -> Performance:
         """Determine performance metrics, the amount of predictions for each label in the test set
         and the values for the confusion matrix for each label in the test set.
 
         Args:
-            metrics: ...
-            split: ...
-            **kwargs: ...
+            split (str, optional): Split to calculate metrics on. Defaults to 'test'.
+
+        Returns:
+            Performance: Performance metrics of your model on the split.
         """
         callargs = kwargs.pop("__callargs__", None)
 

@@ -11,7 +11,7 @@ The ``explabox`` aims to support data scientists and machine learning (ML) engin
 The ``explabox`` can be used to:
 
 - **Explore**\ : describe aspects of the model and data.
-- **Examine**\ : calculate quantitative metrics on how the model performs
+- **Examine**\ : calculate quantitative metrics on how the model performs.
 - **Expose**\ : see model sensitivity to random inputs (\ *robustness*\ ), test model generalizability (\ *robustness*\ ), and see the effect of adjustments of attributes in the inputs (e.g. swapping male pronouns for female pronouns; *fairness*\ ), for the dataset as a whole (\ *global*\ ) as well as for individual instances (\ *local*\ ).
 - **Explain**\ : use XAI methods for explaining the whole dataset (\ *global*\ ), model behavior on the dataset (\ *global*\ ), and specific predictions/decisions (\ *local*\ ).
 

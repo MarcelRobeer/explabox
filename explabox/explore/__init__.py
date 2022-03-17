@@ -1,4 +1,4 @@
-"""..."""
+"""Functions/classes for exploring your data (dataset descriptives)."""
 
 from typing import Optional
 
@@ -13,6 +13,21 @@ from ..mixins import IngestiblesMixin
 
 class Explorer(Readable, IngestiblesMixin):
     def __init__(self, data: Optional[Environment] = None, ingestibles: Optional[Ingestible] = None, **kwargs):
+        """The Explorer explores your data by providing descriptive statistics.
+
+        The Explorer requires 'data' defined. It is included in the Explabox under the `.explore` property.
+
+        Examples:
+            Get dataset descriptives:
+
+            >>> from explabox.explore import Explorer
+            >>> explorer = Explorer(data=data)
+            >>> explorer()
+
+        Args:
+            data (Optional[Environment], optional): Data for ingestibles. Defaults to None.
+            ingestibles (Optional[Ingestible], optional): Ingestible. Defaults to None.
+        """
         if ingestibles is None:
             ingestibles = Ingestible(data=data)
         self.ingestibles = ingestibles

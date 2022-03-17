@@ -9,14 +9,17 @@ class ModelMixin:
 
 
 class IngestiblesMixin:
-    def check_requirements(self, elements=["data", "model"]):
-        """Check whether the ingestibles adheres to the requirements.
+    def check_requirements(self, elements=["data", "model"]) -> bool:
+        """Check if the required elements are in the ingestibles.
 
         Args:
-            elements (list, optional): Elements that should be included. Defaults to ["data", "model"].
+            elements (List[str], optional): Elements to check. Defaults to ['data', 'model'].
+
+        Raises:
+            ValueError: The required element is not in the ingestibles.
 
         Returns:
-            _type_: _description_
+            bool: True if all requirements are included.
         """
         return self.ingestibles.check_requirements(elements)
 
