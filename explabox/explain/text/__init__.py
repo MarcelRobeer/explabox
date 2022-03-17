@@ -31,17 +31,21 @@ class Explainer(Readable, IngestiblesMixin):
 
         Examples:
             Construct the explainer:
+
             >>> from explabox.explain import Explainer
             >>> explainer = Explainer(data=data, model=model)
 
             Get a local explanation with LIME (https://github.com/marcotcr/lime) and kernelSHAP
             (https://github.com/slundberg/shap):
+
             >>> explainer.explain_prediction('I love this so much!', methods=['lime', 'kernel_shap'])
 
             See the top-25 tokens for predicted classifier labels on the test set:
+
             >>> explainer.token_frequency(k=25, explain_model=True, splits='test')
 
             Select the top-5 prototypical examples in the train set:
+
             >>> explainer.prototypes(n=5, splits='train')
 
         Args:

@@ -27,13 +27,16 @@ class Examiner(Readable, ModelMixin, IngestiblesMixin):
 
         Examples:
             Construct the examiner:
+
             >>> from explabox.examine import Examiner
             >>> examiner = Explainer(data=data, model=model)
 
             Calculate model performance metrics on the validation set:
+
             >>> examiner(split='validation')
 
             See all wrongly classified examples in the test set:
+
             >>> examiner.wrongly_classified(split='test')
 
         Args:
