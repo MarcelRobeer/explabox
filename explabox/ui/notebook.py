@@ -6,9 +6,9 @@ Attributes:
     PACKAGE_NAME (str): Name of package.
 """
 
+from functools import wraps
 from typing import Callable
 
-from functools import wraps
 from genbase.ui.notebook import Render as GBRender
 from genbase.ui.notebook import format_instances, format_list
 from text_explainability.ui.notebook import Render as TERender
