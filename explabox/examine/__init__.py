@@ -4,7 +4,8 @@ from typing import Optional
 
 from genbase import Readable, add_callargs
 from instancelib import AbstractClassifier, Environment, MemoryLabelProvider
-from instancelib.analysis.base import contingency_table, get_keys, label_metrics
+from instancelib.analysis.base import (contingency_table, get_keys,
+                                       label_metrics)
 from instancelib.labels.memory import MemoryLabelProvider
 
 from ..digestibles import Performance, WronglyClassified
