@@ -3,6 +3,7 @@ documenting AI/ML models, developed in-house or acquired externally. The explabo
 and/or dataset) into digestibles (statistics, explanations or sensitivity insights)!
 
 To install run:
+
     $ pip install explabox
 
 Currently, the main interface for working with the Explabox is Jupyter Notebook. For more help, read the documentation 

@@ -8,6 +8,7 @@ Attributes:
 
 from typing import Callable
 
+from functools import wraps
 from genbase.ui.notebook import Render as GBRender
 from genbase.ui.notebook import format_instances, format_list
 from text_explainability.ui.notebook import Render as TERender
@@ -179,7 +180,7 @@ def replace_renderer(res):
 
 def restyle(function: Callable):
     """Apply a decorator for restyling the returned renderer."""
-
+    @wraps(function)
     def inner(*args, **kwargs):
         res = function(*args, **kwargs)
         if isinstance(res, MultipleReturn):
