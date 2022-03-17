@@ -4,8 +4,7 @@ from typing import Optional
 
 from genbase import Readable, add_callargs
 from instancelib import AbstractClassifier, Environment, MemoryLabelProvider
-from instancelib.analysis.base import (contingency_table, get_keys,
-                                       label_metrics)
+from instancelib.analysis.base import contingency_table, get_keys, label_metrics
 from instancelib.labels.memory import MemoryLabelProvider
 
 from ..digestibles import Performance, WronglyClassified
@@ -82,7 +81,7 @@ class Examiner(Readable, ModelMixin, IngestiblesMixin):
         )
 
     @add_callargs
-    def __call__(self, split: str = "test", **kwargs) -> Performance:
+    def performance(self, split: str = "test", **kwargs) -> Performance:
         """Determine performance metrics, the amount of predictions for each label in the test set
         and the values for the confusion matrix for each label in the test set.
 
@@ -103,3 +102,15 @@ class Examiner(Readable, ModelMixin, IngestiblesMixin):
         }
 
         return Performance(labels=self.labelset, metrics=performance, callargs=callargs, **kwargs)
+
+    def __call__(self, split: str = "test", **kwargs) -> Performance:
+        """Determine performance metrics, the amount of predictions for each label in the test set
+        and the values for the confusion matrix for each label in the test set.
+
+        Args:
+            split (str, optional): Split to calculate metrics on. Defaults to 'test'.
+
+        Returns:
+            Performance: Performance metrics of your model on the split.
+        """
+        return self.performance(split=split, **kwargs)

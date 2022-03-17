@@ -5,14 +5,28 @@ from typing import List, Optional, Union
 from genbase import Readable
 from instancelib import AbstractClassifier, Environment, TextEnvironment
 from instancelib.typehints import LT
-from text_sensitivity import (OneToManyPerturbation, OneToOnePerturbation,
-                              RandomAscii, RandomCyrillic, RandomDigits,
-                              RandomEmojis, RandomLower, RandomPunctuation,
-                              RandomSpaces, RandomString, RandomUpper,
-                              RandomWhitespace, compare_accuracy,
-                              compare_metric, compare_precision,
-                              compare_recall, input_space_robustness,
-                              invariance, mean_score, perturbation)
+from text_sensitivity import (
+    OneToManyPerturbation,
+    OneToOnePerturbation,
+    RandomAscii,
+    RandomCyrillic,
+    RandomDigits,
+    RandomEmojis,
+    RandomLower,
+    RandomPunctuation,
+    RandomSpaces,
+    RandomString,
+    RandomUpper,
+    RandomWhitespace,
+    compare_accuracy,
+    compare_metric,
+    compare_precision,
+    compare_recall,
+    input_space_robustness,
+    invariance,
+    mean_score,
+    perturbation,
+)
 from text_sensitivity.return_types import LabelMetrics, MeanScore, SuccessTest
 
 from explabox.utils import MultipleReturn
@@ -220,11 +234,17 @@ class Exposer(Readable, IngestiblesMixin):
             Union[LabelMetrics, MultipleReturn]: Original label (before perturbation), perturbed label (after
                 perturbation) and metrics for label-attribute pair.
         """
-        from text_sensitivity.perturbation import (add_typos, delete_random,
-                                                   random_case_swap,
-                                                   random_lower, random_upper,
-                                                   repeat_k_times, swap_random,
-                                                   to_lower, to_upper)
+        from text_sensitivity.perturbation import (
+            add_typos,
+            delete_random,
+            random_case_swap,
+            random_lower,
+            random_upper,
+            repeat_k_times,
+            swap_random,
+            to_lower,
+            to_upper,
+        )
 
         PERTURBATIONS = {
             "lower": to_lower,

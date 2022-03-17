@@ -43,16 +43,13 @@ class Explorer(Readable, IngestiblesMixin):
         return Dataset(instances == "test")
 
     @add_callargs
-    def __call__(self, **kwargs) -> Descriptives:
+    def descriptives(self, **kwargs) -> Descriptives:
         """Describe features such as the amount per label for the train, test and model predictions
         and text data specific features such as the maximum/minimum/mean amount of words in a sample and
         the standard deviation.
 
-        Args:
-            **kwargs: ...
-
         Returns:
-            Descriptives: ...
+            Descriptives: Descriptive statistics of each split.
         """
         callargs = kwargs.pop("__callargs__", None)
 
@@ -81,3 +78,13 @@ class Explorer(Readable, IngestiblesMixin):
             callargs=callargs,
             **kwargs,
         )
+
+    def __call__(self, **kwargs) -> Descriptives:
+        """Describe features such as the amount per label for the train, test and model predictions
+        and text data specific features such as the maximum/minimum/mean amount of words in a sample and
+        the standard deviation.
+
+        Returns:
+            Descriptives: Descriptive statistics of each split.
+        """
+        return self.descriptives(**kwargs)
