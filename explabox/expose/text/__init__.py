@@ -35,7 +35,7 @@ class Exposer(Readable, IngestiblesMixin):
         ingestibles: Optional[Ingestible] = None,
         **kwargs,
     ):
-        """The Exposer exposes your model and/or data, by performing sensitivty tests.
+        """The Exposer exposes your model and/or data, by performing sensitivity tests.
 
         With the Exposer you can see model sensitivity to random inputs (robustness), test model generalizability
         (robustness), and see the effect of adjustments of attributes in the inputs (e.g. swapping male pronouns for

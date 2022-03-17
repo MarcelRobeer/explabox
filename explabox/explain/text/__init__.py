@@ -22,7 +22,7 @@ class Explainer(Readable, IngestiblesMixin):
         ingestibles: Optional[Ingestible] = None,
         **kwargs,
     ):
-        """The Explainer create explanations corresponding to a model and dataset (with ground-truth labels).
+        """The Explainer creates explanations corresponding to a model and dataset (with ground-truth labels).
 
         With the Explainer you can use explainble AI (XAI) methods for explaining the whole dataset (global), model
         behavior on the dataset (global), and specific predictions/decisions (local).
