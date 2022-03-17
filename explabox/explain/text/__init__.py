@@ -5,7 +5,7 @@ from typing import List, Optional, Union
 
 from genbase import Readable, translate_list
 from instancelib import AbstractClassifier, Environment
-from text_explainability.data.embedding import Embedder, SentenceTransformer
+from text_explainability.data.embedding import Embedder, TfidfVectorizer
 from text_explainability.generation.return_types import FeatureList, Instances
 
 from ...ingestibles import Ingestible
@@ -200,7 +200,7 @@ class Explainer(Readable, IngestiblesMixin):
         method: Union[str, List[str]] = "mmdcritic",
         n: int = 5,
         splits: Union[str, List[str]] = "test",
-        embedder: Optional[Embedder] = SentenceTransformer,
+        embedder: Optional[Embedder] = TfidfVectorizer,
         labelwise: bool = False,
         seed: int = 0,
     ) -> Union[Instances, MultipleReturn]:
@@ -210,7 +210,7 @@ class Explainer(Readable, IngestiblesMixin):
             method (str, optional): Method(s) to apply. Choose from ['mmdcritic', 'kmedoids']. Defaults to 'mmdcritic'.
             n (int, optional): Number of prototypes to generate. Defaults to 5.
             splits (Union[str, List[str]], optional): Name(s) of split(s). Defaults to "test".
-            embedder (Optional[Embedder], optional): Embedder used. Defaults to SentenceTransformer.
+            embedder (Optional[Embedder], optional): Embedder used. Defaults to TfidfVectorizer.
             labelwise (bool, optional): Select for each label. Defaults to False.
             seed (int, optional): Seed for reproducibility. Defaults to 0.
 
@@ -253,7 +253,7 @@ class Explainer(Readable, IngestiblesMixin):
         n_prototypes: int = 5,
         n_criticisms: int = 3,
         splits: Union[str, List[str]] = "test",
-        embedder: Optional[Embedder] = SentenceTransformer,
+        embedder: Optional[Embedder] = TfidfVectorizer,
         labelwise: bool = False,
         **kwargs,
     ) -> Union[Instances, MultipleReturn]:
@@ -263,7 +263,7 @@ class Explainer(Readable, IngestiblesMixin):
             n_prototypes (int, optional): Number of prototypes to generate. Defaults to 5.
             n_criticsms (int, optional): Number of criticisms to generate. Defaults to 3.
             splits (Union[str, List[str]], optional): Name(s) of split(s). Defaults to "test".
-            embedder (Optional[Embedder], optional): Embedder used. Defaults to SentenceTransformer.
+            embedder (Optional[Embedder], optional): Embedder used. Defaults to TfidfVectorizer.
             labelwise (bool, optional): Select for each label. Defaults to False.
 
         Returns:

@@ -55,7 +55,7 @@ Then ``.explore``\ , ``.examine``\ , ``.expose`` and ``.explain`` your model:
    >>> box.examine.wrongly_classified()
 
 
-.. image::https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_examine.png
+.. image:: https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_examine.png
    :alt: drugscom_examine
 
 
