@@ -3,14 +3,13 @@ documenting AI/ML models, developed in-house or acquired externally. The explabo
 and/or dataset) into digestibles (statistics, explanations or sensitivity insights)!
 
 To install run:
-
-    $ pip install explabox
+    $ pip3 install explabox
 
 Currently, the main interface for working with the Explabox is Jupyter Notebook. For more help, read the documentation 
 at https://explabox.rtfd.io.
 
 Explabox is developed by the Dutch National Police Lab AI (NPAI), and released under the GNU Lesser General Public 
-License v3.0 (LGPLv3).
+License v3.0 (GNU LGPLv3).
 """
 
 from typing import Optional
