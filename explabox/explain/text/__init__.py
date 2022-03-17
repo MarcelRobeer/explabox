@@ -71,7 +71,7 @@ class Explainer(Readable, IngestiblesMixin):
             **kwargs: Keyword arguments passed to local explanation technique.
 
         Returns:
-            Optional[MultipleReturn]: ...
+            Optional[MultipleReturn]: Explanations for each selected method, unless method is unknown (returns None).
         """
         if isinstance(methods, str):
             methods = [methods]
