@@ -15,7 +15,7 @@ Install Python on your operating system using the `Python Setup and Usage <https
 ``explabox`` can be installed:
 
 
-* *using* `pip`: `pip3 install` (released on [PyPI](https://pypi.org/project/explabox))
+* *using* `pip`: `pip3 install` (released on [PyPI](https://pypi.org/project/explabox) )
 * *locally*\ : cloning the repository and using ``python3 setup.py install``
 
 Using ``pip``
