@@ -89,6 +89,8 @@ class Explainer(Readable, IngestiblesMixin):
 
         if "labels" not in kwargs:
             kwargs["labels"] = self.labelset
+        if "n_samples" not in kwargs:
+            kwargs["n_samples"] = 500
 
         res = []
         for method in [str.lower(m) for m in methods]:
@@ -148,7 +150,7 @@ class Explainer(Readable, IngestiblesMixin):
                 Defaults to True.
             labelwise (bool, optional): Whether to summarize the counts for each label seperately. Defaults to True.
             k (Optional[int], optional): Limit to the top-k words per label, or all words if None. Defaults to 25.
-            filter_words (List[str], optional): Words to filter out from top-k. Defaults to ['de', 'het', 'een'].
+            filter_words (List[str], optional): Words to filter out from top-k. Defaults to ['a', 'an', 'the'].
             lower (bool, optional): Whether to make all tokens lowercase. Defaults to True.
             seed (int, optional). Seed for reproducibility. Defaults to 0.
             **count_vectorizer_kwargs: Optional arguments passed to `CountVectorizer`/`FastCountVectorizer`.
@@ -196,7 +198,7 @@ class Explainer(Readable, IngestiblesMixin):
                 Defaults to True.
             labelwise (bool, optional): Whether to summarize the counts for each label seperately. Defaults to True.
             k (Optional[int], optional): Limit to the top-k words per label, or all words if None. Defaults to 25.
-            filter_words (List[str], optional): Words to filter out from top-k. Defaults to ['de', 'het', 'een'].
+            filter_words (List[str], optional): Words to filter out from top-k. Defaults to ['a', 'an', 'the'].
             lower (bool, optional): Whether to make all tokens lowercase. Defaults to True.
             seed (int, optional). Seed for reproducibility. Defaults to 0.
             **count_vectorizer_kwargs: Optional arguments passed to `CountVectorizer`/`FastCountVectorizer`.

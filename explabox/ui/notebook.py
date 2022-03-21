@@ -180,6 +180,7 @@ def replace_renderer(res):
 
 def restyle(function: Callable):
     """Apply a decorator for restyling the returned renderer."""
+
     @wraps(function)
     def inner(*args, **kwargs):
         res = function(*args, **kwargs)
