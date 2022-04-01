@@ -183,3 +183,8 @@ footer .footer p {
     color: #646776;
 }
 
+section#quick-tour > img {
+    max-width: 420px;
+    margin: -0.5rem auto 2rem auto;
+    display: block;
+}

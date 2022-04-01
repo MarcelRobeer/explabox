@@ -43,7 +43,7 @@ class Ingestible(dict):
         elif name in self.data.keys():
             return self.data[name]
         if validate:
-            raise ValueError('Unknown split "{name}", choose from {self.splits}')
+            raise ValueError(f'Unknown split "{name}", choose from {self.splits}')
         return None
 
     @property

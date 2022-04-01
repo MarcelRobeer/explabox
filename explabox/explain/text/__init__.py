@@ -90,7 +90,7 @@ class Explainer(Readable, IngestiblesMixin):
         if "labels" not in kwargs:
             kwargs["labels"] = self.labelset
         if "n_samples" not in kwargs:
-            kwargs["n_samples"] = 500
+            kwargs["n_samples"] = 200
 
         res = []
         for method in [str.lower(m) for m in methods]:
