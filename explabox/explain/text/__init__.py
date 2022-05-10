@@ -261,7 +261,12 @@ class Explainer(Readable, IngestiblesMixin):
             method = [method]
         method = [str.lower(m) for m in method]
 
-        from text_explainability import KMedoids, LabelwiseKMedoids, LabelwiseMMDCritic, MMDCritic
+        from text_explainability import (
+            KMedoids,
+            LabelwiseKMedoids,
+            LabelwiseMMDCritic,
+            MMDCritic,
+        )
 
         methods = {
             "mmdcritic": (MMDCritic, LabelwiseMMDCritic),
