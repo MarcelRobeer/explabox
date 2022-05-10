@@ -9,12 +9,13 @@ repos:
   rev: 5.10.1
   hooks:
   - id: isort
-    name: isort (python)
+    name: "Dependency order: isort"
     args:
       - --profile=black
 - repo: https://github.com/psf/black
   rev: 22.3.0
   hooks:
   - id: black
+    name: "Linter: black"
     args:
       - --line-length=120
