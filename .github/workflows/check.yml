@@ -26,10 +26,10 @@ jobs:
           python-version: ${{ matrix.py }}
       - uses: actions/checkout@v2
       - name: Install tox-gh
-        run: python -m pip install tox-gh
+        run: python3 -m pip install tox-gh
       - name: Setup test suite
-        run: tox4 r -vv --notest
+        run: python3 -m tox4 r -vv --notest
       - name: Run test suite
-        run: tox4 r --skip-pkg-install
+        run: python3 -m tox4 r --skip-pkg-install
         env:
           PYTEST_ADDOPTS: "-vv --durations=10"
