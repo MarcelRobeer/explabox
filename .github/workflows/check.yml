@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        linter: [flake8, isort, black, doc8]
+        linter: [flake8, black, doc8] # [flake8, isort, black, doc8]
     steps:
     - uses: actions/checkout@v3
     - name: Set-up Python
