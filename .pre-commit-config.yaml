@@ -12,6 +12,7 @@ repos:
     name: "Dependency order: isort"
     args:
       - --profile=black
+      - --line-length=120
 - repo: https://github.com/psf/black
   rev: 22.3.0
   hooks:
