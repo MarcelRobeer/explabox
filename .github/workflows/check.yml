@@ -49,12 +49,12 @@ jobs:
       env:
         PLATFORM: ${{ matrix.platform }}
 
-  finish:
-    needs: [linter, test]
-    runs-on: ubuntu-latest
-    steps:
-    - name: Coverall Finished
-      uses: AndreMiras/coveralls-python-action@develop
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        parallel-finished: true
+  # finish:
+  #   needs: [linter, test]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Coverall Finished
+  #     uses: AndreMiras/coveralls-python-action@develop
+  #     with:
+  #       github-token: ${{ secrets.GITHUB_TOKEN }}
+  #       parallel-finished: true
