@@ -5,14 +5,28 @@ from typing import List, Optional, Union
 from genbase import Readable
 from instancelib import AbstractClassifier, Environment, TextEnvironment
 from instancelib.typehints import LT
-from text_sensitivity import (OneToManyPerturbation, OneToOnePerturbation,
-                              RandomAscii, RandomCyrillic, RandomDigits,
-                              RandomEmojis, RandomLower, RandomPunctuation,
-                              RandomSpaces, RandomString, RandomUpper,
-                              RandomWhitespace, compare_accuracy,
-                              compare_metric, compare_precision,
-                              compare_recall, input_space_robustness,
-                              invariance, mean_score, perturbation)
+from text_sensitivity import (
+    OneToManyPerturbation,
+    OneToOnePerturbation,
+    RandomAscii,
+    RandomCyrillic,
+    RandomDigits,
+    RandomEmojis,
+    RandomLower,
+    RandomPunctuation,
+    RandomSpaces,
+    RandomString,
+    RandomUpper,
+    RandomWhitespace,
+    compare_accuracy,
+    compare_metric,
+    compare_precision,
+    compare_recall,
+    input_space_robustness,
+    invariance,
+    mean_score,
+    perturbation,
+)
 from text_sensitivity.return_types import LabelMetrics, MeanScore, SuccessTest
 
 from explabox.utils import MultipleReturn
@@ -132,7 +146,9 @@ class Exposer(Readable, IngestiblesMixin):
             **kwargs,
         )
 
-    def invariance(self, pattern: str, expectation: Optional[LT], **kwargs) -> SuccessTest:
+    def invariance(
+        self, pattern: str, expectation: Optional[LT], **kwargs
+    ) -> SuccessTest:
         """Test for the failure rate under invariance.
 
         Example:
@@ -150,10 +166,15 @@ class Exposer(Readable, IngestiblesMixin):
         Returns:
             SuccessTest: Percentage of success cases, list of succeeded (invariant)/failed (variant) instances
         """
-        return invariance(pattern=pattern, model=self.model, expectation=expectation, **kwargs)
+        return invariance(
+            pattern=pattern, model=self.model, expectation=expectation, **kwargs
+        )
 
     def mean_score(
-        self, pattern: str, selected_labels: Optional[Union[LT, List[LT]]] = "all", **kwargs
+        self,
+        pattern: str,
+        selected_labels: Optional[Union[LT, List[LT]]] = "all",
+        **kwargs,
     ) -> Union[MeanScore, MultipleReturn]:
         """Calculate mean (probability) score for the given labels, for data generated from a pattern.
 
@@ -176,11 +197,17 @@ class Exposer(Readable, IngestiblesMixin):
         Returns:
             Union[MeanScore, MultipleReturn]: Mean score for one label or all selected labels.
         """
-        if isinstance(selected_labels, str) and str.lower(selected_labels) == "all" or selected_labels is None:
+        if (
+            isinstance(selected_labels, str)
+            and str.lower(selected_labels) == "all"
+            or selected_labels is None
+        ):
             selected_labels = self.labelset
 
         def ms(label):
-            return mean_score(pattern=pattern, model=self.model, selected_label=label, **kwargs)
+            return mean_score(
+                pattern=pattern, model=self.model, selected_label=label, **kwargs
+            )
 
         return (
             ms(selected_labels)
@@ -220,11 +247,17 @@ class Exposer(Readable, IngestiblesMixin):
             Union[LabelMetrics, MultipleReturn]: Original label (before perturbation), perturbed label (after
                 perturbation) and metrics for label-attribute pair.
         """
-        from text_sensitivity.perturbation import (add_typos, delete_random,
-                                                   random_case_swap,
-                                                   random_lower, random_upper,
-                                                   repeat_k_times, swap_random,
-                                                   to_lower, to_upper)
+        from text_sensitivity.perturbation import (
+            add_typos,
+            delete_random,
+            random_case_swap,
+            random_lower,
+            random_upper,
+            repeat_k_times,
+            swap_random,
+            to_lower,
+            to_upper,
+        )
 
         PERTURBATIONS = {
             "lower": to_lower,
@@ -240,13 +273,20 @@ class Exposer(Readable, IngestiblesMixin):
 
         if isinstance(perturbation, str):
             if perturbation not in PERTURBATIONS:
-                raise ValueError(f'Unknown perturbation "{perturbation}", choose from {list(PERTURBATIONS.keys())}')
+                raise ValueError(
+                    f'Unknown perturbation "{perturbation}", choose from {list(PERTURBATIONS.keys())}'
+                )
             perturbation = PERTURBATIONS[perturbation]
 
         def cm(split):
             env = TextEnvironment(
-                dataset=self.ingestibles.get_named_split(split, validate=True), labelprovider=self.labels
+                dataset=self.ingestibles.get_named_split(split, validate=True),
+                labelprovider=self.labels,
             )
             return compare_metric(env=env, model=self.model, perturbation=perturbation)
 
-        return cm(splits) if isinstance(splits, str) else MultipleReturn(*[cm(split) for split in splits])
+        return (
+            cm(splits)
+            if isinstance(splits, str)
+            else MultipleReturn(*[cm(split) for split in splits])
+        )

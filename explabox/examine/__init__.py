@@ -4,8 +4,7 @@ from typing import Optional
 
 from genbase import Readable, add_callargs
 from instancelib import AbstractClassifier, Environment, MemoryLabelProvider
-from instancelib.analysis.base import (contingency_table, get_keys,
-                                       label_metrics)
+from instancelib.analysis.base import contingency_table, get_keys, label_metrics
 from instancelib.labels.memory import MemoryLabelProvider
 
 from ..digestibles import Performance, WronglyClassified
@@ -59,7 +58,9 @@ class Examiner(Readable, ModelMixin, IngestiblesMixin):
         if split in self.predictions:
             return named_split, self.predictions[split]
 
-        self.predictions[split] = MemoryLabelProvider.from_tuples(self.model.predict(named_split))
+        self.predictions[split] = MemoryLabelProvider.from_tuples(
+            self.model.predict(named_split)
+        )
         return named_split, self.predictions[split]
 
     @add_callargs
@@ -102,10 +103,13 @@ class Examiner(Readable, ModelMixin, IngestiblesMixin):
 
         split, predictions = self.__predict(split)
         performance = {
-            label: label_metrics(self.labels, predictions, get_keys(split), label) for label in self.labelset
+            label: label_metrics(self.labels, predictions, get_keys(split), label)
+            for label in self.labelset
         }
 
-        return Performance(labels=self.labelset, metrics=performance, callargs=callargs, **kwargs)
+        return Performance(
+            labels=self.labelset, metrics=performance, callargs=callargs, **kwargs
+        )
 
     def __call__(self, split: str = "test", **kwargs) -> Performance:
         """Determine performance metrics, the amount of predictions for each label in the test set

@@ -15,7 +15,11 @@ class Ingestible(dict):
         self,
         data: Optional[Environment] = None,
         model: Optional[AbstractClassifier] = None,
-        splits: Dict[KT, KT] = {"train": "train", "test": "test", "validation": "validation"},
+        splits: Dict[KT, KT] = {
+            "train": "train",
+            "test": "test",
+            "validation": "validation",
+        },
     ):
         self["data"] = data
         self["model"] = model
@@ -25,7 +29,9 @@ class Ingestible(dict):
     def data(self):
         return self["data"]
 
-    def get_named_split(self, name: KT, validate: bool = False) -> Optional[InstanceProvider]:
+    def get_named_split(
+        self, name: KT, validate: bool = False
+    ) -> Optional[InstanceProvider]:
         """Get split by name.
 
         Args:

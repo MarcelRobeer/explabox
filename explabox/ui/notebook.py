@@ -88,15 +88,23 @@ def descriptives_renderer(meta, content, **renderargs):
         "<tr>" + "".join(fmt(a) for a in [k] + [v[label] for label in labels]) + "</tr>"
         for k, v in content["label_counts"].items()
     ]
-    html += format_table(["<th>Split</th>"] + [f"<th><kbd>{label}</kbd></th>" for label in labels], label_counts)
+    html += format_table(
+        ["<th>Split</th>"] + [f"<th><kbd>{label}</kbd></th>" for label in labels],
+        label_counts,
+    )
 
     html += "<h3>Tokenized lengths</h3>"
     metrics = list(list(content["tokenized_lengths"].values())[0].keys())
     tokenized_lengths = [
-        "<tr>" + "".join(fmt(a) for a in [k] + [v[metric] for metric in metrics]) + "</tr>"
+        "<tr>"
+        + "".join(fmt(a) for a in [k] + [v[metric] for metric in metrics])
+        + "</tr>"
         for k, v in content["tokenized_lengths"].items()
     ]
-    html += format_table(["<th>Split</th>"] + [f"<th>{metric}</th>" for metric in metrics], tokenized_lengths)
+    html += format_table(
+        ["<th>Split</th>"] + [f"<th>{metric}</th>" for metric in metrics],
+        tokenized_lengths,
+    )
 
     return html
 

@@ -12,7 +12,12 @@ from ..mixins import IngestiblesMixin
 
 
 class Explorer(Readable, IngestiblesMixin):
-    def __init__(self, data: Optional[Environment] = None, ingestibles: Optional[Ingestible] = None, **kwargs):
+    def __init__(
+        self,
+        data: Optional[Environment] = None,
+        ingestibles: Optional[Ingestible] = None,
+        **kwargs
+    ):
         """The Explorer explores your data by providing descriptive statistics.
 
         The Explorer requires 'data' defined. It is included in the Explabox under the `.explore` property.
@@ -55,7 +60,10 @@ class Explorer(Readable, IngestiblesMixin):
 
         label_counts = {
             split_name: {
-                label: len(self.labels.get_instances_by_label(label).intersection(split)) for label in self.labelset
+                label: len(
+                    self.labels.get_instances_by_label(label).intersection(split)
+                )
+                for label in self.labelset
             }
             for split_name, split in self.data.items()
         }
@@ -64,7 +72,12 @@ class Explorer(Readable, IngestiblesMixin):
 
         tokenized_lengths = {}
         for split_name, split in self.data.items():
-            token_lengths = np.array([len(default_tokenizer(instance.data)) for _, instance in iter(split.items())])
+            token_lengths = np.array(
+                [
+                    len(default_tokenizer(instance.data))
+                    for _, instance in iter(split.items())
+                ]
+            )
             tokenized_lengths[split_name] = {
                 "mean": np.mean(token_lengths),
                 "max": np.max(token_lengths),

@@ -21,13 +21,20 @@ from explabox.examine import Examiner
 from explabox.explain import Explainer
 from explabox.explore import Explorer
 from explabox.expose import Exposer
-from explabox.ingestibles import (Ingestible, import_data, import_model,
-                                  rename_labels, train_test_split)
+from explabox.ingestibles import (
+    Ingestible,
+    import_data,
+    import_model,
+    rename_labels,
+    train_test_split,
+)
 from explabox.mixins import IngestiblesMixin
 
 
 class Explabox(Readable, IngestiblesMixin):
-    def __init__(self, ingestibles: Optional[Ingestible] = None, locale: str = "en", **kwargs):
+    def __init__(
+        self, ingestibles: Optional[Ingestible] = None, locale: str = "en", **kwargs
+    ):
         """Use the Explabox to `.explore`, `.examine`, `.expose` and `.explain` your AI model.
 
         Example:
