@@ -146,9 +146,7 @@ class Exposer(Readable, IngestiblesMixin):
             **kwargs,
         )
 
-    def invariance(
-        self, pattern: str, expectation: Optional[LT], **kwargs
-    ) -> SuccessTest:
+    def invariance(self, pattern: str, expectation: Optional[LT], **kwargs) -> SuccessTest:
         """Test for the failure rate under invariance.
 
         Example:
@@ -166,9 +164,7 @@ class Exposer(Readable, IngestiblesMixin):
         Returns:
             SuccessTest: Percentage of success cases, list of succeeded (invariant)/failed (variant) instances
         """
-        return invariance(
-            pattern=pattern, model=self.model, expectation=expectation, **kwargs
-        )
+        return invariance(pattern=pattern, model=self.model, expectation=expectation, **kwargs)
 
     def mean_score(
         self,
@@ -197,17 +193,11 @@ class Exposer(Readable, IngestiblesMixin):
         Returns:
             Union[MeanScore, MultipleReturn]: Mean score for one label or all selected labels.
         """
-        if (
-            isinstance(selected_labels, str)
-            and str.lower(selected_labels) == "all"
-            or selected_labels is None
-        ):
+        if isinstance(selected_labels, str) and str.lower(selected_labels) == "all" or selected_labels is None:
             selected_labels = self.labelset
 
         def ms(label):
-            return mean_score(
-                pattern=pattern, model=self.model, selected_label=label, **kwargs
-            )
+            return mean_score(pattern=pattern, model=self.model, selected_label=label, **kwargs)
 
         return (
             ms(selected_labels)
@@ -273,9 +263,7 @@ class Exposer(Readable, IngestiblesMixin):
 
         if isinstance(perturbation, str):
             if perturbation not in PERTURBATIONS:
-                raise ValueError(
-                    f'Unknown perturbation "{perturbation}", choose from {list(PERTURBATIONS.keys())}'
-                )
+                raise ValueError(f'Unknown perturbation "{perturbation}", choose from {list(PERTURBATIONS.keys())}')
             perturbation = PERTURBATIONS[perturbation]
 
         def cm(split):
@@ -285,8 +273,4 @@ class Exposer(Readable, IngestiblesMixin):
             )
             return compare_metric(env=env, model=self.model, perturbation=perturbation)
 
-        return (
-            cm(splits)
-            if isinstance(splits, str)
-            else MultipleReturn(*[cm(split) for split in splits])
-        )
+        return cm(splits) if isinstance(splits, str) else MultipleReturn(*[cm(split) for split in splits])

@@ -13,9 +13,7 @@ from text_sensitivity.perturbation import (
 )
 
 
-def random_string(
-    n: int = 10, min_length: int = 10, max_length: int = 100, special_characters=None
-):
+def random_string(n: int = 10, min_length: int = 10, max_length: int = 100, special_characters=None):
     """Generate random strings.
 
     Args:
@@ -73,9 +71,7 @@ def random_string(
     if generator_set:
         from text_sensitivity import combine_generators
 
-        return combine_generators(*list(generator_set)).generate_list(
-            n=n, min_length=min_length, max_length=max_length
-        )
+        return combine_generators(*list(generator_set)).generate_list(n=n, min_length=min_length, max_length=max_length)
 
     from text_sensitivity import RandomString
 

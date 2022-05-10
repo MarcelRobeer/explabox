@@ -126,17 +126,13 @@ class Explainer(Readable, IngestiblesMixin):
 
                 cls = FoilTree
             if cls is not None:
-                res.append(
-                    cls(env=None, labelset=self.labelset)(sample, self.model, **kwargs)
-                )
+                res.append(cls(env=None, labelset=self.labelset)(sample, self.model, **kwargs))
             else:
                 warnings.warn(f'Unknown method "{method}". Skipping to next one')
         return MultipleReturn(*res) if res else None
 
     def __return_explanations(self, explanations):
-        return (
-            MultipleReturn(*explanations) if len(explanations) > 1 else explanations[0]
-        )
+        return MultipleReturn(*explanations) if len(explanations) > 1 else explanations[0]
 
     @restyle
     def token_frequency(
@@ -172,9 +168,7 @@ class Explainer(Readable, IngestiblesMixin):
             splits = [splits]
 
         explanations = [
-            TokenFrequency(
-                self.ingestibles.get_named_split(split, validate=True), seed=seed
-            )(
+            TokenFrequency(self.ingestibles.get_named_split(split, validate=True), seed=seed)(
                 model=self.model,
                 labelprovider=self.labels,
                 explain_model=explain_model,
@@ -223,9 +217,7 @@ class Explainer(Readable, IngestiblesMixin):
             splits = [splits]
 
         explanations = [
-            TokenInformation(
-                self.ingestibles.get_named_split(split, validate=True), seed=seed
-            )(
+            TokenInformation(self.ingestibles.get_named_split(split, validate=True), seed=seed)(
                 model=self.model,
                 labelprovider=self.labels,
                 explain_model=explain_model,
@@ -269,12 +261,7 @@ class Explainer(Readable, IngestiblesMixin):
             method = [method]
         method = [str.lower(m) for m in method]
 
-        from text_explainability import (
-            KMedoids,
-            LabelwiseKMedoids,
-            LabelwiseMMDCritic,
-            MMDCritic,
-        )
+        from text_explainability import KMedoids, LabelwiseKMedoids, LabelwiseMMDCritic, MMDCritic
 
         methods = {
             "mmdcritic": (MMDCritic, LabelwiseMMDCritic),
@@ -286,14 +273,10 @@ class Explainer(Readable, IngestiblesMixin):
 
         def inner(m, split):
             if m not in methods:
-                raise ValueError(
-                    f'Unknown method "{m}", choose from {list(methods.keys())}'
-                )
+                raise ValueError(f'Unknown method "{m}", choose from {list(methods.keys())}')
             instances = self.ingestibles.get_named_split(split, validate=True)
             if labelwise:
-                return methods[m][1](
-                    instances=instances, labels=self.labels, embedder=embedder
-                ).prototypes(n=n)
+                return methods[m][1](instances=instances, labels=self.labels, embedder=embedder).prototypes(n=n)
             return methods[m][0](instances=instances, embedder=embedder).prototypes(n=n)
 
         explanations = []
@@ -333,9 +316,7 @@ class Explainer(Readable, IngestiblesMixin):
         def inner(split):
             instances = self.ingestibles.get_named_split(split, validate=True)
             m = (
-                LabelwiseMMDCritic(
-                    instances=instances, labels=self.labels, embedder=embedder
-                )
+                LabelwiseMMDCritic(instances=instances, labels=self.labels, embedder=embedder)
                 if labelwise
                 else MMDCritic(instances=instances, embedder=embedder)
             )

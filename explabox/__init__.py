@@ -1,14 +1,14 @@
-"""The Explabox aims to support data scientists and machine learning (ML) engineers in explaining, testing and 
-documenting AI/ML models, developed in-house or acquired externally. The explabox turns your ingestibles (AI/ML model 
+"""The Explabox aims to support data scientists and machine learning (ML) engineers in explaining, testing and
+documenting AI/ML models, developed in-house or acquired externally. The explabox turns your ingestibles (AI/ML model
 and/or dataset) into digestibles (statistics, explanations or sensitivity insights)!
 
 To install run:
     $ pip3 install explabox
 
-Currently, the main interface for working with the Explabox is Jupyter Notebook. For more help, read the documentation 
+Currently, the main interface for working with the Explabox is Jupyter Notebook. For more help, read the documentation
 at https://explabox.rtfd.io.
 
-Explabox is developed by the Dutch National Police Lab AI (NPAI), and released under the GNU Lesser General Public 
+Explabox is developed by the Dutch National Police Lab AI (NPAI), and released under the GNU Lesser General Public
 License v3.0 (GNU LGPLv3).
 """
 
@@ -21,20 +21,12 @@ from explabox.examine import Examiner
 from explabox.explain import Explainer
 from explabox.explore import Explorer
 from explabox.expose import Exposer
-from explabox.ingestibles import (
-    Ingestible,
-    import_data,
-    import_model,
-    rename_labels,
-    train_test_split,
-)
+from explabox.ingestibles import Ingestible, import_data, import_model, rename_labels, train_test_split
 from explabox.mixins import IngestiblesMixin
 
 
 class Explabox(Readable, IngestiblesMixin):
-    def __init__(
-        self, ingestibles: Optional[Ingestible] = None, locale: str = "en", **kwargs
-    ):
+    def __init__(self, ingestibles: Optional[Ingestible] = None, locale: str = "en", **kwargs):
         """Use the Explabox to `.explore`, `.examine`, `.expose` and `.explain` your AI model.
 
         Example:

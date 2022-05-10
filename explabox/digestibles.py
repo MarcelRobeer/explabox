@@ -8,14 +8,7 @@ from .ui.notebook import Render
 
 
 class Performance(MetaInfo):
-    def __init__(
-        self,
-        labels,
-        metrics,
-        type: str = "model_performance",
-        subtype: str = "classification",
-        **kwargs
-    ):
+    def __init__(self, labels, metrics, type: str = "model_performance", subtype: str = "classification", **kwargs):
         """Performance metrics."""
         super().__init__(type=type, subtype=subtype, renderer=Render, **kwargs)
         self.labels = labels
@@ -27,9 +20,7 @@ class Performance(MetaInfo):
 
     @property
     def content(self):
-        label_metrics = [
-            {"label": label, "metrics": self.metrics[label]} for label in self.labels
-        ]
+        label_metrics = [{"label": label, "metrics": self.metrics[label]} for label in self.labels]
         return {
             "labels": self.labels,
             "label_metrics": label_metrics,
@@ -38,14 +29,7 @@ class Performance(MetaInfo):
 
 
 class Descriptives(MetaInfo):
-    def __init__(
-        self,
-        labels,
-        label_counts,
-        tokenized_lengths,
-        type: str = "descriptives",
-        **kwargs
-    ):
+    def __init__(self, labels, label_counts, tokenized_lengths, type: str = "descriptives", **kwargs):
         """Descriptive statistics."""
         super().__init__(type=type, renderer=Render, **kwargs)
         self.labels = labels
@@ -62,13 +46,9 @@ class Descriptives(MetaInfo):
 
 
 class WronglyClassified(Instances):
-    def __init__(
-        self, instances, contingency_table, type: str = "wrongly_classified", **kwargs
-    ):
+    def __init__(self, instances, contingency_table, type: str = "wrongly_classified", **kwargs):
         """Wrongly classified instances."""
-        super().__init__(
-            instances=instances, type=type, subtype=None, renderer=Render, **kwargs
-        )
+        super().__init__(instances=instances, type=type, subtype=None, renderer=Render, **kwargs)
         self.__contingency_table = contingency_table
 
     @property

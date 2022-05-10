@@ -7,9 +7,7 @@ main_ns = {}
 with open(convert_path("explabox/_version.py")) as ver_file:
     exec(ver_file.read(), main_ns)  # nosec
 
-with open(
-    path.join(path.abspath(path.dirname(__file__)), "README.md"), encoding="utf-8"
-) as f:
+with open(path.join(path.abspath(path.dirname(__file__)), "README.md"), encoding="utf-8") as f:
     long_description = f.read()
 
 with open(

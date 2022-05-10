@@ -96,9 +96,7 @@ def descriptives_renderer(meta, content, **renderargs):
     html += "<h3>Tokenized lengths</h3>"
     metrics = list(list(content["tokenized_lengths"].values())[0].keys())
     tokenized_lengths = [
-        "<tr>"
-        + "".join(fmt(a) for a in [k] + [v[metric] for metric in metrics])
-        + "</tr>"
+        "<tr>" + "".join(fmt(a) for a in [k] + [v[metric] for metric in metrics]) + "</tr>"
         for k, v in content["tokenized_lengths"].items()
     ]
     html += format_table(
@@ -128,7 +126,7 @@ class Render(GBRenderRestyled):
             padding: 2px 4px;
         }
         #--var(tabs_id) ul > li:not(:last-child) {
-           margin-bottom: 3px;  
+           margin-bottom: 3px;
         }
         """
 
