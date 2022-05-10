@@ -26,7 +26,9 @@ jobs:
         python-version: '3.x'
     - name: Install dependencies
       run: |
-        python -m pip install ${{ matrix.linter }}
+        python3 -m pip install --upgrade pip
+        python3 -m pip install tox
+        python3 -m pip install ${{ matrix.linter }}
     - name: ${{ matrix.linter }}
       run: tox
       env:
