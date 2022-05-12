@@ -31,7 +31,7 @@ setuptools.setup(  # type: ignore
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
     url="https://explabox.rtfd.io",
-    packages=setuptools.find_packages(),  # type : ignore
+    packages=setuptools.find_packages(exclude=["test*.py"]),  # type : ignore
     install_requires=requirements,
     python_requires=">=3.8",
 )

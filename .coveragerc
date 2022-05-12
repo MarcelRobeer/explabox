@@ -1,0 +1,12 @@
+[coverage:run]
+omit =
+    */site-packages/*
+    */.eggs/*
+    setup.py
+    */test/*.py
+
+[report]
+exclude_lines =
+    pragma: no cover
+    @abstract
+    raise NotImplementedError

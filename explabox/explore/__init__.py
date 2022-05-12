@@ -62,6 +62,7 @@ class Explorer(Readable, IngestiblesMixin):
 
         from text_explainability import default_tokenizer
 
+        # TODO: move to text-specific version of descriptives
         tokenized_lengths = {}
         for split_name, split in self.data.items():
             token_lengths = np.array([len(default_tokenizer(instance.data)) for _, instance in iter(split.items())])

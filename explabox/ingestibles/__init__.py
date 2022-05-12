@@ -106,6 +106,6 @@ class Ingestible(dict):
             bool: True if all requirements are included.
         """
         for elem in elements:
-            if elem not in self:
+            if elem not in self or getattr(self, elem) is None:
                 raise ValueError(f'"{elem}" should be provided.')
         return True
