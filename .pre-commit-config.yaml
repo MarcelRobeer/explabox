@@ -25,7 +25,7 @@ repos:
   hooks:
   - id: bandit
     args:
-      - --ini=tox.ini
+      - --configfile=.bandit.yaml
 - repo: https://github.com/mgedmin/check-manifest
   rev: "0.48"
   hooks:

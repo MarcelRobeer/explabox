@@ -39,7 +39,7 @@ jobs:
         python3 -m pip install --upgrade pip
         python3 -m pip install bandit
     - name: Run bandit security check
-      run: bandit -r explabox/
+      run: bandit -r explabox/ --configfile=.bandit
 
   test:
     runs-on: ${{ matrix.platform }}
