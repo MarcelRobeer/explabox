@@ -13,9 +13,5 @@ def create_output_dir(path: str = OUTPUT_DIR):
     """
     path = str(path)
 
-    try:
-        Path(path).mkdir(parents=True, exist_ok=True)
-    except FileExistsError:
-        pass
-    else:
-        print(f"Output folder located at {str(OUTPUT_DIR)}")
+    Path(path).mkdir(parents=True, exist_ok=True)
+    print(f"Output folder located at {str(OUTPUT_DIR)}")

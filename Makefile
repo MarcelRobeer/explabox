@@ -1,4 +1,4 @@
-.PHONY: docs html quality precommit
+.PHONY: docs html quality precommit coverage
 
 package := explabox
 check_dirs := $(package)
@@ -30,3 +30,9 @@ quality:
 # Fix styles and check security issues
 precommit:
 	pre-commit run
+
+# Coverage
+coverage:
+	coverage run -m pytest
+	coverage html
+	open htmlcov/index.html
