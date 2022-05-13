@@ -104,10 +104,10 @@ class DeterministicTextClassifier(AbstractClassifier):
 # Actual code for pytest
 # =========================
 
-from string import printable, punctuation
+from string import printable, punctuation  # noqa: E402
 
-import pytest
-from instancelib import TextEnvironment
+import pytest  # noqa: E402
+from instancelib import TextEnvironment  # noqa: E402
 
 TEST_INSTANCES = list(printable)
 
@@ -125,7 +125,7 @@ TEST_ENVIRONMENT = TextEnvironment.from_data(
 
 
 def predict_fn(instance: str) -> np.ndarray:
-    return np.array([0.3, 0.7]) if "!!@#$%^&*()-=+a" in instance else np.array([0.7, 0.3])
+    return np.array([0.3, 0.7]) if any(c in instance for c in "!@#$%^&*()-=+a") else np.array([0.7, 0.3])
 
 
 TEST_MODEL = DeterministicTextClassifier.from_callable(predict_fn, ["punctuation", "no_punctuation"])
