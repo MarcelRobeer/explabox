@@ -2,8 +2,6 @@
 # Temporary class to hold a `il.AbstractClassifier` from callable
 # =========================
 
-import functools
-import operator
 from typing import Any, Callable, FrozenSet, Iterable, List, Sequence, Tuple, TypeVar
 
 import numpy as np
@@ -11,6 +9,7 @@ from instancelib import AbstractClassifier, Instance, InstanceProvider, LabelPro
 from instancelib.labels.encoder import DictionaryEncoder
 from instancelib.typehints.typevars import KT, LT, RT, VT
 from instancelib.utils.chunks import divide_iterable_in_lists
+from instancelib.utils.func import zip_chain
 
 IT = TypeVar("IT", bound="Instance[Any, Any, Any, Any]", covariant=True)
 DT = str
@@ -24,7 +23,7 @@ class DeterministicTextClassifier(AbstractClassifier):
     @classmethod
     def from_callable(cls, predict_function: Callable[[DT], np.ndarray], target_labels: List[LT]):
         def batched_predict_function(instances: List[DT]) -> np.ndarray:
-            return np.hstack([predict_function(ins) for ins in instances])
+            return np.vstack([predict_function(ins) for ins in instances])
 
         return cls(batched_predict_function, target_labels)
 
@@ -40,17 +39,21 @@ class DeterministicTextClassifier(AbstractClassifier):
     ) -> None:
         return None
 
-    def _pred_proba_batch(self, batch: Iterable[Instance[KT, DT, VT, Any]]) -> Tuple[Sequence[KT], np.ndarray]:
+    def _pred_proba_batch_raw(self, batch: Iterable[Instance[KT, DT, VT, Any]]) -> Tuple[Sequence[KT], np.ndarray]:
         x_keys = [ins.identifier for ins in batch]
         x_instances = [ins.data for ins in batch]
         y_pred = self.predict_function(x_instances)
         return x_keys, y_pred
 
-    def _pred_batch(
+    def _pred_proba_batch(
         self, batch: Iterable[Instance[KT, DT, VT, Any]]
     ) -> Sequence[Tuple[KT, FrozenSet[Tuple[LT, float]]]]:
-        x_keys, y_pred = self._pred_proba_batch(batch)
+        x_keys, y_pred = self._pred_proba_batch_raw(batch)
         return x_keys, self.encoder.decode_proba_matrix(y_pred)
+
+    def _pred_batch(self, batch: Iterable[Instance[KT, DT, VT, Any]]) -> Sequence[Tuple[KT, FrozenSet[LT]]]:
+        x_keys, y_pred = self._pred_proba_batch_raw(batch)
+        return x_keys, self.encoder.decode_matrix(np.argmax(y_pred, axis=1))
 
     @property
     def fitted(self) -> bool:
@@ -68,23 +71,21 @@ class DeterministicTextClassifier(AbstractClassifier):
 
     def predict_proba_instances_raw(self, instances: Iterable[Instance[KT, DT, VT, RT]], batch_size: int = 200):
         batches = divide_iterable_in_lists(instances, batch_size)
-        return map(self._pred_proba_batch, batches)
+        yield from map(self._pred_proba_batch_raw, batches)
 
     def predict_proba_instances(
         self, instances: Iterable[Instance[KT, DT, VT, RT]], batch_size: int = 200
     ) -> Sequence[Tuple[KT, FrozenSet[Tuple[LT, float]]]]:
         batches = divide_iterable_in_lists(instances, batch_size)
-        processed = map(self._pred_proba_batch, batches)
-        combined: Sequence[Tuple[KT, FrozenSet[Tuple[LT, float]]]] = functools.reduce(operator.concat, processed, [])
-        return combined
+        processed = zip_chain(map(self._pred_proba_batch, batches))
+        return processed
 
     def predict_instances(
         self, instances: Iterable[Instance[KT, DT, VT, RT]], batch_size: int = 200
     ) -> Sequence[Tuple[KT, FrozenSet[LT]]]:
         batches = divide_iterable_in_lists(instances, batch_size)
-        processed = map(self._pred_batch, batches)
-        combined: Sequence[Tuple[KT, FrozenSet[LT]]] = functools.reduce(operator.concat, processed, [])
-        return combined
+        processed = zip_chain(map(self._pred_batch, batches))
+        return processed
 
     def predict_provider(
         self, provider: InstanceProvider[IT, KT, DT, VT, RT], batch_size: int = 200
