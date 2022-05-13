@@ -40,9 +40,9 @@ Locally
 ~~~~~~~
 
 
-#. Download the folder from ``GitLab/GitHub``\ :
+#. Download the folder from ``GitHub``\ :
 
-   * Clone this repository, or 
+   * Clone this repository, or
    * Download it as a ``.zip`` file and extract it.
 
 #. Open up a ``terminal`` (Linux / macOS) or ``cmd.exe``\ /\ ``powershell.exe`` (Windows) and navigate to the folder you downloaded ``explabox`` in.
@@ -62,4 +62,3 @@ Locally
    running egg_info
    ...
    Finished processing dependencies for explabox
-

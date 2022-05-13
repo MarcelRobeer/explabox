@@ -107,8 +107,8 @@ Citation
 ...
 
 .. _pip: https://pypi.org/project/explabox/
-.. _git: https://git.science.uu.nl/m.j.robeer/explabox
-.. _`Explabox @ GIT`: https://git.science.uu.nl/m.j.robeer/explabox
+.. _git: https://github.com/MarcelRobeer/explabox
+.. _`Explabox @ GIT`: https://github.com/MarcelRobeer/explabox
 
 .. toctree::
    :maxdepth: 1

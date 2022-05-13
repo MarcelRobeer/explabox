@@ -56,7 +56,7 @@ html_theme_options = {
     "display_version": True,
     "style_external_links": True,
     "logo_only": True,
-    "gitlab_url": "https://git.science.uu.nl/m.j.robeer/explabox",
+    "github_url": "https://github.com/MarcelRobeer/explabox",
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,

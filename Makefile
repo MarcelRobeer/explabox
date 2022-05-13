@@ -25,6 +25,7 @@ quality:
 	python3 -m black --line-length=120 --check .
 	python3 -m isort --profile=black --check-only .
 	python3 -m flake8 --config .flake8 .
+	python3 -m doc8 ./docs
 	python3 -m check-manifest
 
 # Fix styles and check security issues

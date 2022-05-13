@@ -25,8 +25,8 @@ Successfully installed explabox
 ```
 
 #### Locally
-1. Download the folder from `GitLab/GitHub`:
-    - Clone this repository, or 
+1. Download the folder from `GitHub`:
+    - Clone this repository, or
     - Download it as a `.zip` file and extract it.
 2. Open up a `terminal` (Linux / macOS) or `cmd.exe`/`powershell.exe` (Windows) and navigate to the folder you downloaded `explabox` in.
 3. In the main folder (containing the `setup.py` file) run:
