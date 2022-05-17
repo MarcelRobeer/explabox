@@ -1,9 +1,11 @@
 import pytest
 
+from explabox.digestibles import Dataset, Descriptives
 from explabox.explore import Explorer
 from explabox.ingestibles import Ingestible
 
 DATA, MODEL = pytest.helpers.DATA(), pytest.helpers.MODEL()
+INGESTIBLE = Ingestible(data=DATA, model=MODEL)
 
 
 def test_requirements():
@@ -54,3 +56,35 @@ def test_valid_constructor_ingestible():
 def test_valid_constructor_both():
     """Test: Correct construction when data and model are provided as ingestible and as arguments."""
     assert isinstance(Explorer(data=DATA, model=MODEL, ingestibles=Ingestible(data=DATA, model=MODEL)), Explorer)
+
+
+def test_call_valid_return():  # TODO: split
+    """Test: ..."""
+    explorer = Explorer(ingestibles=INGESTIBLE)
+    descriptives = explorer.__call__()
+    assert isinstance(descriptives, Descriptives)
+    assert descriptives.type == "descriptives"
+    assert descriptives.labels is not None
+    assert descriptives.label_counts is not None
+    assert isinstance(descriptives.content, dict)
+    assert "labels" in descriptives.content
+    assert "label_counts" in descriptives.content
+
+
+def test_descriptives_valid_return():  # TODO: split
+    """Test: ..."""
+    explorer = Explorer(ingestibles=INGESTIBLE)
+    descriptives = explorer.descriptives()
+    assert isinstance(descriptives, Descriptives)
+    assert descriptives.type == "descriptives"
+    assert descriptives.labels is not None
+    assert descriptives.label_counts is not None
+    assert isinstance(descriptives.content, dict)
+    assert "labels" in descriptives.content
+    assert "label_counts" in descriptives.content
+
+
+# def test_instances_valid_return():
+#     """Test: ..."""
+#     explorer = Explorer(data=DATA, model=MODEL)
+#     assert isinstance(explorer.descriptives(), Dataset)

@@ -1,9 +1,13 @@
+import copy
+
 import pytest
 
+from explabox.digestibles import Performance, WronglyClassified
 from explabox.examine import Examiner
 from explabox.ingestibles import Ingestible
 
 DATA, MODEL = pytest.helpers.DATA(), pytest.helpers.MODEL()
+INGESTIBLE = Ingestible(data=DATA, model=MODEL)
 
 
 def test_requirements():
@@ -49,3 +53,48 @@ def test_valid_constructor_ingestible():
 def test_valid_constructor_both():
     """Test: Correct construction when data and model are provided as ingestible and as arguments."""
     assert isinstance(Examiner(data=DATA, model=MODEL, ingestibles=Ingestible(data=DATA, model=MODEL)), Examiner)
+
+
+def test_prediction_cache():
+    """Test: ..."""
+    examiner = Examiner(ingestibles=INGESTIBLE)
+    _ = examiner.performance(split="test")
+    preds = copy.deepcopy(examiner.predictions["test"])
+    _ = examiner.performance(split="test")
+    assert preds == examiner.predictions["test"]
+
+
+def test_call_valid_return():  # TODO: split
+    """Test: ..."""
+    examiner = Examiner(ingestibles=INGESTIBLE)
+    performance = examiner.__call__()
+    assert isinstance(performance, Performance)
+    assert performance.type == "model_performance"
+    assert performance.subtype == "classification"
+    assert isinstance(performance.content, dict)
+    assert "labels" in performance.content
+    assert "label_metrics" in performance.content
+    assert "metrics" in performance.content
+
+
+def test_performance_valid_return():  # TODO: split
+    """Test: ..."""
+    examiner = Examiner(ingestibles=INGESTIBLE)
+    performance = examiner.performance()
+    assert isinstance(performance, Performance)
+    assert performance.type == "model_performance"
+    assert performance.subtype == "classification"
+    assert isinstance(performance.content, dict)
+    assert "labels" in performance.content
+    assert "label_metrics" in performance.content
+    assert "metrics" in performance.content
+
+
+def test_wrongly_classified_valid_return():  # TODO: split
+    """Test: ..."""
+    examiner = Examiner(ingestibles=INGESTIBLE)
+    wrongly_classified = examiner.wrongly_classified()
+    assert isinstance(wrongly_classified, WronglyClassified)
+    assert wrongly_classified.type == "wrongly_classified"
+    assert isinstance(wrongly_classified.content, dict)
+    assert "wrongly_classified" in wrongly_classified.content

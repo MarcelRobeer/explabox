@@ -1,9 +1,10 @@
 import pytest
 
-from explabox import Explabox
+from explabox import Examiner, Explabox, Explainer, Explorer, Exposer
 from explabox.ingestibles import Ingestible
 
 DATA, MODEL = pytest.helpers.DATA(), pytest.helpers.MODEL()
+INGESTIBLE = Ingestible(data=DATA, model=MODEL)
 
 
 def test_requirements():
@@ -49,3 +50,12 @@ def test_valid_constructor_ingestible():
 def test_valid_constructor_both():
     """Test: Correct construction when data and model are provided as ingestible and as arguments."""
     assert isinstance(Explabox(data=DATA, model=MODEL, ingestibles=Ingestible(data=DATA, model=MODEL)), Explabox)
+
+
+def test_valid_types():
+    """Test: Each of the four subparts of the Explabox is the correct class."""
+    box = Explabox(ingestibles=INGESTIBLE)
+    assert isinstance(box.examine, Examiner)
+    assert isinstance(box.explain, Explainer)
+    assert isinstance(box.explore, Explorer)
+    assert isinstance(box.expose, Exposer)

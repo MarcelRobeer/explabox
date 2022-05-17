@@ -16,19 +16,19 @@ DT = str
 
 
 class DeterministicTextClassifier(AbstractClassifier):
-    def __init__(self, predict_function: Callable[[List[DT]], np.ndarray], target_labels: List[LT]):
+    def __init__(self, predict_function: Callable[[List[DT]], np.ndarray], target_labels: Iterable[LT]):
         self.predict_function = predict_function
         self.set_target_labels(target_labels)
 
     @classmethod
-    def from_callable(cls, predict_function: Callable[[DT], np.ndarray], target_labels: List[LT]):
+    def from_callable(cls, predict_function: Callable[[DT], np.ndarray], target_labels: Iterable[LT]):
         def batched_predict_function(instances: List[DT]) -> np.ndarray:
             return np.vstack([predict_function(ins) for ins in instances])
 
         return cls(batched_predict_function, target_labels)
 
     @classmethod
-    def from_batched_callable(cls, predict_function: Callable[[List[str]], np.ndarray], target_labels: List[LT]):
+    def from_batched_callable(cls, predict_function: Callable[[List[DT]], np.ndarray], target_labels: Iterable[LT]):
         return cls(predict_function, target_labels)
 
     def fit_instances(self, instances: Iterable[Instance[KT, DT, VT, RT]], labels: Iterable[Iterable[LT]]) -> None:
@@ -78,14 +78,14 @@ class DeterministicTextClassifier(AbstractClassifier):
     ) -> Sequence[Tuple[KT, FrozenSet[Tuple[LT, float]]]]:
         batches = divide_iterable_in_lists(instances, batch_size)
         processed = zip_chain(map(self._pred_proba_batch, batches))
-        return processed
+        return list(processed)
 
     def predict_instances(
         self, instances: Iterable[Instance[KT, DT, VT, RT]], batch_size: int = 200
     ) -> Sequence[Tuple[KT, FrozenSet[LT]]]:
         batches = divide_iterable_in_lists(instances, batch_size)
         processed = zip_chain(map(self._pred_batch, batches))
-        return processed
+        return list(processed)
 
     def predict_provider(
         self, provider: InstanceProvider[IT, KT, DT, VT, RT], batch_size: int = 200
@@ -124,9 +124,11 @@ TEST_ENVIRONMENT = TextEnvironment.from_data(
     vectors=None,
 )
 
+TEST_ENVIRONMENT.set_named_provider("test", TEST_ENVIRONMENT.dataset)
+
 
 def predict_fn(instance: str) -> np.ndarray:
-    return np.array([0.3, 0.7]) if any(c in instance for c in "!@#$%^&*()-=+a") else np.array([0.7, 0.3])
+    return np.array([0.7, 0.3]) if any(c in instance for c in '!"#$%&()*+,-./:;<=>?@[^_`~aA') else np.array([0.3, 0.7])
 
 
 TEST_MODEL = DeterministicTextClassifier.from_callable(predict_fn, ["punctuation", "no_punctuation"])
