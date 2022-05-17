@@ -1,6 +1,6 @@
 import pytest
 
-from explabox.digestibles import Dataset, Descriptives
+from explabox.digestibles import Descriptives
 from explabox.explore import Explorer
 from explabox.ingestibles import Ingestible
 
