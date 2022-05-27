@@ -1,4 +1,4 @@
-.. image:: https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/explabox.png
+.. image:: https://github.com/MarcelRobeer/explabox/blob/main/img/explabox.png?raw=true
   :alt: Explabox logo
   :align: center
 
@@ -45,7 +45,7 @@ Then ``.explore``\ , ``.examine``\ , ``.expose`` and ``.explain`` your model:
    >>> box.explore()
 
 
-.. image:: https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_explore.png
+.. image:: https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explore.png?raw=true
    :alt: drugscom_explore
 
 
@@ -55,7 +55,7 @@ Then ``.explore``\ , ``.examine``\ , ``.expose`` and ``.explain`` your model:
    >>> box.examine.wrongly_classified()
 
 
-.. image:: https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_examine.png
+.. image:: https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_examine.png?raw=true
    :alt: drugscom_examine
 
 
@@ -65,7 +65,7 @@ Then ``.explore``\ , ``.examine``\ , ``.expose`` and ``.explain`` your model:
    >>> box.expose.compare_metrics(split='test', perturbation='upper')
 
 
-.. image:: https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_expose.png
+.. image:: https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_expose.png?raw=true
    :alt: drugscom_expose
 
 
@@ -75,7 +75,7 @@ Then ``.explore``\ , ``.examine``\ , ``.expose`` and ``.explain`` your model:
    >>> box.explain.local_explanation('Hate this medicine so much!')
 
 
-.. image:: https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_explain.png
+.. image:: https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explain.png?raw=true
    :alt: drugscom_explain
 
 

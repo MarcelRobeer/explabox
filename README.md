@@ -1,5 +1,5 @@
 *<p align="center">
-  <img src="https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/explabox.png" alt="explabox logo">*
+  <img src="https://github.com/MarcelRobeer/explabox/blob/main/img/explabox.png?raw=true" alt="explabox logo">*
 </p>
 
 **<h3 align="center">
@@ -45,25 +45,25 @@ Then `.explore`, `.examine`, `.expose` and `.explain` your model:
 >>> # Explore the descriptive statistics for each split
 >>> box.explore()
 ```
-<img src="https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_explore.png" alt="drugscom_explore" width="400"/>
+<img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explore.png?raw=true" alt="drugscom_explore" width="400"/>
 
 ```python
 >>> # Show wrongly classified instances
 >>> box.examine.wrongly_classified()
 ```
-<img src="https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_examine.png" alt="drugscom_examine" width="400"/>
+<img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_examine.png?raw=true" alt="drugscom_examine" width="400"/>
 
 ```python
 >>> # Compare the performance on the test split before and after transforming all tokens to uppercase
 >>> box.expose.compare_metrics(split='test', perturbation='upper')
 ```
-<img src="https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_expose.png" alt="drugscom_expose" width="400"/>
+<img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_expose.png?raw=true" alt="drugscom_expose" width="400"/>
 
 ```python
 >>> # Get a local explanation (uses LIME by default)
 >>> box.explain.local_explanation('Hate this medicine so much!')
 ```
-<img src="https://git.science.uu.nl/m.j.robeer/explabox/-/raw/main/img/example/drugscom_explain.png" alt="drugscom_explain" width="400"/>
+<img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explain.png?raw=true" alt="drugscom_explain" width="400"/>
 
 
 For more information, visit the [explabox documentation](https://explabox.rtfd.io).
