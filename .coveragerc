@@ -1,4 +1,5 @@
 [coverage:run]
+source = explabox
 omit =
     */site-packages/*
     */.eggs/*
