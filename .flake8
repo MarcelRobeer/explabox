@@ -7,10 +7,13 @@ exclude =
     example_usage.py
     .eggs
     build
+    explabox/test
 extend-ignore =
-    D413
+    D101
     D205
     D400
+    D401
+    D413
     E127
     W291
 max-line-length = 120

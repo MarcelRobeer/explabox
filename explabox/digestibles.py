@@ -9,17 +9,25 @@ from .ui.notebook import Render
 
 class Performance(MetaInfo):
     def __init__(self, labels, metrics, type: str = "model_performance", subtype: str = "classification", **kwargs):
-        """Performance metrics."""
+        """Digestible for performance metrics.
+
+        Args:
+            labels (_type_): _description_
+            metrics (_type_): _description_
+            type (str, optional): _description_. Defaults to "model_performance".
+            subtype (str, optional): _description_. Defaults to "classification".
+        """
         super().__init__(type=type, subtype=subtype, renderer=Render, **kwargs)
         self.labels = labels
         self._metrics, self._properties = extract_metrics(metrics)
 
     @property
     def metrics(self):
+        """Metrics values."""
         return self._metrics
 
     @property
-    def content(self):
+    def content(self):  # noqa: D102
         label_metrics = [{"label": label, "metrics": self.metrics[label]} for label in self.labels]
         return {
             "labels": self.labels,
@@ -30,14 +38,21 @@ class Performance(MetaInfo):
 
 class Descriptives(MetaInfo):
     def __init__(self, labels, label_counts, tokenized_lengths, type: str = "descriptives", **kwargs):
-        """Descriptive statistics."""
+        """Digestible for descriptive statistics.
+
+        Args:
+            labels (_type_): _description_
+            label_counts (_type_): _description_
+            tokenized_lengths (_type_): _description_
+            type (str, optional): _description_. Defaults to "descriptives".
+        """
         super().__init__(type=type, renderer=Render, **kwargs)
         self.labels = labels
         self.label_counts = label_counts
         self.tokenized_lengths = tokenized_lengths
 
     @property
-    def content(self):
+    def content(self):  # noqa: D102
         return {
             "labels": self.labels,
             "label_counts": self.label_counts,
@@ -47,7 +62,13 @@ class Descriptives(MetaInfo):
 
 class WronglyClassified(Instances):
     def __init__(self, instances, contingency_table, type: str = "wrongly_classified", **kwargs):
-        """Wrongly classified instances."""
+        """Digestible for wrongly classified instances
+
+        Args:
+            instances (_type_): _description_
+            contingency_table (_type_): _description_
+            type (str, optional): _description_. Defaults to "wrongly_classified".
+        """
         super().__init__(instances=instances, type=type, subtype=None, renderer=Render, **kwargs)
         self.__contingency_table = contingency_table
 
@@ -65,10 +86,11 @@ class WronglyClassified(Instances):
         ]
 
     @property
-    def content(self):
+    def content(self):  # noqa: D102
         return {"wrongly_classified": self.wrongly_classified}
 
 
 class Dataset(Instances):
     def __init__(self, *args, **kwargs):
+        """Digestible for dataset."""
         pass

@@ -1,4 +1,4 @@
-explabox 
+explabox
 =========
 
 .. automodule:: explabox
@@ -26,14 +26,6 @@ explabox.config module
 ----------------------
 
 .. automodule:: explabox.config
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-explabox.digestibles module
----------------------------
-
-.. automodule:: explabox.digestibles
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,7 +1,6 @@
 """Tests for the `explabox.ui.notebook` module."""
 
 import genbase_test_helpers
-import pytest
 
 from explabox.examine import Examiner
 from explabox.explain import Explainer

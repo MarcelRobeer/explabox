@@ -26,7 +26,7 @@ PACKAGE_NAME = "explabox"
 class RestyleMixin:
     """Adds `self.restyle()` function to apply main_color and package_link."""
 
-    def restyle(self):
+    def restyle(self):  # noqa: D102
         self.main_color = MAIN_COLOR
         self.package_link = PACKAGE_LINK
         self.package_name = PACKAGE_NAME
@@ -55,6 +55,7 @@ class TSRenderRestyled(TSRender, RestyleMixin):
 
 
 def format_table(header, content):
+    """Format a HTML table based on header and content."""
     if isinstance(header, list):
         header = "".join(str(h) for h in header)
     if isinstance(content, list):
@@ -63,6 +64,7 @@ def format_table(header, content):
 
 
 def wrongly_classified_renderer(meta, content, **renderargs):
+    """Rendered for `explabox.digestibles.WronglyClassified`."""
     html = ""
 
     for c in content["wrongly_classified"]:
@@ -73,6 +75,7 @@ def wrongly_classified_renderer(meta, content, **renderargs):
 
 
 def descriptives_renderer(meta, content, **renderargs):
+    """Rendered for `explabox.digestibles.Descriptives`."""
     labels = content["labels"]
 
     html = f"<h3>Labels ({len(labels)})</h3>"
@@ -163,7 +166,7 @@ class Render(GBRenderRestyled):
         """
         return f'<{h}>{title.replace("_", " ").title()}</{h}>'
 
-    def render_subtitle(self, meta: dict, content: dict, **renderargs) -> str:
+    def render_subtitle(self, meta: dict, content: dict, **renderargs) -> str:  # noqa: D102
         html = ""
         if "split" in meta["callargs"] and isinstance(meta["callargs"]["split"], str):
             html += f'Digestible for split "{meta["callargs"]["split"]}".'
