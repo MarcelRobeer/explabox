@@ -114,7 +114,7 @@ class Exposer(Readable, IngestiblesMixin):
             "whitespace": RandomWhitespace,
             "spaces": RandomSpaces,
             "ascii_upper": RandomUpper,
-            "acii_lower": RandomLower,
+            "ascii_lower": RandomLower,
             "digits": RandomDigits,
             "punctuation": RandomPunctuation,
             "cyrillic": RandomCyrillic,

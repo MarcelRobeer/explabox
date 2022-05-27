@@ -1,12 +1,13 @@
 import copy
 
+import genbase_test_helpers
 import pytest
 
 from explabox.digestibles import Performance, WronglyClassified
 from explabox.examine import Examiner
 from explabox.ingestibles import Ingestible
 
-DATA, MODEL = pytest.helpers.DATA(), pytest.helpers.MODEL()
+DATA, MODEL = genbase_test_helpers.TEST_ENVIRONMENT, genbase_test_helpers.TEST_MODEL
 INGESTIBLE = Ingestible(data=DATA, model=MODEL)
 
 

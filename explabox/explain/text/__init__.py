@@ -1,6 +1,7 @@
 """Add explainability to your text model/dataset."""
 
 import warnings
+from multiprocessing.sharedctypes import Value
 from typing import List, Optional, Union
 
 from genbase import Readable, translate_list
@@ -80,10 +81,11 @@ class Explainer(Readable, IngestiblesMixin):
         if isinstance(methods, str):
             methods = [methods]
         if isinstance(sample, int):
-            if sample in self.train:
-                sample = self.train[sample]
-            elif sample in self.test:
-                sample = self.test[sample]
+            test, train = self.ingestibles.get_named_split("test"), self.ingestibles.get_named_split("train")
+            if test is not None and sample in test:
+                sample = test[sample]
+            elif train is not None and sample in train:
+                sample = train[sample]
             else:
                 raise Exception(f"Unknown instance identifier {sample}.")
         elif isinstance(sample, str):
@@ -107,12 +109,16 @@ class Explainer(Readable, IngestiblesMixin):
                 from text_explainability.local_explanation import KernelSHAP
 
                 cls = KernelSHAP
-            elif method in ["localtree", "tree"]:
+            elif method in ["local_tree", "tree"]:
                 from text_explainability.local_explanation import LocalTree
 
                 cls = LocalTree
-            elif method in ["localrules", "rules"]:
+            elif method in ["local_rules", "rules"]:
                 from text_explainability.local_explanation import LocalRules
+
+                if "foil_fn" not in kwargs:
+                    warnings.warn("No `foil_fn` provided for local rules, defaulting to class 0.")
+                    kwargs["foil_fn"] = 0
 
                 cls = LocalRules
             elif method in [
@@ -124,12 +130,17 @@ class Explainer(Readable, IngestiblesMixin):
             ]:
                 from text_explainability.local_explanation import FoilTree
 
+                if "foil_fn" not in kwargs:
+                    raise ValueError("`foil_fn` is requierd for contrastive explanation.")
+
                 cls = FoilTree
             if cls is not None:
                 res.append(cls(env=None, labelset=self.labelset)(sample, self.model, **kwargs))
             else:
                 warnings.warn(f'Unknown method "{method}". Skipping to next one')
-        return MultipleReturn(*res) if res else None
+        if len(res) == 0:
+            raise Exception("No valid methods provided.")
+        return MultipleReturn(*res)
 
     def __return_explanations(self, explanations):
         return MultipleReturn(*explanations) if len(explanations) > 1 else explanations[0]
@@ -261,12 +272,7 @@ class Explainer(Readable, IngestiblesMixin):
             method = [method]
         method = [str.lower(m) for m in method]
 
-        from text_explainability import (
-            KMedoids,
-            LabelwiseKMedoids,
-            LabelwiseMMDCritic,
-            MMDCritic,
-        )
+        from text_explainability import KMedoids, LabelwiseKMedoids, LabelwiseMMDCritic, MMDCritic
 
         methods = {
             "mmdcritic": (MMDCritic, LabelwiseMMDCritic),

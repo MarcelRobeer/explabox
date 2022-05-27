@@ -1,5 +1,6 @@
 """Tests for the `explabox.ui.notebook` module."""
 
+import genbase_test_helpers
 import pytest
 
 from explabox.examine import Examiner
@@ -8,7 +9,7 @@ from explabox.explore import Explorer
 from explabox.ingestibles import Ingestible
 from explabox.ui.notebook import GBRenderRestyled, Render, TERenderRestyled, TSRenderRestyled
 
-INGESTIBLE = Ingestible(data=pytest.helpers.DATA(), model=pytest.helpers.MODEL())
+INGESTIBLE = Ingestible(data=genbase_test_helpers.TEST_ENVIRONMENT, model=genbase_test_helpers.TEST_MODEL)
 
 
 Renderer = (GBRenderRestyled, TERenderRestyled, TSRenderRestyled, Render)

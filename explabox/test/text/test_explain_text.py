@@ -1,5 +1,6 @@
 """Tests for the `explabox.explain.text` module."""
 
+import genbase_test_helpers
 import pytest
 
 from explabox.explain import Explainer
@@ -7,7 +8,7 @@ from explabox.explain.text import FeatureList, Instances
 from explabox.ingestibles import Ingestible
 from explabox.utils import MultipleReturn
 
-INGESTIBLE = Ingestible(data=pytest.helpers.DATA(), model=pytest.helpers.MODEL())
+INGESTIBLE = Ingestible(data=genbase_test_helpers.TEST_ENVIRONMENT, model=genbase_test_helpers.TEST_MODEL)
 
 EXPLAIN_PREDICTION_METHODS_VALID = [
     "lime",
@@ -61,7 +62,7 @@ def test_explain_prediction_valid_generator(method):
     # assert isinstance(explanation.to_config(), dict)
 
 
-@pytest.mark.parametrize("method", [pytest.helpers.corrupt(EXPLAIN_PREDICTION_METHODS_VALID)])
+@pytest.mark.parametrize("method", [genbase_test_helpers.corrupt(EXPLAIN_PREDICTION_METHODS_VALID)])
 def test_explain_prediction_invalid_generator(method):
     """Test: ..."""
     explainer = Explainer(ingestibles=INGESTIBLE)
@@ -70,7 +71,7 @@ def test_explain_prediction_invalid_generator(method):
             _ = explainer.explain_prediction("a", methods=method)
 
 
-@pytest.mark.parametrize("methods", pytest.helpers.random_combinations(EXPLAIN_PREDICTION_METHODS_VALID))
+@pytest.mark.parametrize("methods", genbase_test_helpers.random_combinations(EXPLAIN_PREDICTION_METHODS_VALID))
 def test_explain_prediction_valid_generators(methods):
     """Test: ..."""
     explainer = Explainer(ingestibles=INGESTIBLE)
@@ -131,7 +132,7 @@ def test_prototypes_valid_return(method, n):  # TODO: add more checks, split
     assert len(explanation.content["prototypes"]) == n
 
 
-@pytest.mark.parametrize("method", pytest.helpers.corrupt(["mmdcritic", "kmedoids"]))
+@pytest.mark.parametrize("method", genbase_test_helpers.corrupt(["mmdcritic", "kmedoids"]))
 @pytest.mark.parametrize("n", range(1, 6))
 def test_prototypes_invalid_method(method, n):
     """Test: ..."""

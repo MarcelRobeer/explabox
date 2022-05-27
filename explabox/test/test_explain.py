@@ -1,11 +1,12 @@
 """Tests for the `explabox.explain` module."""
 
+import genbase_test_helpers
 import pytest
 
 from explabox.explain import Explainer
 from explabox.ingestibles import Ingestible
 
-DATA, MODEL = pytest.helpers.DATA(), pytest.helpers.MODEL()
+DATA, MODEL = genbase_test_helpers.TEST_ENVIRONMENT, genbase_test_helpers.TEST_MODEL
 
 
 def test_requirements():

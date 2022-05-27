@@ -1,9 +1,10 @@
+import genbase_test_helpers
 import pytest
 
 from explabox import Examiner, Explabox, Explainer, Explorer, Exposer
 from explabox.ingestibles import Ingestible
 
-DATA, MODEL = pytest.helpers.DATA(), pytest.helpers.MODEL()
+DATA, MODEL = genbase_test_helpers.TEST_ENVIRONMENT, genbase_test_helpers.TEST_MODEL
 INGESTIBLE = Ingestible(data=DATA, model=MODEL)
 
 

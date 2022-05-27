@@ -2,6 +2,7 @@
 
 import string
 
+import genbase_test_helpers
 import pytest
 
 from explabox.expose import Exposer
@@ -9,7 +10,7 @@ from explabox.expose.text import LabelMetrics, MeanScore, RandomString, SuccessT
 from explabox.ingestibles import Ingestible
 from explabox.utils import MultipleReturn
 
-INGESTIBLE = Ingestible(data=pytest.helpers.DATA(), model=pytest.helpers.MODEL())
+INGESTIBLE = Ingestible(data=genbase_test_helpers.TEST_ENVIRONMENT, model=genbase_test_helpers.TEST_MODEL)
 
 INPUT_SPACE_GENERATORS_VALID = [
     "ascii",
@@ -53,7 +54,7 @@ def test_input_space_valid_generator(generator):
 
 
 @pytest.mark.parametrize(
-    "generator", pytest.helpers.corrupt([i for i in INPUT_SPACE_GENERATORS_VALID if isinstance(i, str)])
+    "generator", genbase_test_helpers.corrupt([i for i in INPUT_SPACE_GENERATORS_VALID if isinstance(i, str)])
 )
 def test_input_space_invalid_generator(generator):
     """Test: ..."""
@@ -62,7 +63,7 @@ def test_input_space_invalid_generator(generator):
         _ = exposer.input_space(generator, min_length=0, max_length=1)
 
 
-@pytest.mark.parametrize("generators", pytest.helpers.random_combinations(INPUT_SPACE_GENERATORS_VALID))
+@pytest.mark.parametrize("generators", genbase_test_helpers.random_combinations(INPUT_SPACE_GENERATORS_VALID))
 def test_input_space_valid_generators(generators):
     """Test: ..."""
     exposer = Exposer(ingestibles=INGESTIBLE)
@@ -85,7 +86,7 @@ def test_compare_metric_valid_return(generator):  # TODO: add more checks
     assert isinstance(test, LabelMetrics)
 
 
-@pytest.mark.parametrize("generator", pytest.helpers.corrupt(COMPARE_METRIC_GENERATORS_VALID))
+@pytest.mark.parametrize("generator", genbase_test_helpers.corrupt(COMPARE_METRIC_GENERATORS_VALID))
 def test_compare_metric_invalid_generator(generator):
     """Test: ..."""
     exposer = Exposer(ingestibles=INGESTIBLE)
