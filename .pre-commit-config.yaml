@@ -40,3 +40,10 @@ repos:
   rev: "0.48"
   hooks:
   - id: check-manifest
+- repo: local
+  hooks:
+  - id: build-documentation
+    name: Build Documentation
+    language: system
+    entry: sphinx-apidoc --module-first --no-toc --force --templatedir=docs/source/_templates/ -o docs/source/api .
+    types: [python]
