@@ -29,11 +29,10 @@ from text_sensitivity import (
 )
 from text_sensitivity.return_types import LabelMetrics, MeanScore, SuccessTest
 
-from explabox.utils import MultipleReturn
-
 from ...ingestibles import Ingestible
 from ...mixins import IngestiblesMixin
 from ...ui.notebook import restyle
+from ...utils import MultipleReturn
 
 compare_metric = restyle(compare_metric)
 input_space_robustness = restyle(input_space_robustness)
@@ -237,17 +236,8 @@ class Exposer(Readable, IngestiblesMixin):
             Union[LabelMetrics, MultipleReturn]: Original label (before perturbation), perturbed label (after
                 perturbation) and metrics for label-attribute pair.
         """
-        from text_sensitivity.perturbation import (
-            add_typos,
-            delete_random,
-            random_case_swap,
-            random_lower,
-            random_upper,
-            repeat_k_times,
-            swap_random,
-            to_lower,
-            to_upper,
-        )
+        from .characters import add_typos, delete_random, random_case_swap, random_lower, random_upper, swap_random
+        from .sentences import repeat_k_times, to_lower, to_upper
 
         PERTURBATIONS = {
             "lower": to_lower,

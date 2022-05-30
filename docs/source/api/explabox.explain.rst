@@ -1,4 +1,4 @@
-explabox.explain
+explabox.explain 
 =================
 
 .. automodule:: explabox.explain
