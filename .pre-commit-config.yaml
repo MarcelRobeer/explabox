@@ -7,6 +7,14 @@ repos:
     exclude: ^docs/
   - id: trailing-whitespace
     exclude: ^docs/
+- repo: https://github.com/Lucas-C/pre-commit-hooks
+  rev: v1.2.0
+  hooks:
+  - id: insert-license
+    files: '^explabox/.*py'
+    args:
+      - --detect-license-in-X-top-lines=12
+      - --license-filepath=.shortlicense
 - repo: https://github.com/pycqa/isort
   rev: 5.10.1
   hooks:
@@ -32,10 +40,3 @@ repos:
   rev: "0.48"
   hooks:
   - id: check-manifest
-- repo: local
-  hooks:
-  - id: build-documentation
-    name: Build Documentation
-    language: system
-    entry: sphinx-apidoc --module-first --no-toc --force --templatedir=docs/source/_templates/ -o docs/source/api .
-    types: [python]

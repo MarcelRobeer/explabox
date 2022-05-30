@@ -12,4 +12,3 @@ explabox.ingestibles
    :maxdepth: 4
 
    explabox.ingestibles.data
-   explabox.ingestibles.model

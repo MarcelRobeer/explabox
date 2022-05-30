@@ -9,7 +9,7 @@ source_dir := $(docs_dir)/source
 # Build documentation files
 docs:
 	cp img/$(package)-logo-text.png $(source_dir)/_static
-	sphinx-apidoc --module-first --no-toc --force --templatedir=$(source_dir)/_templates/ -o $(source_dir)/api .
+	sphinx-apidoc --module-first --no-toc --force --templatedir=$(source_dir)/_templates/ -o $(source_dir)/api explabox
 	m2r CHANGELOG.md --dry-run > $(source_dir)/changelog.rst
 	m2r CONTRIBUTING.md --dry-run > $(source_dir)/contributing.rst
 	m2r INSTALLATION.md --dry-run > $(source_dir)/installation.rst
@@ -23,7 +23,7 @@ html:
 # Check style quality
 quality:
 	python3 -m black --line-length=120 --check explabox
-	python3 -m isort --profile=black --check-only explabox
+	python3 -m isort --line-length=120 --profile=black --check-only explabox
 	flake8 explabox --config .flake8
 	python3 -m doc8 ./docs
 	check-manifest

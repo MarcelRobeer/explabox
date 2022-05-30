@@ -1,4 +1,5 @@
 include requirements.txt
 include tox.ini
 include *.md
+exclude .shortlicense
 recursive-exclude explabox/test *.py
