@@ -6,6 +6,13 @@
 "{`Explore` | `Examine` | `Expose` | `Explain`} your model with the *explabox*!"**
 </h3>
 
+[![PyPI](https://img.shields.io/pypi/v/explabox)](https://pypi.org/project/explabox/)
+[![Downloads](https://pepy.tech/badge/explabox)](https://pepy.tech/project/explabox)
+[![Python_version](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10-blue)](https://pypi.org/project/explabox/)
+[![License](https://img.shields.io/pypi/l/explabox/)](https://www.gnu.org/licenses/lgpl-3.0.en.html)
+[![Documentation Status](https://readthedocs.org/projects/explabox/badge/?version=latest)](https://explabox.readthedocs.io/en/latest/?badge=latest)
+[![Code style: black](https://img.shields.io/badge/code%20style-flake8-aa0000)](https://github.com/PyCQA/flake8)
+
 ---
 
 The `explabox` aims to support data scientists and machine learning (ML) engineers in explaining, testing and documenting AI/ML models, developed in-house or acquired externally. The `explabox` turns your **ingestibles** (AI/ML model and/or dataset) into **digestibles** (statistics, explanations or sensitivity insights)!
