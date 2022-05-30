@@ -12,16 +12,30 @@ jobs:
         linter: [flake8, black, doc8, check-manifest] # [flake8, isort, black, doc8, check-manifest]
     steps:
     - uses: actions/checkout@v3
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v21
+      with:
+        files: |
+          *.md
+          *.rst
+          *.py
+    - name: Skipping tests
+      if: steps.changed-files.outputs.any_changed == 'false'
+      run: echo "No files ending in .md, .rst or .py have been changed, skipping linter."
     - name: Set-up Python
+      if: steps.changed-files.outputs.any_changed == 'true'
       uses: actions/setup-python@v3
       with:
         python-version: '3.x'
     - name: Install dependencies
+      if: steps.changed-files.outputs.any_changed == 'true'
       run: |
         python3 -m pip install --upgrade pip
         python3 -m pip install tox
         python3 -m pip install ${{ matrix.linter }}
     - name: ${{ matrix.linter }}
+      if: steps.changed-files.outputs.any_changed == 'true'
       run: tox
       env:
         TOXENV: ${{ matrix.linter }}
@@ -51,15 +65,27 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: Get changed files
+      id: changed-files-py
+      uses: tj-actions/changed-files@v21
+      with:
+        files: |
+          *.py
+    - name: Skipping tests
+      if: steps.changed-files-py.outputs.any_changed == 'false'
+      run: echo "No files ending in .py have been changed, skipping tests."
     - name: Set up Python ${{ matrix.python-version }}
+      if: steps.changed-files-py.outputs.any_changed == 'true'
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
+      if: steps.changed-files-py.outputs.any_changed == 'true'
       run: |
         python3 -m pip install --upgrade pip
         python3 -m pip install tox tox-gh-actions
     - name: Test with tox
+      if: steps.changed-files-py.outputs.any_changed == 'true'
       run: tox
       env:
         PLATFORM: ${{ matrix.platform }}
