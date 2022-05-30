@@ -20,22 +20,22 @@ jobs:
           *.md
           *.rst
           *.py
-    - name: Skipping tests
-      if: steps.changed-files.outputs.any_changed == 'false'
-      run: echo "No files ending in .md, .rst or .py have been changed, skipping linter."
+    - name: (optional) Skipping tests
+      if: strategy.matrix.linter != 'check-manifest' && steps.changed-files.outputs.any_changed == 'false'
+      run: echo "No files ending in .in, .md, .rst or .py have been changed, skipping linter."
     - name: Set-up Python
-      if: steps.changed-files.outputs.any_changed == 'true'
+      if: strategy.matrix.linter == 'check-manifest' || steps.changed-files.outputs.any_changed == 'true'
       uses: actions/setup-python@v3
       with:
         python-version: '3.x'
     - name: Install dependencies
-      if: steps.changed-files.outputs.any_changed == 'true'
+      if: strategy.matrix.linter == 'check-manifest' || steps.changed-files.outputs.any_changed == 'true'
       run: |
         python3 -m pip install --upgrade pip
         python3 -m pip install tox
         python3 -m pip install ${{ matrix.linter }}
     - name: ${{ matrix.linter }}
-      if: steps.changed-files.outputs.any_changed == 'true'
+      if: strategy.matrix.linter == 'check-manifest' || steps.changed-files.outputs.any_changed == 'true'
       run: tox
       env:
         TOXENV: ${{ matrix.linter }}
