@@ -15,16 +15,17 @@ explabox
    explabox.explain
    explabox.explore
    explabox.expose
+   explabox.ingestibles
    explabox.ui
    explabox.utils
 
 *Submodules*:
 
 
-explabox.digestibles module
----------------------------
+explabox.config module
+----------------------
 
-.. automodule:: explabox.digestibles
+.. automodule:: explabox.config
    :members:
    :undoc-members:
    :show-inheritance:

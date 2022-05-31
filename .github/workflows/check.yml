@@ -20,9 +20,9 @@ jobs:
           *.md
           *.rst
           *.py
-    - name: (optional) Skipping tests
+    - name: (optional) Skipping linter
       if: matrix.linter != 'check-manifest' && steps.changed-files.outputs.any_changed == 'false'
-      run: echo "No files ending in .in, .md, .rst or .py have been changed, skipping linter."
+      run: echo "No files ending in .md, .rst or .py have been changed, skipping linter."
     - name: Set-up Python
       if: matrix.linter == 'check-manifest' || steps.changed-files.outputs.any_changed == 'true'
       uses: actions/setup-python@v3
