@@ -59,9 +59,9 @@ command provided in the *Manual check* column below.
      - `\ ``bandit`` <https://bandit.readthedocs.io/>`_
      - Software is checked for known security vulnerabilities.
      - ``bandit -r explabox/ --configfile=.bandit.yaml``
-   * - Unit testing
+   * - Unit and integration testing
      - `\ ``pytest`` <https://docs.pytest.org/>`_
-     - Software should be close to 100% ``coverage`` of .
+     - Software should be tested in seperate units and in combined pipelines.
      - ``coverage run -m pytest``
    * - MANIFEST.in completeness
      - `\ ``check-manifest`` <https://pypi.org/project/check-manifest/>`_

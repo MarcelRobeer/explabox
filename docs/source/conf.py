@@ -74,8 +74,8 @@ autoclass_content = "both"
 intersphinx_mapping = {
     "genbase": ("https://git.science.uu.nl/m.j.robeer/genbase/", None),
     "instancelib": ("https://instancelib.readthedocs.io/en/latest/", None),
-    "text_explainability": ("https://text-explainability.readthedocs.io", None),
-    "text_sensitivity": ("https://git.io/text_sensitivity/", None),
+    "text_explainability": ("https://text-explainability.readthedocs.io/en/latest/", None),
+    "text_sensitivity": ("https://text-sensitivity.readthedocs.io/en/latest//", None),
 }
 
 

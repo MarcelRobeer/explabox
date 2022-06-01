@@ -30,6 +30,14 @@ explabox.config module
    :undoc-members:
    :show-inheritance:
 
+explabox.digestibles module
+---------------------------
+
+.. automodule:: explabox.digestibles
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 explabox.mixins module
 ----------------------
 

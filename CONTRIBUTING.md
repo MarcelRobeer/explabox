@@ -27,7 +27,7 @@ command provided in the _Manual check_ column below.
 | Linter  | [`black`](https://black.readthedocs.io/) | Automatic formatting of your `.py` code, weakened to a line length of 120. | `black --line-length=120 --check .` |
 | Linter  | [`flake8`](https://flake8.pycqa.org/) | Minimal code style quality check, also weakened to a line length of 120. | `flake8 --config .flake8 .` |
 | Security | [`bandit`](https://bandit.readthedocs.io/) | Software is checked for known security vulnerabilities. | `bandit -r explabox/ --configfile=.bandit.yaml` |
-| Unit testing | [`pytest`](https://docs.pytest.org/) | Software should be close to 100% `coverage` of . | `coverage run -m pytest` |
+| Unit and integration testing | [`pytest`](https://docs.pytest.org/) | Software should be tested in seperate units and in combined pipelines. | `coverage run -m pytest` |
 | MANIFEST.in completeness | [`check-manifest`](https://pypi.org/project/check-manifest/) | Check if all required files are also shipped with the Python package. | `check-manifest` |
 | Documentation linter | [`doc8`](https://github.com/PyCQA/doc8) | Style checks for the documentation files that are used to generate [explabox.rtfd.io](https://explabox.rtfd.io) | `doc8 ./docs` |
 
