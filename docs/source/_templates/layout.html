@@ -1,4 +1,8 @@
 {% extends "!layout.html" %}
+{% block extrahead %}
+<link rel="stylesheet" href="https://marcelrobeer.github.io/header.css">
+<script type="text/javascript" src="https://marcelrobeer.github.io/header.js"></script>
+{% endblock %}
 {% block extrabody %}
 <div id="header" class="no-print">
     <a href="https://marcelrobeer.github.io" id="logo">M</a>
@@ -10,4 +14,5 @@
         </ul>
     </nav>
 </div>
+<div class="scroll-bar"></div>
 {% endblock %}

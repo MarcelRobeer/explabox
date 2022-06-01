@@ -56,8 +56,13 @@ html_theme_options = {
     "display_version": True,
     "style_external_links": True,
     "logo_only": True,
-    "github_url": "https://github.com/MarcelRobeer/explabox",
 }
+html_context = {
+    "display_github": True,
+    "github_user": "MarcelRobeer",
+    "github_repo": "explabox",
+}
+
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
