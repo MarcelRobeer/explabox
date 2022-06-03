@@ -11,8 +11,8 @@ Example Usage
 Demo: Drug Review Classification
 --------------------------------
 
-Welcome to the demo of the `explabox <https://explabox.rtfd.io>`_ on the `UCI Drug Reviews <https://archive.ics.uci.edu/ml/datasets/Drug+Review+Dataset+%28Drugs.com%29#>`_ dataset. To speed up the demo, we made a smaller subset of the train and test dataset. The demo 
-also includes a pretrained black-box classifier, which aims to predict whether a ``review`` in the text got a ``rating`` of 
+Welcome to the demo of the `explabox <https://explabox.rtfd.io>`_ on the `UCI Drug Reviews <https://archive.ics.uci.edu/ml/datasets/Drug+Review+Dataset+%28Drugs.com%29#>`_ dataset. To speed up the demo, we made a smaller subset of the train and test dataset. The demo
+also includes a pretrained black-box classifier, which aims to predict whether a ``review`` in the text got a ``rating`` of
 ``negative`` (1-5), ``neutral`` (5-6) or ``positive`` (6-10).
 
 **To start the demo, you require:**
@@ -86,7 +86,7 @@ The `UCI Drug Reviews <https://archive.ics.uci.edu/ml/datasets/Drug+Review+Datas
      - Rating ``1-10`` (integer)
    * - ``date``
      - Date of review entry
-     - Date 
+     - Date
    * - ``usefulCount``
      - Number of users who found the review useful
      - Continuous value ``>=0`` (integer)
@@ -138,7 +138,11 @@ Get descriptives for all splits by calling ``box.explore()`` or ``box.explore.de
 
    box.explore()
 
-:raw-html-m2r:`<img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explore.png?raw=true" alt="drugscom_explore" width="400"/>`
+
+.. image:: https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explore.png?raw=true
+   :target: https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explore.png?raw=true
+   :alt: drugscom_explore
+
 
 Even though we trust you could have calculated each of these yourselves, it sure saves a lot of work. One simple call and that is all there is. Let's ``examine`` (see what I did there?) some more impressive functionalities.
 
@@ -163,7 +167,11 @@ The ``explabox`` even allows us to dive deeper into where the model went wrong. 
 
    box.examine.wrongly_classified()
 
-:raw-html-m2r:`<img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_examine.png?raw=true" alt="drugscom_examine" width="400"/>`
+
+.. image:: https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_examine.png?raw=true
+   :target: https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_examine.png?raw=true
+   :alt: drugscom_examine
+
 
 :raw-html-m2r:`<a id='explain'></a>`
 
@@ -187,7 +195,11 @@ Why did my model predict a class label? Look no further than ``box.explain.expla
 
    box.explain.explain_prediction('Hate this medicine so much!')
 
-:raw-html-m2r:`<img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explain.png?raw=true" alt="drugscom_explain" width="400"/>`
+
+.. image:: https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explain.png?raw=true
+   :target: https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explain.png?raw=true
+   :alt: drugscom_explain
+
 
 *Even more magic!*
 
@@ -361,7 +373,7 @@ F. How does the model perform if you start each review with 'This is a review.'?
 
    <details>
        <summary>Show hints</summary>
-       Try 
+       Try
    ```python
    from explabox.expose import OneToOnePerturbation
    perturbation = OneToOnePerturbation(lambda x: f'This is a review. {x}')
@@ -378,7 +390,7 @@ G. Does adding random typos degrade model performance?
 
    <details>
        <summary>Show hints</summary>
-       Try 
+       Try
    ```python
    from explabox.expose.text import OneToOnePerturbation
    perturbation = OneToOnePerturbation(lambda x: f'{x}!!')

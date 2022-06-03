@@ -87,7 +87,7 @@ Get descriptives for all splits by calling `box.explore()` or `box.explore.descr
 ```python
 box.explore()
 ```
-<img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explore.png?raw=true" alt="drugscom_explore" width="400"/>
+![drugscom_explore](https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explore.png?raw=true)
 
 Even though we trust you could have calculated each of these yourselves, it sure saves a lot of work. One simple call and that is all there is. Let's `examine` (see what I did there?) some more impressive functionalities.
 
@@ -108,7 +108,7 @@ The `explabox` even allows us to dive deeper into where the model went wrong. Le
 ```python
 box.examine.wrongly_classified()
 ```
-<img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_examine.png?raw=true" alt="drugscom_examine" width="400"/>
+![drugscom_examine](https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_examine.png?raw=true)
 
 <a id='explain'></a>
 ### 4. Explain
@@ -126,7 +126,7 @@ Why did my model predict a class label? Look no further than `box.explain.explai
 ```python
 box.explain.explain_prediction('Hate this medicine so much!')
 ```
-<img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explain.png?raw=true" alt="drugscom_explain" width="400"/>
+![drugscom_explain](https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explain.png?raw=true)
 
 _Even more magic!_
 
