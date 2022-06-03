@@ -20,7 +20,7 @@
 The `explabox` aims to support data scientists and machine learning (ML) engineers in explaining, testing and documenting AI/ML models, developed in-house or acquired externally. The `explabox` turns your **ingestibles** (AI/ML model and/or dataset) into **digestibles** (statistics, explanations or sensitivity insights)!
 
 *<p align="center">
-  <img src="https://github.com/MarcelRobeer/explabox/blob/main/img/ingestibled-to-digestibles.png?raw=true" alt="ingestibles to digestibles">*
+  <img style="max-width: 800px;" src="https://github.com/MarcelRobeer/explabox/blob/main/img/ingestibles-to-digestibles.png?raw=true" alt="ingestibles to digestibles">*
 </p>
 
 The `explabox` can be used to:
