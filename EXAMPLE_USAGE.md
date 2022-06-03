@@ -7,8 +7,8 @@ also includes a pretrained black-box classifier, which aims to predict whether a
 `negative` (1-5), `neutral` (5-6) or `positive` (6-10).
 
 **To start the demo, you require:**
-- Python 3.8 or above (see the [installation guide](https://www.python.org/downloads/))
-- Jupyter Notebook installed (see the [installation guide](https://jupyter.org/install))
+- Python 3.8 or above (see the [Python installation guide](https://www.python.org/downloads/))
+- Jupyter Notebook installed (see the [Jupyter installation guide](https://jupyter.org/install))
 - An active internet connection
 
 **Install the demo via:**
@@ -23,12 +23,12 @@ We have prepared a [Jupyter Notebook](https://git.science.uu.nl/m.j.robeer/expla
 ### Let's get started!
 The [Jupyter Notebook demo](https://git.science.uu.nl/m.j.robeer/explabox-demo-drugreview/-/blob/main/explabox_demo_drugreview.ipynb) will walk you through importing your data and model into the `explabox`, and go over some examples for the `explore`, `examine`, `expose` and `explain` parts. The demo is structured as follows:
 
-1. **[Ingestibles](#ingestibles)**: importing your model and data.
-2. **[Explore](#explore)**: exploring the dataset descriptives.
-3. **[Examine](#examine)**: examine model behavior on the data.
-4. **[Explain](#explain)**: explain how the model behaves in general (global) and for specific predictions (local).
-5. **[Expose](#expose)**: find where your model is sensitive to, when it breaks down and when its behavior is unfair.
-6. **[Challenges](#challenges)**: Challenges to further `explore`, `examine`, `expose` and `explain` your ingestibles and turn them into digestibles.
+1. [Ingestibles](#ingestibles): importing your model and data.
+2. [Explore](#explore): exploring the dataset descriptives.
+3. [Examine](#examine): examine model behavior on the data.
+4. [Explain](#explain): explain how the model behaves in general (global) and for specific predictions (local).
+5. [Expose](#expose): find where your model is sensitive to, when it breaks down and when its behavior is unfair.
+6. [Challenges](#challenges): Challenges to further `explore`, `examine`, `expose` and `explain` your ingestibles and turn them into digestibles.
 
 <a id='ingestibles'></a>
 ### 1. Ingestibles
@@ -184,7 +184,7 @@ For both functions there are many techniques to choose from. Why not try exposin
 ### 5.2 Fairness & robustness: pattern effects
 Sometimes you need to go beyond the data to see model robustness and fairness. For the text domain, you can generate data with the [text_sensitivity](https://text-sensitivity.readthedocs.io/) package and see how the models performs on them.
 
-To do so, you write so-called _patterns_ that generate data for you. At spots where you want some data filled in, you simply include curly braces and we fill in the data for you. For some entities (`name`, `city`, `email`, `year`, `month`, ...) we can even generate the data for you. Patterns with a pipe (`|`) simply put in the values you provided. Under the hood, it uses `from_pattern(...)` in the [text_sensitivity](https://text-sensitivity.readthedocs.io/en/latest/example-usage.html) package. Example patterns include:
+To do so, you write so-called _patterns_ that generate data for you. At spots where you want some data filled in, you simply include curly braces and we fill in the data for you. For some entities (`name`, `city`, `email`, `year`, `month`, ...) we can even generate the data for you. Patterns with a pipe (`|`) simply put in the values you provided. Under the hood, it uses `from_pattern(...)` in the [text_sensitivity example usage](https://text-sensitivity.readthedocs.io/en/latest/example-usage.html) package. Example patterns include:
 
 - Pattern `from_pattern('My phone number is {phone_number}')` generates _'My phone number is 001-364-187-2809', 'My phone number is +1-099-759-8699', ..._
 - Pattern `from_pattern('{upper:name} is from {city}.)'` generates _'JAMES RUSSEL is from Oklahoma City.', 'BRIAN WILSON is from Millermouth.', ..._
