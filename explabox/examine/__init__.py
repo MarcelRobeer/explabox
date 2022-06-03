@@ -35,7 +35,7 @@ class Examiner(Readable, ModelMixin, IngestiblesMixin):
     ):
         """The Examiner calculates quantitative metrics on how the model performs.
 
-        The Examine requires 'data' and 'model' defined. It is included in the Explabox under the `.examine` property.
+        The Examiner requires 'data' and 'model' defined. It is included in the Explabox under the `.examine` property.
 
         Examples:
             Construct the examiner:

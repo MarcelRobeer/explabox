@@ -11,7 +11,6 @@ explabox
 .. toctree::
    :maxdepth: 4
 
-   explabox.examine
    explabox.explain
    explabox.explore
    explabox.expose
