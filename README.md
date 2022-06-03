@@ -108,7 +108,7 @@ Documentation for the `explabox` is hosted externally on [explabox.rtfd.io](http
 
 <a name="example-usage"/></a>
 ## Example usage
-...
+The [example usage guide](EXAMPLE_USAGE.md) showcases the `explabox` for a black-box model performing multi-class classification of the [UCI Drug Reviews](https://archive.ics.uci.edu/ml/datasets/Drug+Review+Dataset+%28Drugs.com%29#) dataset. If you want to follow along, simply `pip install explabox-demo-drugreview` and run the lines in the [Jupyter notebook](https://git.science.uu.nl/m.j.robeer/explabox-demo-drugreview/-/blob/main/explabox_demo_drugreview.ipynb) we have prepared for you!
 
 <a name="releases"/></a>
 ## Releases
