@@ -23,14 +23,14 @@ We have prepared a [Jupyter Notebook](https://git.science.uu.nl/m.j.robeer/expla
 ### Let's get started!
 The [Jupyter Notebook demo](https://git.science.uu.nl/m.j.robeer/explabox-demo-drugreview/-/blob/main/explabox_demo_drugreview.ipynb) will walk you through importing your data and model into the `explabox`, and go over some examples for the `explore`, `examine`, `expose` and `explain` parts. The demo is structured as follows:
 
-1. [Ingestibles](#ingestibles): importing your model and data.
-2. [Explore](#explore): exploring the dataset descriptives.
-3. [Examine](#examine): examine model behavior on the data.
-4. [Explain](#explain): explain how the model behaves in general (global) and for specific predictions (local).
-5. [Expose](#expose): find where your model is sensitive to, when it breaks down and when its behavior is unfair.
-6. [Challenges](#challenges): Challenges to further `explore`, `examine`, `expose` and `explain` your ingestibles and turn them into digestibles.
+1. **[Ingestibles](#ingestibles)**: importing your model and data.
+2. **[Explore](#explore)**: exploring the dataset descriptives.
+3. **[Examine](#examine)**: examine model behavior on the data.
+4. **[Explain](#explain)**: explain how the model behaves in general (global) and for specific predictions (local).
+5. **[Expose](#expose)**: find where your model is sensitive to, when it breaks down and when its behavior is unfair.
+6. **[Challenges](#challenges)**: Challenges to further `explore`, `examine`, `expose` and `explain` your ingestibles and turn them into digestibles.
 
-<a id='ingestibles'></a>
+<a name='ingestibles'></a>
 ### 1. Ingestibles
 The general idea of the `explabox` is to turn your `ingestibles` into `digestibles`. Your `ingestibles` (model and data) are typically opaque and difficult to understand. They require a lot of effort to trust and understand, to test, and communicate the results of these tests. We made that a lot simpler! We have several components that turn the `ingestibles` into `digestibles`: experiments that increase the transparency of your model, and are easy to understand and share.
 
@@ -82,7 +82,7 @@ Now you are ready to `.explore`, `.examine`, `.expose` and `.explain` with the `
 You can use `help(...)` at any time to better understand a model or function.
 ```
 
-<a id='explore'></a>
+<a name='explore'></a>
 ### 2. Explore
 The *Explorer* explores your data by providing descriptive statistics. It is included in the Explabox under the `.explore` property.
 
@@ -95,7 +95,7 @@ box.explore()
 
 Even though we trust you could have calculated each of these yourselves, it sure saves a lot of work. One simple call and that is all there is. Let's `examine` (see what I did there?) some more impressive functionalities.
 
-<a id='examine'></a>
+<a name='examine'></a>
 ### 3. Examine
 Now we've got a gist of what the data looks like, how does the model perform on the data? Simple, just call `box.examine()` or `box.examine.performance()`. To do so, the _Examiner_ requires a 'model' and 'data'. It is included in the `explabox` under the `.examine` property.
 
@@ -114,7 +114,7 @@ box.examine.wrongly_classified()
 ```
 ![drugscom_examine](https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_examine.png?raw=true)
 
-<a id='explain'></a>
+<a name='explain'></a>
 ### 4. Explain
 So what makes the `explabox` so unique? Why not use one of the many other tools for generating dataset descriptives and calculating performance?
 
@@ -174,7 +174,7 @@ box.explain.prototypes_criticisms(n_prototypes=5, n_criticisms=3)
 There are so many options for explanations, provided for text datasets by the [text_explainability](https://text-explainability.readthedocs.io/) package. Check it out to see what is possible!
 ```
 
-<a id='expose'></a>
+<a name='expose'></a>
 ### 5. Expose
 Last, but far from least, the _Exposer_ exposes your model and/or data, by performing sensitivity tests. With the _Exposer_ you can see model sensitivity to random inputs (_robustness_), test model generalizability (_robustness_), and see the effect of adjustments of attributes in the inputs (e.g. swapping male pronouns for female pronouns; _fairness_), for the dataset as a whole (_global_) as well as for individual instances (_local_).
 
@@ -227,7 +227,7 @@ box.expose.mean_score('My friend {first_name} from {city} {hates|dislikes} this 
                       selected_labels='negative')
 ```
 
-<a id='challenges'></a>
+<a name='challenges'></a>
 ### 6. Challenges
 Want some pointers on where to go to next? Want to further `.explore`, `.examine`, `.expose` and `.explain` the black-box we provided? We've got some fun ideas to try out for yourself! Be sure to use the [API Reference](https://explabox.readthedocs.io/en/latest/api/explabox.html) to figure out how to do them.
 

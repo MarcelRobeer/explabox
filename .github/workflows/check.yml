@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Get changed files
-      id: changed-files
+      id: changed_files
       uses: tj-actions/changed-files@v22.2
       with:
         files: |
@@ -21,21 +21,21 @@ jobs:
           *.rst
           *.py
     - name: (optional) Skipping linter
-      if: matrix.linter != 'check-manifest' && steps.changed-files.outputs.any_changed == 'false'
+      if: matrix.linter != 'check-manifest' && steps.changed_files.outputs.any_changed == 'false'
       run: echo "No files ending in .md, .rst or .py have been changed, skipping linter."
     - name: Set-up Python
-      if: matrix.linter == 'check-manifest' || steps.changed-files.outputs.any_changed == 'true'
+      if: matrix.linter == 'check-manifest' || steps.changed_files.outputs.any_changed == 'true'
       uses: actions/setup-python@v3
       with:
         python-version: '3.x'
     - name: Install dependencies
-      if: matrix.linter == 'check-manifest' || steps.changed-files.outputs.any_changed == 'true'
+      if: matrix.linter == 'check-manifest' || steps.changed_files.outputs.any_changed == 'true'
       run: |
         python3 -m pip install --upgrade pip
         python3 -m pip install tox
         python3 -m pip install ${{ matrix.linter }}
     - name: ${{ matrix.linter }}
-      if: matrix.linter == 'check-manifest' || steps.changed-files.outputs.any_changed == 'true'
+      if: matrix.linter == 'check-manifest' || steps.changed_files.outputs.any_changed == 'true'
       run: tox
       env:
         TOXENV: ${{ matrix.linter }}
@@ -66,7 +66,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Get changed files
-      id: changed-files-py
+      id: changed_files_py
       uses: tj-actions/changed-files@v22.2
       with:
         files: |
@@ -74,25 +74,30 @@ jobs:
           *.py
           tox.ini
     - name: Skipping tests
-      if: steps.changed-files-py.outputs.any_changed == 'false'
+      if: steps.changed_files_py.outputs.any_changed == 'false'
       run: echo "No files ending in .py have been changed, skipping tests."
     - name: Set up Python ${{ matrix.python-version }}
-      if: steps.changed-files-py.outputs.any_changed == 'true'
+      if: steps.changed_files_py.outputs.any_changed == 'true'
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
-      if: steps.changed-files-py.outputs.any_changed == 'true'
+      if: steps.changed_files_py.outputs.any_changed == 'true'
       run: |
         python3 -m pip install --upgrade pip
         python3 -m pip install tox tox-gh-actions
     - name: Test with tox
-      if: steps.changed-files-py.outputs.any_changed == 'true'
+      if: steps.changed_files_py.outputs.any_changed == 'true'
       run: tox
       env:
         PLATFORM: ${{ matrix.platform }}
+    - name: "Check file existence"
+      id: coverage_finished
+      uses: andstor/file-existence-action@v1
+      with:
+        files: "coverage.xml"
     - name: Upload Coverage to Codecov
-      if: steps.changed-files-py.outputs.any_changed == 'true'
+      if: steps.coverage_finished.outputs.files_exists == 'true'
       uses: codecov/codecov-action@v2
       with:
         fail_ci_if_error: true
