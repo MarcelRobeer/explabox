@@ -1,16 +1,34 @@
 .. image:: https://github.com/MarcelRobeer/explabox/blob/main/img/explabox.png?raw=true
-  :alt: Explabox logo
-  :align: center
+   :alt: Explabox logo
+   :align: center
 
 
 { ``Explore`` | ``Examine`` | ``Expose`` | ``Explain`` } your model with the *explabox*!
 ----------------------------------------------------------------------------------------
 
+.. image:: https://img.shields.io/pypi/v/explabox
+   :target: https://pypi.org/project/explabox/
+
+.. image:: https://pepy.tech/badge/explabox
+   :target: https://pepy.tech/project/explabox
+
+.. image:: https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10-blue
+   :target: https://pypi.org/project/explabox/
+
+.. image:: https://img.shields.io/pypi/l/explabox
+   :target: https://www.gnu.org/licenses/lgpl-3.0.en.html
+
+.. image:: https://github.com/MarcelRobeer/explabox/actions/workflows/check.yml/badge.svg
+   :target: https://github.com/MarcelRobeer/explabox/actions/workflows/check.yml
+
+.. image:: https://codecov.io/gh/MarcelRobeer/explabox/branch/main/graph/badge.svg?token=7XVEUE5PDM
+   :target: https://codecov.io/gh/MarcelRobeer/explabox
+
 The ``explabox`` aims to support data scientists and machine learning (ML) engineers in explaining, testing and documenting AI/ML models, developed in-house or acquired externally. The ``explabox`` turns your **ingestibles** (AI/ML model and/or dataset) into **digestibles** (statistics, explanations or sensitivity insights)!
 
 .. image:: https://github.com/MarcelRobeer/explabox/blob/main/img/ingestibles-to-digestibles.png?raw=true
-      :alt: Ingestibles to digestibles
-      :align: center
+   :alt: Ingestibles to digestibles
+   :align: center
 
 The ``explabox`` can be used to:
 
