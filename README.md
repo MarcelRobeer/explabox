@@ -6,6 +6,8 @@
 "{`Explore` | `Examine` | `Expose` | `Explain`} your model with the *explabox*!"**
 </h3>
 
+---
+
 [![PyPI](https://img.shields.io/pypi/v/explabox)](https://pypi.org/project/explabox/)
 [![Downloads](https://pepy.tech/badge/explabox)](https://pepy.tech/project/explabox)
 [![Python_version](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10-blue)](https://pypi.org/project/explabox/)
