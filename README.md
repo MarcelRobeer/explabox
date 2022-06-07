@@ -10,9 +10,9 @@
 [![Downloads](https://pepy.tech/badge/explabox)](https://pepy.tech/project/explabox)
 [![Python_version](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10-blue)](https://pypi.org/project/explabox/)
 [![License](https://img.shields.io/pypi/l/explabox)](https://www.gnu.org/licenses/lgpl-3.0.en.html)
-[![codecov](https://codecov.io/gh/MarcelRobeer/explabox/branch/main/graph/badge.svg?token=7XVEUE5PDM)](https://codecov.io/gh/MarcelRobeer/explabox)
 
 [![Lint, Security & Tests](https://github.com/MarcelRobeer/explabox/actions/workflows/check.yml/badge.svg)](https://github.com/MarcelRobeer/explabox/actions/workflows/check.yml)
+[![codecov](https://codecov.io/gh/MarcelRobeer/explabox/branch/main/graph/badge.svg?token=7XVEUE5PDM)](https://codecov.io/gh/MarcelRobeer/explabox)
 [![Documentation Status](https://readthedocs.org/projects/explabox/badge/?version=latest)](https://explabox.readthedocs.io/en/latest/?badge=latest)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
