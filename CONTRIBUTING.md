@@ -21,6 +21,7 @@ To ensure you are able to interactively edit and test your code, when contributi
 4. Perform all [quality checks](#quality-checks) when you are finished
 5. Update the [changelog](#changelog) to state which contributions you made
 6. Push your changes to a topic branch and create a [merge request](#merge-request), describing your contribution
+7. Actively watch if your contribution requires any further changes
 
 <a name="quality-checks"/></a>
 #### 3.1 Quality checks
