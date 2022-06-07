@@ -203,7 +203,7 @@ footer .footer p {
 }
 
 #quick-tour > img,
-.highlight-python + a.image-reference img {
+.highlight-python + p img {
     max-width: 480px;
     margin: -0.5rem auto 2rem auto;
     display: block;

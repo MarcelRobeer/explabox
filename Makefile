@@ -10,10 +10,10 @@ source_dir := $(docs_dir)/source
 docs:
 	cp img/$(package)-logo-text.png $(source_dir)/_static
 	sphinx-apidoc --module-first --no-toc --force --templatedir=$(source_dir)/_templates/ -o $(source_dir)/api explabox
-	m2r CHANGELOG.md --dry-run > $(source_dir)/changelog.rst
-	m2r CONTRIBUTING.md --dry-run > $(source_dir)/contributing.rst
-	m2r INSTALLATION.md --dry-run > $(source_dir)/installation.rst
-	m2r EXAMPLE_USAGE.md --dry-run > $(source_dir)/example-usage.rst
+	cp CHANGELOG.md $(source_dir)/changelog.md
+	cp CONTRIBUTING.md $(source_dir)/contributing.md
+	cp INSTALLATION.md $(source_dir)/installation.md
+	cp EXAMPLE_USAGE.md $(source_dir)/example-usage.md
 
 # Convert docs to HTML
 html:

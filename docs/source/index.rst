@@ -119,8 +119,8 @@ Citation
    :caption: Using explabox
    :hidden:
 
-   installation.rst
-   example-usage.rst
+   installation.md
+   example-usage.md
 
 .. toctree::
    :maxdepth: 4
@@ -134,8 +134,8 @@ Citation
    :caption: Development
    :hidden:
 
-   changelog.rst
-   contributing.rst
+   changelog.md
+   contributing.md
 
 Indices and tables
 ==================
