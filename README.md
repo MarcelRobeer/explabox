@@ -8,10 +8,14 @@
 
 ---
 
+_Package release_
+
 [![PyPI](https://img.shields.io/pypi/v/explabox)](https://pypi.org/project/explabox/)
 [![Downloads](https://pepy.tech/badge/explabox)](https://pepy.tech/project/explabox)
 [![Python_version](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10-blue)](https://pypi.org/project/explabox/)
 [![License](https://img.shields.io/pypi/l/explabox)](https://www.gnu.org/licenses/lgpl-3.0.en.html)
+
+_Development_
 
 [![Lint, Security & Tests](https://github.com/MarcelRobeer/explabox/actions/workflows/check.yml/badge.svg)](https://github.com/MarcelRobeer/explabox/actions/workflows/check.yml)
 [![codecov](https://codecov.io/gh/MarcelRobeer/explabox/branch/main/graph/badge.svg?token=7XVEUE5PDM)](https://codecov.io/gh/MarcelRobeer/explabox)
