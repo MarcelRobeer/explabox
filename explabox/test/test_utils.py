@@ -14,6 +14,10 @@
 import os
 import uuid
 
+import pytest
+from genbase import MetaInfo
+
+from explabox.utils import MultipleReturn
 from explabox.utils.io import create_output_dir
 
 FOLDER = f"TEST-{uuid.uuid4()}"
@@ -34,3 +38,12 @@ def test_existing_dir():
     create_output_dir(FOLDER)
     assert os.path.exists(FOLDER)
     os.rmdir(FOLDER)
+
+
+@pytest.mark.parametrize("n", range(1, 5))
+def test_multiple_return(n):
+    """Test: ..."""
+    digestible = MultipleReturn(*[MetaInfo(type="test") for _ in range(n)])
+    assert len(digestible) == n
+    assert isinstance(repr(digestible), str)
+    assert isinstance(str(digestible), str)

@@ -89,13 +89,8 @@ jobs:
       run: tox
       env:
         PLATFORM: ${{ matrix.platform }}
-
-  # finish:
-  #   needs: [linter, test]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Coverall Finished
-  #     uses: AndreMiras/coveralls-python-action@develop
-  #     with:
-  #       github-token: ${{ secrets.GITHUB_TOKEN }}
-  #       parallel-finished: true
+    - name: Upload Coverage to Codecov
+      if: steps.changed-files-py.outputs.any_changed == 'true'
+      uses: codecov/codecov-action@v2
+      with:
+        fail_ci_if_error: true

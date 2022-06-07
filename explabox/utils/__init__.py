@@ -26,10 +26,10 @@ class MultipleReturn:
         return "".join(v._repr_html_() for v in self.return_values)
 
     def __repr__(self):
-        return repr(self.return_values)
+        return ", ".join(v.__repr__() for v in self.return_values)
 
     def __str__(self):
-        return str(self.return_values)
+        return ", ".join(v.__str__() for v in self.return_values)
 
     def __getitem__(self, i):
         return self.return_values[i]
