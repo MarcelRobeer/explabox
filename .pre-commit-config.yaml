@@ -45,5 +45,5 @@ repos:
   - id: build-documentation
     name: Build Documentation
     language: system
-    entry: sphinx-apidoc --module-first --no-toc --force --templatedir=docs/source/_templates/ -o docs/source/api .
+    entry: sphinx-apidoc --module-first --no-toc --force --templatedir=docs/source/_templates/ -o docs/source/api explabox
     types: [python]
