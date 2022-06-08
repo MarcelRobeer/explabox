@@ -227,6 +227,12 @@ box.expose.mean_score('My friend {first_name} from {city} {hates|dislikes} this 
                       selected_labels='negative')
 ```
 
+```{admonition} NOTE
+:class: info
+
+For the text domain, sensitivity tests are provided by the [text_sensitivity](https://text-sensitivity.readthedocs.io/) package. Try the [text_sensitivity example usage guide](https://text-sensitivity.readthedocs.io/en/latest/example-usage.html) to get acquainted with all that is possible.
+```
+
 <a name='challenges'></a>
 ### 6. Challenges
 Want some pointers on where to go to next? Want to further `.explore`, `.examine`, `.expose` and `.explain` the black-box we provided? We've got some fun ideas to try out for yourself! Be sure to use the [API Reference](https://explabox.readthedocs.io/en/latest/api/explabox.html) to figure out how to do them.
