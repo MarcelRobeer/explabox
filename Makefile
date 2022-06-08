@@ -1,3 +1,5 @@
+PYTHON ?= python3
+
 .PHONY: docs html quality precommit coverage
 
 package := explabox
@@ -22,10 +24,10 @@ html:
 
 # Check style quality
 quality:
-	python3 -m black --line-length=120 --check explabox
-	python3 -m isort --line-length=120 --profile=black --check-only explabox
+	$(PYTHON) -m black --line-length=120 --check explabox
+	$(PYTHON) -m isort --line-length=120 --profile=black --check-only explabox
 	flake8 explabox --config .flake8
-	python3 -m doc8 ./docs
+	$(PYTHON) -m doc8 ./docs
 	check-manifest
 
 # Fix styles and check security issues

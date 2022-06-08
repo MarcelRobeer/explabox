@@ -43,7 +43,7 @@ extras["quality"] = get_tox_reqs(
     ["testenv:black", "testenv:check-manifest", "testenv:doc8", "testenv:flake8", "testenv:isort"]
 )
 extras["test"] = get_tox_reqs("testenv")
-extras["dev"] = list(set(extras["docs"] + extras["quality"] + extras["test"]))
+extras["dev"] = list(set(extras["docs"] + extras["quality"] + extras["test"])) + ["make-to-batch>=0.2.3"]
 extras["all"] = list(set([i for subi in extras.values() for i in subi]))
 
 
