@@ -7,10 +7,10 @@ Install Python on your operating system using the [Python Setup and Usage](https
 ### 2. Installing `explabox`
 `explabox` can be installed:
 
-* _using_ `pip`: `pip3 install` (released on [PyPI](https://pypi.org/project/explabox) )
-* _locally_: cloning the repository and using `python3 setup.py install`
+1. _using_ `pip`: `pip3 install` (released on [PyPI](https://pypi.org/project/explabox) )
+2. _locally_: cloning the repository and using `python3 setup.py install`
 
-#### Using `pip`
+#### _Option 1_: Using `pip`
 1. Open up a `terminal` (Linux / macOS) or `cmd.exe`/`powershell.exe` (Windows)
 2. Run the command:
     - `pip3 install explabox`, or
@@ -24,16 +24,14 @@ Installing collected packages: explabox
 Successfully installed explabox
 ```
 
-#### Locally
+#### _Option 2_: Locally
 1. Download the folder from `GitHub`:
     - Clone this repository, or
     - Download it as a `.zip` file and extract it.
 2. Open up a `terminal` (Linux / macOS) or `cmd.exe`/`powershell.exe` (Windows) and navigate to the folder you downloaded `explabox` in.
 3. In the main folder (containing the `setup.py` file) run:
-    - `python3 setup.py install`,
-    - `python setup.py install`,
-    - `pip3 install .` or,
-    - `pip install .`
+    - `python3 setup.py install` / `python setup.py install` or,
+    - `pip3 install .` / `pip install .`
 
 ```console
 user@terminal:~$ cd ~/explabox

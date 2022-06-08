@@ -6,6 +6,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Makefile for Windows (`make.bat`)
+- License to each file
+- Coverage testing on `codecov.io`
+- Hosting documentation on `readthedocs.io`
+- Dependencies for `explabox[dev]`, `explabox[docs]` and `explabox[all]`
+- Contribution guide
+- Software testing on Python `3.8`, `3.9` and `3.10`; for `windows`, `ubuntu` and `macos`
+- Issue templates
+- Pull request template
+- Example usage with `explabox-demo-drugreview`
+- Finished all docstrings
+
+### Changed
+- Ported repository to GitHub
+- CI/CD pipeline for GitHub actions
+
+### Removed
+- Components from Gitlab repository
+
+## [0.9b6]
+### Added
 - README.md
 - Sphinx documentation
 - Makefile
@@ -21,3 +42,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `git` setup
 
 [Unreleased]: https://github.com/MarcelRobeer/explabox
+[0.9b6]: https://pypi.org/project/explabox/0.9b6
