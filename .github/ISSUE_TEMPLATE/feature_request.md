@@ -2,7 +2,7 @@
 name: Feature request
 about: Request a feature you yourself will contribute, or ask the community to provide the feature for you
 title: ''
-labels: bug
+labels: enhancement
 assignees: ''
 
 ---
