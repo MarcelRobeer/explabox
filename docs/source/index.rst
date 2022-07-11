@@ -94,7 +94,7 @@ Then ``.explore``\ , ``.examine``\ , ``.expose`` and ``.explain`` your model:
 .. code-block:: python
 
    >>> # Get a local explanation (uses LIME by default)
-   >>> box.explain.local_explanation('Hate this medicine so much!')
+   >>> box.explain.explain_prediction('Hate this medicine so much!')
 
 
 .. image:: https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explain.png?raw=true
