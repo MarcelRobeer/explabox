@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Pull request template
 - Example usage with `explabox-demo-drugreview`
 - Finished all docstrings
+- Return `html` and `raw_html` from MultipleReturn
 
 ### Changed
 - Ported repository to GitHub

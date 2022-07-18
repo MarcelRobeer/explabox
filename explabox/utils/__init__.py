@@ -37,6 +37,18 @@ class MultipleReturn:
     def __len__(self):
         return len(self.return_values)
 
+    @property
+    def raw_html(self):
+        if len(self.return_values) == 1:
+            return self.return_values[0].html
+        return "".join(v.raw_html for v in self.return_values)
+
+    @property
+    def html(self):
+        if len(self.return_values) == 1:
+            return self.return_values[0].html
+        return "".join(v.html for v in self.return_values)
+
     def to_config(self):
         if len(self.return_values) == 1:
             return self.return_values[0].to_config()
