@@ -109,6 +109,9 @@ Using explabox
 :doc:`example-usage`
     An extended usage example, showcasing how you can *explore*, *examine*, *expose* and *explain* your AI model.
 
+:doc:`overview`
+   Overview of the general idea behind the `explabox` and its package structure.
+
 :doc:`Explabox API reference <api/explabox>`
     A reference to all classes and functions included in the `explabox`.
 
@@ -145,6 +148,7 @@ Citation
    :caption: API reference
    :hidden:
 
+   overview.md
    api/explabox.rst
 
 .. toctree::
