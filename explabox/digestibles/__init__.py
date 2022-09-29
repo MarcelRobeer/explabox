@@ -20,7 +20,7 @@ from genbase.utils import extract_metrics
 from instancelib.typehints import KT, LT
 from text_explainability.generation.return_types import Instances
 
-from .ui.notebook import Render
+from ..ui.notebook import Render
 
 
 class Performance(MetaInfo):
