@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.9b7]
 ### Added
 - Makefile for Windows (`make.bat`)
 - License to each file
@@ -18,10 +20,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Example usage with `explabox-demo-drugreview`
 - Finished all docstrings
 - Return `html` and `raw_html` from MultipleReturn
+- Probability scores to feature contributions
 
 ### Changed
 - Ported repository to GitHub
 - CI/CD pipeline for GitHub actions
+
+### Fixed
+- Ensured stable dependency versions of `instancelib` and `text_explainability`
+- `numpy.str` deprecation warning
 
 ### Removed
 - Components from Gitlab repository
@@ -44,3 +51,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [Unreleased]: https://github.com/MarcelRobeer/explabox
 [0.9b6]: https://pypi.org/project/explabox/0.9b6
+[0.9b7]: https://pypi.org/project/explabox/0.9b7
