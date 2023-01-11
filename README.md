@@ -108,6 +108,11 @@ Documentation for the `explabox` is hosted externally on [explabox.rtfd.io](http
 
 <img src="https://github.com/MarcelRobeer/explabox/blob/main/img/layers.png?raw=true" alt="layers" width="400"/>
 
+The `explabox` consists of three layers:
+1. __Ingestibles__ provide a unified interface for importing models and data, which abstracts away how they are accessed and allows for optimized processing.
+2. __Analyses__ are used to turn opaque ingestibles into transparent digestibles. The four types of analyses are _explore_, _examine_, _explain_ and _expose_.
+3. __Digestibles__ provide insights into model behavior and data, assisting stakeholders in increasing the explainability, fairness, auditability and safety of their AI systems. Depending on their needs, these can be accessed interactively (e.g. via the Jupyter Notebook UI or embedded via the API) or through static reporting.
+
 <a name="example-usage"/></a>
 ## Example usage
 The [example usage guide](EXAMPLE_USAGE.md) showcases the `explabox` for a black-box model performing multi-class classification of the [UCI Drug Reviews](https://archive.ics.uci.edu/ml/datasets/Drug+Review+Dataset+%28Drugs.com%29#) dataset.

@@ -1,10 +1,10 @@
 # Overview
-The Explabox aims to provide insights into your data and model behavior, by transforming _ingestibles_ into _digestibles_ through _analyses_.
+The Explabox aims to provide insights into your data and model behavior, by transforming _ingestibles_ into _digestibles_ through _analyses_. The Explabox is split into three layers:
 
 ![layers](https://github.com/MarcelRobeer/explabox/blob/main/img/layers.png?raw=true)
-
+ßß
 ## Ingestibles
-Ingestibles encompass your `model` and `data`. The `Ingestible` class provides a unified interface for accessing your `model` (e.g. its meta-information and prediction function) and your `data` (e.g. the instances, the various splits, and corresponding ground-truth labels).
+Ingestibles encompass your `model` and `data`. The `Ingestible` class provides a unified interface for accessing your `model` (e.g. its meta-information and prediction function) and your `data` (e.g. the instances, the various splits, and corresponding ground-truth labels). Ingestibles contain meta-information of the data and model (to determine relevant functions for analyses and for auditability) and allow for optimized inferencing through batching and lazy loading.
 
 ### Importing ingestibles
 The `model` can be imported via the `import_model()` function, while the `data` is imported via the `import_data()` function.
@@ -18,7 +18,7 @@ Supported `models` are:
 Supported `data` are:
 
 - _NumPy_ arrays
-- _Pandas_ dataframes
+- _Pandas_ DataFrames
 - _HuggingFace_ datasets
 - Files (online or offline):
     - Tabular dataset files (`.csv`, `.tsv`, `.json`, `.txt`, `.xls`, `.xlsx`, ...)
@@ -47,7 +47,7 @@ For example, using the `Examiner` one can obtain (for a classification task) all
 ```
 
 ## Digestibles
-Digestibles are the return type after performing an operation. The information contained in them can be accessed in various ways. Example methods of access include:
+Digestibles are the return type after performing an analysis. The information contained in them can be accessed in various ways (i.e. _interactively_ or _statically_), depending on stakeholders needs. Example methods of access include:
 
 - Python object (i.e. the raw property values)
 - Object descriptions:
