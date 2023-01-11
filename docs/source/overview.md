@@ -1,5 +1,5 @@
 # Overview
-The Explabox aims to provide insights into your data and model behavior, by transforming _ingestibles_ into _digestibles_ through _analyses_. The Explabox is split into three layers:
+The Explabox aims to provide insights into your data and model behavior, by transforming _ingestibles_ into _digestibles_ through four types of _analyses_. The Explabox is split into three layers:
 
 ![layers](https://github.com/MarcelRobeer/explabox/blob/main/img/layers.png?raw=true)
 ßß
@@ -26,7 +26,7 @@ Supported `data` are:
     - Pickled Python objects (`.pkl`)
     - _HDF5_ files
 
-## Analyses: Turning Ingestibles into Digestibles
+## Analyses: turning ingestibles into digestibles
 Once imported, these ingestibles can be made more informative by turning them into digestibles. Each analysis provides functions to enhance the transparency of the model and/or data:
 
 | Analysis | Class | Description | Requires |
