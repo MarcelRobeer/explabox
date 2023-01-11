@@ -34,7 +34,7 @@ The ``explabox`` can be used to:
 
 - **Explore**\ : describe aspects of the model and data.
 - **Examine**\ : calculate quantitative metrics on how the model performs.
-- **Expose**\ : see model sensitivity to random inputs (\ *robustness*\ ), test model generalizability (\ *robustness*\ ), and see the effect of adjustments of attributes in the inputs (e.g. swapping male pronouns for female pronouns; *fairness*\ ), for the dataset as a whole (\ *global*\ ) as well as for individual instances (\ *local*\ ).
+- **Expose**\ : see model sensitivity to random inputs (\ *safety*\ ), test model generalizability (\e.g. sensitivity to typos; *robustness*\ ), and see the effect of adjustments of attributes in the inputs (e.g. swapping male pronouns for female pronouns; *fairness*\ ), for the dataset as a whole (\ *global*\ ) as well as for individual instances (\ *local*\ ).
 - **Explain**\ : use XAI methods for explaining the whole dataset (\ *global*\ ), model behavior on the dataset (\ *global*\ ), and specific predictions/decisions (\ *local*\ ).
 
 A number of experiments in the ``explabox`` can also be used to provide transparency and explanations to stakeholders, such as end-users or clients.

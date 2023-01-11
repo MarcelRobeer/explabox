@@ -24,8 +24,8 @@ The `explabox` aims to support data scientists and machine learning (ML) enginee
 The `explabox` can be used to:
 
 - __Explore__: describe aspects of the model and data.
-- __Examine__: calculate quantitative metrics on how the model performs
-- __Expose__: see model sensitivity to random inputs (_robustness_), test model generalizability (_robustness_), and see the effect of adjustments of attributes in the inputs (e.g. swapping male pronouns for female pronouns; _fairness_), for the dataset as a whole (_global_) as well as for individual instances (_local_).
+- __Examine__: calculate quantitative metrics on how the model performs.
+- __Expose__: see model sensitivity to random inputs (_safety_), test model generalizability (e.g. sensitivity to typos; _robustness_), and see the effect of adjustments of attributes in the inputs (e.g. swapping male pronouns for female pronouns; _fairness_), for the dataset as a whole (_global_) as well as for individual instances (_local_).
 - __Explain__: use XAI methods for explaining the whole dataset (_global_), model behavior on the dataset (_global_), and specific predictions/decisions (_local_).
 
 A number of experiments in the `explabox` can also be used to provide transparency and explanations to stakeholders, such as end-users or clients.
