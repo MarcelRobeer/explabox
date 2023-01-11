@@ -106,6 +106,8 @@ See the [full installation guide](INSTALLATION.md) for troubleshooting the insta
 ## Documentation
 Documentation for the `explabox` is hosted externally on [explabox.rtfd.io](https://explabox.rtfd.io).
 
+<img src="https://github.com/MarcelRobeer/explabox/blob/main/img/layers.png?raw=true" alt="layers" width="400"/>
+
 <a name="example-usage"/></a>
 ## Example usage
 The [example usage guide](EXAMPLE_USAGE.md) showcases the `explabox` for a black-box model performing multi-class classification of the [UCI Drug Reviews](https://archive.ics.uci.edu/ml/datasets/Drug+Review+Dataset+%28Drugs.com%29#) dataset.

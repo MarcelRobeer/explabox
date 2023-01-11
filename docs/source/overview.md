@@ -1,5 +1,7 @@
 # Overview
-The Explabox aims to provide insights into your data and model behavior, by transforming _ingestibles_ into _digestibles_.
+The Explabox aims to provide insights into your data and model behavior, by transforming _ingestibles_ into _digestibles_ through _analyses_.
+
+![layers](https://github.com/MarcelRobeer/explabox/blob/main/img/layers.png?raw=true)
 
 ## Ingestibles
 Ingestibles encompass your `model` and `data`. The `Ingestible` class provides a unified interface for accessing your `model` (e.g. its meta-information and prediction function) and your `data` (e.g. the instances, the various splits, and corresponding ground-truth labels).
@@ -24,10 +26,10 @@ Supported `data` are:
     - Pickled Python objects (`.pkl`)
     - _HDF5_ files
 
-## Turning Ingestibles into Digestibles
-Once imported, these ingestibles can be made more informative by turning them into digestibles. Each subpackage provides functions to enhance the transparency of the model and/or data:
+## Analyses: Turning Ingestibles into Digestibles
+Once imported, these ingestibles can be made more informative by turning them into digestibles. Each analysis provides functions to enhance the transparency of the model and/or data:
 
-| Subpackage | Class | Description | Requires |
+| Analysis | Class | Description | Requires |
 |------------|-------|-------------|----------|
 | `explore` | `Explorer` | The Explorer explores your data by providing descriptive statistics. | _data_ |
 | `examine` | `Examiner` | The Examiner calculates quantitative metrics on how the model performs. | _data_, _model_ |
