@@ -28,11 +28,14 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: '3.x'
-    - name: Install dependencies
-      if: matrix.linter == 'check-manifest' || steps.changed_files.outputs.any_changed == 'true'
+    - name: Install HDF5
+      if: matrix.linter == 'check-manifest'
       run: |
         sudo apt-get update
         sudo apt-get install libhdf5-dev
+    - name: Install dependencies
+      if: matrix.linter == 'check-manifest' || steps.changed_files.outputs.any_changed == 'true'
+      run: |
         python3 -m pip install --upgrade pip
         python3 -m pip install tox
         python3 -m pip install ${{ matrix.linter }}
