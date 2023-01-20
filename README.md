@@ -63,8 +63,8 @@ Then `.explore`, `.examine`, `.expose` and `.explain` your model:
 <img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_examine.png?raw=true" alt="drugscom_examine" width="400"/>
 
 ```python
->>> # Compare the performance on the test split before and after transforming all tokens to uppercase
->>> box.expose.compare_metrics(split='test', perturbation='upper')
+>>> # Compare the performance on the test split before and after adding typos to the text
+>>> box.expose.compare_metrics(split='test', perturbation='add_typos')
 ```
 <img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_expose.png?raw=true" alt="drugscom_expose" width="400"/>
 

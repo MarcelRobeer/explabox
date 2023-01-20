@@ -100,8 +100,9 @@ Even though we trust you could have calculated each of these yourselves, it sure
 Now we've got a gist of what the data looks like, how does the model perform on the data? Simple, just call `box.examine()` or `box.examine.performance()`. To do so, the _Examiner_ requires a 'model' and 'data'. It is included in the `explabox` under the `.examine` property.
 
 ```python
-box.examine(split="test")
+box.examine(split='test')
 ```
+![drugscom_examine_performance](https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_examine_performance.png?raw=true)
 
 _That's some magic!_
 
@@ -161,6 +162,7 @@ The datasets include a lot of examples. Can we summarize them in fewer examples,
 ```python
 box.explain.prototypes(n=5, method='kmedoids')
 ```
+![drugscom_explain_global](https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explain_global.png?raw=true)
 
 Or maybe add some outliers (so-called _criticisms_), that are a-typical for the dataset split:
 
@@ -176,26 +178,33 @@ There are so many options for explanations, provided for text datasets by the [t
 
 <a name='expose'></a>
 ### 5. Expose
-Last, but far from least, the _Exposer_ exposes your model and/or data, by performing sensitivity tests. With the _Exposer_ you can see model sensitivity to random inputs (_robustness_), test model generalizability (_robustness_), and see the effect of adjustments of attributes in the inputs (e.g. swapping male pronouns for female pronouns; _fairness_), for the dataset as a whole (_global_) as well as for individual instances (_local_).
+Last, but far from least, the _Exposer_ exposes your model and/or data, by performing sensitivity tests. With the _Exposer_ you can see model sensitivity to random inputs (_safety_), test model generalizability (_robustness_), and see the effect of adjustments of attributes in the inputs (e.g. swapping male pronouns for female pronouns; _fairness_), for the dataset as a whole (_global_) as well as for individual instances (_local_).
 
 The _Exposer_ requires ‘data’ and ‘model’ defined. It is included in the `explabox` under the `.expose` property.
 
-#### 5.1 Robustness
-Does your text classifier break down at some inputs? Strings it cannot parse? Instances that empty or are too long? Try exposing the input space to see its robustness:
+#### 5.1 Safety
+Does your text classifier break down at some inputs? Strings it cannot parse? Instances that empty or are too long? Try exposing the input space to see its safety:
 
 ```python
 box.expose.input_space('all', min_length=0, max_length=6000)
 ```
 
+#### 5.2 Robustness
 Or take a global approach by seeing what happens if you transform all instances in the 'test' split from their original form to uppercase:
+
+```python
+box.expose.compare_metric(perturbation='upper')
+```
+
+For both functions there are many techniques to choose from. Why not try exposing the input space with only `'ascii_upper'` and `'whitespace'`? Or try see how introducing `'add_typos'` affects your model?
 
 ```python
 box.expose.compare_metric(perturbation='add_typos')
 ```
+![drugscom_expose](https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_expose.png?raw=true)
 
-For both functions there are many techniques to choose from. Why not try exposing the input space with only `'ascii_upper'` and `'whitespace'`? Or try see how introducing `'random_typos'` affects your model?
 
-#### 5.2 Fairness & robustness: pattern effects
+#### 5.2 Fairness & Robustness: pattern effects
 Sometimes you need to go beyond the data to see model robustness and fairness. For the text domain, you can generate data with the [text_sensitivity](https://text-sensitivity.readthedocs.io/) package and see how the models performs on them.
 
 To do so, you write so-called _patterns_ that generate data for you. At spots where you want some data filled in, you simply include curly braces and we fill in the data for you. For some entities (`name`, `city`, `email`, `year`, `month`, ...) we can even generate the data for you. Patterns with a pipe (`|`) simply put in the values you provided. Under the hood, it uses `from_pattern(...)` in the [text_sensitivity example usage](https://text-sensitivity.readthedocs.io/en/latest/example-usage.html) package. Example patterns include:

@@ -2,7 +2,7 @@
 The Explabox aims to provide insights into your data and model behavior, by transforming _ingestibles_ into _digestibles_ through four types of _analyses_. The Explabox is split into three layers:
 
 ![layers](https://github.com/MarcelRobeer/explabox/blob/main/img/layers.png?raw=true)
-ßß
+
 ## Ingestibles
 Ingestibles encompass your `model` and `data`. The `Ingestible` class provides a unified interface for accessing your `model` (e.g. its meta-information and prediction function) and your `data` (e.g. the instances, the various splits, and corresponding ground-truth labels). Ingestibles contain meta-information of the data and model (to determine relevant functions for analyses and for auditability) and allow for optimized inferencing through batching and lazy loading.
 

@@ -83,8 +83,8 @@ Then ``.explore``\ , ``.examine``\ , ``.expose`` and ``.explain`` your model:
 
 .. code-block:: python
 
-   >>> # Compare the performance on the test split before and after transforming all tokens to uppercase
-   >>> box.expose.compare_metrics(split='test', perturbation='upper')
+   >>> # Compare the performance on the test split before and after adding typos to the text
+   >>> box.expose.compare_metrics(split='test', perturbation='add_typos')
 
 
 .. image:: https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_expose.png?raw=true
@@ -140,6 +140,7 @@ Citation
    :caption: Using explabox
    :hidden:
 
+   Home <index.rst>
    installation.md
    example-usage.md
 
