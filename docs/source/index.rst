@@ -140,7 +140,7 @@ Citation
    :caption: Using explabox
    :hidden:
 
-   Home <index.rst>
+   Home <self>
    installation.md
    example-usage.md
 
