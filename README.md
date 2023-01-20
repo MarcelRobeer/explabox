@@ -54,25 +54,25 @@ Then `.explore`, `.examine`, `.expose` and `.explain` your model:
 >>> # Explore the descriptive statistics for each split
 >>> box.explore()
 ```
-<img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explore.png?raw=true" alt="drugscom_explore" width="400"/>
+<img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explore.png?raw=true" alt="drugscom_explore" width="600"/>
 
 ```python
 >>> # Show wrongly classified instances
 >>> box.examine.wrongly_classified()
 ```
-<img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_examine.png?raw=true" alt="drugscom_examine" width="400"/>
+<img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_examine.png?raw=true" alt="drugscom_examine" width="600"/>
 
 ```python
 >>> # Compare the performance on the test split before and after adding typos to the text
 >>> box.expose.compare_metrics(split='test', perturbation='add_typos')
 ```
-<img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_expose.png?raw=true" alt="drugscom_expose" width="400"/>
+<img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_expose.png?raw=true" alt="drugscom_expose" width="600"/>
 
 ```python
 >>> # Get a local explanation (uses LIME by default)
 >>> box.explain.box.explain_prediction('Hate this medicine so much!')
 ```
-<img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explain.png?raw=true" alt="drugscom_explain" width="400"/>
+<img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explain.png?raw=true" alt="drugscom_explain" width="600"/>
 
 
 For more information, visit the [explabox documentation](https://explabox.rtfd.io).
