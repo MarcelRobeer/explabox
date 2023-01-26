@@ -1,5 +1,5 @@
-genbase>=0.2.11
+genbase>=0.2.12
 instancelib==0.4.4.1
-instancelib-onnx>=0.1.3; python_version < "3.10.0"
+instancelib-onnx>=0.1.3
 text_explainability>=0.6.5
 text_sensitivity>=0.3.2
