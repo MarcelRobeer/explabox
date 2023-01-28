@@ -95,7 +95,7 @@ class Exposer(Readable, IngestiblesMixin):
         seed: Optional[int] = 0,
         **kwargs,
     ) -> SuccessTest:
-        """Test the robustness of a machine learning model to different input types.
+        """Test the robustness of a machine learning model to different input types (safety).
 
         Example:
             Test a pretrained black-box `model` for its robustness to 1000 random strings (length 0 to 500),
