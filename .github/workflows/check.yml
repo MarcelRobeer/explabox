@@ -25,9 +25,9 @@ jobs:
       run: echo "No files ending in .md, .rst or .py have been changed, skipping linter."
     - name: Set-up Python
       if: steps.changed_files.outputs.any_changed == 'true'
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4
       with:
-        python-version: '3.x'
+        python-version: '3.8'
     - name: Update apt
       run: sudo apt-get update
     - name: Install HDF5
