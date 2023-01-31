@@ -106,11 +106,12 @@ Using explabox
 :doc:`installation`
     Installation guide, directly installing it via `pip`_ or through the `git`_.
 
-:doc:`example-usage`
-    An extended usage example, showcasing how you can *explore*, *examine*, *expose* and *explain* your AI model.
-    .. image:: https://colab.research.google.com/assets/colab-badge.svg
+.. |googlecolab| image:: https://colab.research.google.com/assets/colab-badge.svg
       :target: https://colab.research.google.com/drive/14lXvXV01DaSruSAhD1RLbILRl2mPQ4nS?usp=sharing
       :alt: Open in Colab
+
+:doc:`example-usage`
+    An extended usage example, showcasing how you can *explore*, *examine*, *expose* and *explain* your AI model. |googlecolab|
 
 :doc:`overview`
    Overview of the general idea behind the `explabox` and its package structure.
