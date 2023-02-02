@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Support for new pandas versions
+- Bugfix where tokens are not properly filtered in `TokenFrequency` (requires `text-explainability>=0.6.6`)
 
 ## [0.9b7]
 ### Added
