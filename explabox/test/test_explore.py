@@ -73,7 +73,7 @@ def test_valid_constructor_both():
 
 
 def test_call_valid_return():  # TODO: split
-    """Test: ..."""
+    """Test: Valid contents of `digestibles.Descriptives` after `explorer.__call__()`."""
     explorer = Explorer(ingestibles=INGESTIBLE)
     descriptives = explorer.__call__()
     assert isinstance(descriptives, Descriptives)
@@ -86,7 +86,7 @@ def test_call_valid_return():  # TODO: split
 
 
 def test_descriptives_valid_return():  # TODO: split
-    """Test: ..."""
+    """Test: Valid contents of `digestibles.Descriptives` after `explorer.descriptives()`."""
     explorer = Explorer(ingestibles=INGESTIBLE)
     descriptives = explorer.descriptives()
     assert isinstance(descriptives, Descriptives)
@@ -99,7 +99,7 @@ def test_descriptives_valid_return():  # TODO: split
 
 
 def test_instances_valid_return():
-    """Test: ..."""
+    """Test: Valid contents of `digestibles.Dataset`."""
     explorer = Explorer(data=DATA, model=MODEL)
     dataset = explorer.instances()
     assert isinstance(dataset, Dataset)
@@ -110,7 +110,7 @@ def test_instances_valid_return():
 
 
 def test_instances_length():
-    """Test: ..."""
+    """Test: Dataset length should be the same as the provided dataset length."""
     ingestible = INGESTIBLE
     explorer = Explorer(ingestibles=ingestible)
     dataset = explorer.instances()
@@ -120,7 +120,7 @@ def test_instances_length():
 
 @pytest.mark.parametrize("n", [0, 1, 2, 3, 10, 20])
 def test_instances_select(n):
-    """Test: ..."""
+    """Test: Selected sample should be of length n for every access method."""
     ingestible = INGESTIBLE
     explorer = Explorer(ingestibles=ingestible)
     dataset = explorer.instances()
@@ -136,7 +136,7 @@ def test_instances_select(n):
 
 @pytest.mark.parametrize("n", range(1, 5))
 def test_instances_max_select(n):
-    """Test: ..."""
+    """Test: Selected sample should cap out at length of dataset."""
     ingestible = INGESTIBLE
     explorer = Explorer(ingestibles=ingestible)
     dataset = explorer.instances()
@@ -153,7 +153,7 @@ def test_instances_max_select(n):
 @pytest.mark.parametrize("n", [0, 1, 2, 3, 10, 20])
 @pytest.mark.parametrize("seed", [0, 42, 99])
 def test_instances_sample(n, seed):
-    """Test: ..."""
+    """Test: Sample should be of length n regardless of random seed."""
     explorer = Explorer(ingestibles=INGESTIBLE)
     dataset = explorer.instances()
     assert len(dataset.sample(n=n, seed=seed)) == n
@@ -161,7 +161,7 @@ def test_instances_sample(n, seed):
 
 @pytest.mark.parametrize("n", [-1, -2, -3, -99])
 def test_instances_args_n(n):
-    """Test: ..."""
+    """Test: Negative n should raise ValueError."""
     explorer = Explorer(ingestibles=INGESTIBLE)
     dataset = explorer.instances()
     with pytest.raises(ValueError):
@@ -176,8 +176,10 @@ def test_instances_args_n(n):
     "label", ["punctuation", frozenset({"punctuation"}), "no_punctuation", frozenset({"no_punctuation"})]
 )
 def test_instances_filter_label(label):
-    """Test: ..."""
+    """Test: Different ways on filtering by label should only select label."""
     to_check = label if isinstance(label, frozenset) else frozenset({label})
+    explorer = Explorer(ingestibles=INGESTIBLE)
+    dataset = explorer.instances()
     assert all(label == to_check for label in dataset.filter(label).labels)
     assert all(label == to_check for label in dataset.filter(lambda instance: instance["label"] == to_check).labels)
     assert all(label == to_check for label in dataset.filter(lambda data, label: label == to_check).labels)
@@ -186,14 +188,14 @@ def test_instances_filter_label(label):
 
 @pytest.mark.parametrize("n", [0, 1, 2, 3, 10, 20])
 def test_instances_filter_args_len(n):
-    """Test: ..."""
+    """Test: Wrong length boolean sequence should raise ValueError."""
     with pytest.raises(ValueError):
         explorer = Explorer(ingestibles=INGESTIBLE)
         explorer.instances().filter([True] * n)
 
 
 def test_instances_filter_args_type():
-    """Test: ..."""
+    """Test: Wrong filter input type should raise ValueError."""
     with pytest.raises(ValueError):
         explorer = Explorer(ingestibles=INGESTIBLE)
         explorer.instances().filter(None)
