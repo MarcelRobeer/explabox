@@ -153,7 +153,7 @@ class Dataset(MetaInfo):
         Examples:
             Construct a dataset with 5 instances and get instance 2 through 4:
 
-            >>> dataset = Dataset(InstanceProvider(n=5), ['positive', 'negative', 'positive', 'neutral', 'positive'])
+            >>> dataset = Dataset(instances, ['positive', 'negative', 'positive', 'neutral', 'positive'])
             >>> dataset[2:4]
 
             Get the first instance:
@@ -312,8 +312,7 @@ class Dataset(MetaInfo):
             Filter if '@' character not in instance and label in ('neutral', 'negative'):
 
             >>> def filter_fn(instance):
-            ...     return '@' not in instance['data'] and \
-            ...         instance['label'] in (frozenset({'neutral'}), frozenset({'negative'}))
+            ...     return '@' not in instance['data'] and instance['label'] in (frozenset({'neutral'}), frozenset({'negative'}))
             >>> dataset.filter(filter_fn)
 
             Filter by boolean sequence (should be equal length to the number of instances):
