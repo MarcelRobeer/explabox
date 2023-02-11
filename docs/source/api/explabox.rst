@@ -11,10 +11,8 @@ explabox
 .. toctree::
    :maxdepth: 4
 
-   explabox.digestibles
    explabox.examine
    explabox.explain
-   explabox.explore
    explabox.expose
    explabox.ingestibles
    explabox.ui

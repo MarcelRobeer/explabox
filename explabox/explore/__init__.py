@@ -37,6 +37,12 @@ class Explorer(Readable, IngestiblesMixin):
             >>> explorer = Explorer(data=data)
             >>> explorer()
 
+            Show the first 10 instances of the test split
+
+            >>> from explabox.explore import Explorer
+            >>> explorer = Explorer(data=data)
+            >>> explorer.instances(split="test")[:10]
+
         Args:
             data (Optional[Environment], optional): Data for ingestibles. Defaults to None.
             ingestibles (Optional[Ingestible], optional): Ingestible. Defaults to None.
@@ -47,13 +53,28 @@ class Explorer(Readable, IngestiblesMixin):
         self.check_requirements(["data"])
 
     @add_callargs
-    def instances(self, split: str = "test", **kwargs):
+    def instances(self, split: str = "test", **kwargs) -> Dataset:
+        """Get the instances of the given split.
+
+        Args:
+            split (str, optional): Split to select. Defaults to "test".
+
+        Returns:
+            Dataset: Instances in the split.
+        """
         callargs = kwargs.pop("__callargs__", None)
 
         instances = self.ingestibles.get_named_split(split, validate=True)
-        labels = self.ingestibles.get_labels(instances)
+        labels = [self.ingestibles.labels[key] for key in instances]
+        labelset = self.ingestibles.labelset
 
-        return Dataset(instances == "test")
+        return Dataset(
+            instances=instances,
+            labels=labels,
+            labelset=labelset,
+            callargs=callargs,
+            **kwargs,
+        )
 
     @add_callargs
     def descriptives(self, **kwargs) -> Descriptives:

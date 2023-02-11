@@ -87,8 +87,21 @@ def wrongly_classified_renderer(meta, content, **renderargs):
     return html
 
 
+def dataset_renderer(meta, content, **renderargs):
+    """Renderer for `explabox.digestibles.Dataset`."""
+    instances = content.pop("instances", None)
+    labels = content.pop("labels", None)
+
+    kwargs = {}
+    if labels is not None:
+        kwargs["Annotated label"] = [f"<kbd>{next(iter(label))}</kbd>" for label in labels]
+
+    html = format_instances(instances, **kwargs)
+    return html
+
+
 def descriptives_renderer(meta, content, **renderargs):
-    """Rendered for `explabox.digestibles.Descriptives`."""
+    """Renderer for `explabox.digestibles.Descriptives`."""
     labels = content["labels"]
 
     html = f"<h3>Labels ({len(labels)})</h3>"
@@ -158,7 +171,9 @@ class Render(GBRenderRestyled):
 
         type, _, _ = get_meta_descriptors(meta)
 
-        if type == "descriptives":
+        if type == "dataset":
+            return dataset_renderer
+        elif type == "descriptives":
             return descriptives_renderer
         elif type == "model_performance":
             return metrics_renderer
@@ -181,7 +196,7 @@ class Render(GBRenderRestyled):
 
     def render_subtitle(self, meta: dict, content: dict, **renderargs) -> str:  # noqa: D102
         html = ""
-        if "split" in meta["callargs"] and isinstance(meta["callargs"]["split"], str):
+        if "callargs" in meta and "split" in meta["callargs"] and isinstance(meta["callargs"]["split"], str):
             html += f'Digestible for split "{meta["callargs"]["split"]}".'
 
         return self.format_subtitle(html) if html else ""
