@@ -14,7 +14,7 @@
 import genbase_test_helpers
 import pytest
 
-from explabox.digestibles import Descriptives
+from explabox.digestibles import Dataset, Descriptives
 from explabox.explore import Explorer
 from explabox.ingestibles import Ingestible
 
@@ -98,7 +98,102 @@ def test_descriptives_valid_return():  # TODO: split
     assert "label_counts" in descriptives.content
 
 
-# def test_instances_valid_return():
-#     """Test: ..."""
-#     explorer = Explorer(data=DATA, model=MODEL)
-#     assert isinstance(explorer.descriptives(), Dataset)
+def test_instances_valid_return():
+    """Test: ..."""
+    explorer = Explorer(data=DATA, model=MODEL)
+    dataset = explorer.instances()
+    assert isinstance(dataset, Dataset)
+    assert dataset.type == "dataset"
+    assert isinstance(dataset.content, dict)
+    assert "instances" in dataset.content
+    assert "labels" in dataset.content
+
+
+def test_instances_length():
+    """Test: ..."""
+    ingestible = INGESTIBLE
+    explorer = Explorer(ingestibles=ingestible)
+    dataset = explorer.instances()
+    assert len(dataset) == len(ingestible.data.dataset)
+    assert len(list(iter(dataset))) == len(ingestible.data.dataset)
+
+
+@pytest.mark.parametrize("n", [0, 1, 2, 3, 10, 20])
+def test_instances_select(n):
+    """Test: ..."""
+    ingestible = INGESTIBLE
+    explorer = Explorer(ingestibles=ingestible)
+    dataset = explorer.instances()
+    assert len(dataset.head(n=n)) == n
+    assert len(dataset.tail(n=n)) == n
+    assert len(dataset.get_by_index(range(n))) == n
+    assert len(dataset.get_by_index(n)) == 1
+    assert len(dataset[slice(None, n)]) == n
+    assert len(dataset[slice(n, 2 * n)]) == n
+    assert len(dataset[n]) == 1
+    assert len(dataset.get_by_key(list(ingestible.data.dataset.keys())[n])) == 1
+
+
+@pytest.mark.parametrize("n", range(1, 5))
+def test_instances_max_select(n):
+    """Test: ..."""
+    ingestible = INGESTIBLE
+    explorer = Explorer(ingestibles=ingestible)
+    dataset = explorer.instances()
+    N = n * len(dataset)
+    assert len(dataset.head(n=N)) == len(dataset)
+    assert len(dataset.tail(n=N)) == len(dataset)
+    assert len(dataset.sample(n=N)) == len(dataset)
+    with pytest.raises(IndexError):
+        dataset.get_by_index(N)
+    with pytest.raises(IndexError):
+        dataset[N]
+
+
+@pytest.mark.parametrize("n", [0, 1, 2, 3, 10, 20])
+@pytest.mark.parametrize("seed", [0, 42, 99])
+def test_instances_sample(n, seed):
+    """Test: ..."""
+    explorer = Explorer(ingestibles=INGESTIBLE)
+    dataset = explorer.instances()
+    assert len(dataset.sample(n=n, seed=seed)) == n
+
+
+@pytest.mark.parametrize("n", [-1, -2, -3, -99])
+def test_instances_args_n(n):
+    """Test: ..."""
+    explorer = Explorer(ingestibles=INGESTIBLE)
+    dataset = explorer.instances()
+    with pytest.raises(ValueError):
+        dataset.head(n=n)
+    with pytest.raises(ValueError):
+        dataset.tail(n=n)
+    with pytest.raises(ValueError):
+        dataset.sample(n=n)
+
+
+@pytest.mark.parametrize(
+    "label", ["punctuation", frozenset({"punctuation"}), "no_punctuation", frozenset({"no_punctuation"})]
+)
+def test_instances_filter_label(label):
+    """Test: ..."""
+    to_check = label if isinstance(label, frozenset) else frozenset({label})
+    assert all(label == to_check for label in dataset.filter(label).labels)
+    assert all(label == to_check for label in dataset.filter(lambda instance: instance["label"] == to_check).labels)
+    assert all(label == to_check for label in dataset.filter(lambda data, label: label == to_check).labels)
+    assert all(label == to_check for label in dataset.filter([l == to_check for l in dataset.labels]).labels)
+
+
+@pytest.mark.parametrize("n", [0, 1, 2, 3, 10, 20])
+def test_instances_filter_args_len(n):
+    """Test: ..."""
+    with pytest.raises(ValueError):
+        explorer = Explorer(ingestibles=INGESTIBLE)
+        explorer.instances().filter([True] * n)
+
+
+def test_instances_filter_args_type():
+    """Test: ..."""
+    with pytest.raises(ValueError):
+        explorer = Explorer(ingestibles=INGESTIBLE)
+        explorer.instances().filter(None)

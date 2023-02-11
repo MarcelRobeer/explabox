@@ -95,7 +95,27 @@ box.explore()
 ```
 ![drugscom_explore](https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explore.png?raw=true)
 
-Even though we trust you could have calculated each of these yourselves, it sure saves a lot of work. One simple call and that is all there is. Let's `examine` (see what I did there?) some more impressive functionalities.
+Even though we trust you could have calculated each of these yourselves, it sure saves a lot of work. One simple call and that is all there is.
+
+Want to look at a split of the data in more detail? Try `box.explore.instances()`:
+
+```python
+dataset = box.explore.instances()
+```
+
+You can then further filter, drill-down or select you data. For instance by filtering on label 'positive'...
+
+```python
+dataset.filter('positive')
+```
+
+... or taking the first 10 elements
+
+```python
+dataset.head(n=10)
+```
+
+Let's `examine` (see what I did there?) for some more impressive functionalities.
 
 <a name='examine'></a>
 ### 3. Examine

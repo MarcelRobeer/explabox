@@ -13,6 +13,7 @@ explabox
 
    explabox.examine
    explabox.explain
+   explabox.explore
    explabox.expose
    explabox.ingestibles
    explabox.ui

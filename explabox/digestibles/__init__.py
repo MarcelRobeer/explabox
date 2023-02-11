@@ -13,7 +13,7 @@
 
 """Ingestibles are turned into digestibles, containing information to explore/examine/explain/expose your model."""
 
-from collections import Sequence as SequenceType
+from collections.abc import Sequence as SequenceType
 from typing import Callable, Dict, FrozenSet, Optional, Sequence, Tuple, Union
 
 from genbase import MetaInfo
@@ -270,7 +270,9 @@ class Dataset(MetaInfo):
         """
         if n < 0:
             raise ValueError(f"{n=} should be >= 0!")
-        return self if n >= len(self) else self.get_by_index(range(n, len(self)))
+        if n == 0:
+            return self.head(n=0)
+        return self if n >= len(self) else self.get_by_index(range(len(self))[slice(-n, None)])
 
     def sample(self, n: int = 1, seed: int = 0) -> "Dataset":
         """Get a random sample of size n.
