@@ -244,7 +244,6 @@ class Dataset(MetaInfo):
 
         Args:
             n (int, optional): Number of elements >= 0. Defaults to 10.
-            seed (int, optional): Seed for reproducibility. Defaults to 0.
 
         Raises:
             ValueError: n should be >= 0.
@@ -274,12 +273,12 @@ class Dataset(MetaInfo):
             return self.head(n=0)
         return self if n >= len(self) else self.get_by_index(range(len(self))[slice(-n, None)])
 
-    def sample(self, n: int = 1, seed: int = 0) -> "Dataset":
+    def sample(self, n: int = 1, seed: Optional[int] = None) -> "Dataset":
         """Get a random sample of size n.
 
         Args:
             n (int, optional): Number of elements >= 0. Defaults to 1.
-            seed (int, optional): Seed for reproducibility. Defaults to 0.
+            seed (int, optional): Seed for reproducibility; if None it takes a random seed. Defaults to None.
 
         Raises:
             ValueError: n should be >= 0.
@@ -295,6 +294,7 @@ class Dataset(MetaInfo):
         import random
 
         random.seed(seed)
+
         return self.get_by_index(random.sample(list(self._instances), n))
 
     def filter(self, indexer: Union[Callable[[dict], bool], Callable[[DT, LT], bool], Sequence[bool], LT]) -> "Dataset":
