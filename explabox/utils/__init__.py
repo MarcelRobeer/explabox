@@ -40,7 +40,7 @@ class MultipleReturn:
     @property
     def raw_html(self):
         if len(self.return_values) == 1:
-            return self.return_values[0].html
+            return self.return_values[0].raw_html
         return "".join(v.raw_html for v in self.return_values)
 
     @property

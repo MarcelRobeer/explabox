@@ -23,8 +23,19 @@ from explabox.utils.io import create_output_dir
 FOLDER = f"TEST-{uuid.uuid4()}"
 
 
+class TestDigestible(MetaInfo):
+    def __init__(type="test", **kwargs):
+        """Empty digestible for testing."""
+        super().__init__(type=type, **kwargs)
+
+    @property
+    def content(self):
+        """Content."""
+        return {}
+
+
 def test_new_dir():
-    """Test: Folder is created with utils.io.create_output_dir()."""
+    """Test: Folder is created with `utils.io.create_output_dir()`."""
     assert not os.path.exists(FOLDER)
     create_output_dir(FOLDER)
     assert os.path.exists(FOLDER)
@@ -42,8 +53,20 @@ def test_existing_dir():
 
 @pytest.mark.parametrize("n", range(1, 5))
 def test_multiple_return(n):
-    """Test: ..."""
-    digestible = MultipleReturn(*[MetaInfo(type="test") for _ in range(n)])
+    """Test: Valid contents of `utils.MultipleReturn`."""
+    digestible = MultipleReturn(*[TestDigestible() for _ in range(n)])
     assert len(digestible) == n
     assert isinstance(repr(digestible), str)
     assert isinstance(str(digestible), str)
+    assert isinstance(digestible.raw_html, str)
+    assert isinstance(digestible.html, str)
+    assert isinstance(digestible.to_config(), dict if n == 1 else list)
+
+
+def test_values_in_multiplereturn():
+    """Test: Valid contents of `utils.MultipleReturn` with one element (html & raw_html have unique IDs)."""
+    digestible = MultipleReturn(TestDigestible())
+    assert digestible[0] == digestible.return_values[0]
+    assert repr(digestible) == repr(digestible[0])
+    assert str(digestible) == str(digestible[0])
+    assert digestible.to_config() == digestible[0].to_config()
