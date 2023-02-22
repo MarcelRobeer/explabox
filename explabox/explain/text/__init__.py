@@ -84,7 +84,7 @@ class Explainer(Readable, IngestiblesMixin):
 
         Args:
             sample: Identifier of sample in dataset (int) or input (str).
-            methods: List of methods to get explanations from. Choose from 'lime', 'shap', 'tree', 'rules', 'foil_tree'.
+            methods: List of methods to get explanations from. Choose from 'lime', 'shap', 'baylime', 'tree', 'rules', 'foil_tree'.
             *args: Positional arguments passed to local explanation technique.
             **kwargs: Keyword arguments passed to local explanation technique.
 
@@ -118,6 +118,10 @@ class Explainer(Readable, IngestiblesMixin):
                 from text_explainability.local_explanation import LIME
 
                 cls = LIME
+            elif method in ["baylime"]:
+                from text_explainability.local_explanation import BayLIME
+
+                cls = BayLIME
             elif method in ["shap", "shapley", "kernelshap", "kernel_shap"]:
                 from text_explainability.local_explanation import KernelSHAP
 
@@ -144,7 +148,7 @@ class Explainer(Readable, IngestiblesMixin):
                 from text_explainability.local_explanation import FoilTree
 
                 if "foil_fn" not in kwargs:
-                    raise ValueError("`foil_fn` is requierd for contrastive explanation.")
+                    raise ValueError("`foil_fn` is required for contrastive explanation.")
 
                 cls = FoilTree
             if cls is not None:
