@@ -11,7 +11,7 @@ jobs:
       matrix:
         linter: [flake8, black, doc8, check-manifest] # [flake8, isort, black, doc8]
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Get changed files
       id: changed_files
       uses: tj-actions/changed-files@v43
@@ -51,9 +51,9 @@ jobs:
   security:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set-up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.x'
     - name: Install dependencies
@@ -72,10 +72,10 @@ jobs:
         python-version: ['3.8', '3.9', '3.10', '3.11']
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
     - name: Get changed files
       id: changed_files_py
-      uses: tj-actions/changed-files@v35
+      uses: tj-actions/changed-files@v43
       with:
         files: |
           explabox
@@ -101,12 +101,12 @@ jobs:
         PLATFORM: ${{ matrix.platform }}
     - name: Check file existence
       id: coverage_finished
-      uses: andstor/file-existence-action@v2
+      uses: andstor/file-existence-action@v3
       with:
         files: "coverage.xml"
     - name: Upload coverage to Codecov
       if: steps.coverage_finished.outputs.files_exists == 'true'
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v4
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         env_vars: OS,PYTHON
