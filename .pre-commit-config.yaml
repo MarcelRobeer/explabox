@@ -16,7 +16,7 @@ repos:
       - --detect-license-in-X-top-lines=12
       - --license-filepath=.shortlicense
 - repo: https://github.com/pycqa/isort
-  rev: 5.10.1
+  rev: 5.13.2
   hooks:
   - id: isort
     name: "Dependency order: isort"

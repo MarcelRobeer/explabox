@@ -122,6 +122,10 @@ class Explainer(Readable, IngestiblesMixin):
                 from text_explainability.local_explanation import BayLIME
 
                 cls = BayLIME
+            elif method in ["anchor", "anchors"]:
+                from text_explainability.local_explanation import Anchor
+
+                cls = Anchor
             elif method in ["shap", "shapley", "kernelshap", "kernel_shap"]:
                 from text_explainability.local_explanation import KernelSHAP
 
