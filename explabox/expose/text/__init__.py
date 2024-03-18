@@ -138,9 +138,11 @@ class Exposer(Readable, IngestiblesMixin):
             generators = [generators]
 
         generators = [
-            GENERATORS[str.lower(generator)]()
-            if isinstance(generator, str) and str.lower(generator) in GENERATORS
-            else generator
+            (
+                GENERATORS[str.lower(generator)]()
+                if isinstance(generator, str) and str.lower(generator) in GENERATORS
+                else generator
+            )
             for generator in generators
         ]
 
