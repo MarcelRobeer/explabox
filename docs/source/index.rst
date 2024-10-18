@@ -12,7 +12,7 @@
 .. image:: https://pepy.tech/badge/explabox
    :target: https://pepy.tech/project/explabox
 
-.. image:: https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10-blue
+.. image:: https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue
    :target: https://pypi.org/project/explabox/
 
 .. image:: https://img.shields.io/pypi/l/explabox

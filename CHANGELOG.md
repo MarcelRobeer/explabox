@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Example usage in Google Colab (requires `genbase>=0.2.17`)
 - `explabox.explore.instances` to summarize instances in a split
 - Selecting, sampling and filtering of `digestibles.Dataset`
+- Support for Python 3.12
 
 ### Fixed
 - Support for new pandas versions
