@@ -70,7 +70,7 @@ Then `.explore`, `.examine`, `.expose` and `.explain` your model:
 
 ```python
 >>> # Get a local explanation (uses LIME by default)
->>> box.explain.box.explain_prediction('Hate this medicine so much!')
+>>> box.explain.explain_prediction('Hate this medicine so much!')
 ```
 <img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explain.png?raw=true" alt="drugscom_explain" width="600"/>
 
