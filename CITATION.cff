@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+title: >-
+  The Explabox: Model-Agnostic Machine Learning Transparency
+  & Analysis
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Marcel
+    family-names: Robeer
+    orcid: 'https://orcid.org/0000-0002-6430-9774'
+  - given-names: Michiel
+    family-names: Bron
+    orcid: 'https://orcid.org/0000-0002-4823-6085'
+  - given-names: Elize
+    family-names: Herrewijnen
+    orcid: 'https://orcid.org/0000-0002-2729-6599'
+  - given-names: Riwish
+    family-names: Hoeseni
+  - given-names: Floris
+    family-names: Bex
+    orcid: 'https://orcid.org/0000-0002-5699-9656'
+doi: 10.48550/arXiv.2411.15257
+repository-code: 'https://github.com/MarcelRobeer/explabox'
+url: 'https://explabox.readthedocs.io'
+license: LGPL-3.0

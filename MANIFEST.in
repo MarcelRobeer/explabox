@@ -1,6 +1,7 @@
 include requirements.txt
 include tox.ini
 include *.md
+include CITATION.cff
 exclude *.bat
 exclude .shortlicense
 recursive-exclude explabox/test *.py
