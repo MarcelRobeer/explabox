@@ -1,12 +1,7 @@
 from configparser import ConfigParser
-from distutils.util import convert_path
 from os import path
 
 import setuptools
-
-main_ns = {}
-with open(convert_path("explabox/_version.py")) as ver_file:
-    exec(ver_file.read(), main_ns)  # nosec
 
 with open(path.join(path.abspath(path.dirname(__file__)), "README.md"), encoding="utf-8") as f:
     long_description = f.read()
@@ -49,7 +44,7 @@ extras["all"] = list(set([i for subi in extras.values() for i in subi]))
 
 setuptools.setup(  # type: ignore
     name="explabox",
-    version=main_ns["__version__"],
+    version="1.0.0",
     description="Explore/examine/explain/expose your model with the explabox!",
     long_description=long_description,
     long_description_content_type="text/markdown",
