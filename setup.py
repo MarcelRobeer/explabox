@@ -51,7 +51,7 @@ setuptools.setup(  # type: ignore
     author="NPAI",
     license="GNU LGPL v3",
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "Intended Audience :: Education",
         "Intended Audience :: Science/Research",
