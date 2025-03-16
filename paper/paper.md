@@ -82,11 +82,6 @@ The `Explabox` documentation provides installation guides, a tutorial to get sta
 
 ![Python snippet with example analyses, to facilitate model-agnostic responsible AI development with explainability and versatile analysis tools.\label{fig:Python}](figure3.png){width=70%}
 
-# Conclusion and Future Work
-The `Explabox` enables organizations to responsibly develop and apply AI applications. The model-agnostic toolkit provides interactive analyses that model developers and testers can use to operationalize, report and discuss model explainability, fairness, auditability, and security. It provides flexibility to handle various ML use-cases for classification and regression, while also being a central node for standardization and connecting research with practice. The first full release, focusing on text data and models, is available open-source and fully documented at [https://explabox.readthedocs.io](https://explabox.readthedocs.io/en/stable).
-
-Further development has already started, where we focus on extending the `Explabox` for (1) models and data with the tabular, audio and image modality, and multi-modal combinations; (2) improved integration of data and model provenance for auditability; (3) comparisons of multiple datasets and multiple models, and; (4) research and development for a new interface and improved stakeholder data visualization.
-
 # Acknowledgements
 
 Development of the Explabox was supported by the Netherlands National Police. The authors would like to thank all anonymous contributors within the Netherlands National Police for their contributions to software development, testing and active usage. In addition, the authors would like to thank the participants of the demos at ICT.OPEN 2022, the National Police Lab AI at Utrecht University, and the University Medical Center Utrecht for their valuable feedback.
