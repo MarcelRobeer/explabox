@@ -4,7 +4,7 @@ This page includes an extended example usage guide for using the `explabox` on a
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14lXvXV01DaSruSAhD1RLbILRl2mPQ4nS?usp=sharing)
 
 ## Demo: Drug Review Classification
-Welcome to the demo of the [explabox](https://explabox.rtfd.io) on the [UCI Drug Reviews](https://archive.ics.uci.edu/ml/datasets/Drug+Review+Dataset+%28Drugs.com%29#) dataset. To speed up the demo, we made a smaller subset of the train and test dataset. The demo
+Welcome to the demo of the [explabox](https://explabox.rtfd.io) on the [UCI Drug Reviews](https://archive.ics.uci.edu/dataset/461/drug+review+dataset+druglib+com) dataset. To speed up the demo, we made a smaller subset of the train and test dataset. The demo
 also includes a pretrained black-box classifier, which aims to predict whether a `review` in the text got a `rating` of
 `negative` (1-5), `neutral` (5-6) or `positive` (6-10).
 
@@ -18,12 +18,12 @@ also includes a pretrained black-box classifier, which aims to predict whether a
 - `pip3 install explabox-demo-drugreview`
 
 ### Want to follow along?
-We have prepared a [Jupyter Notebook](https://git.science.uu.nl/m.j.robeer/explabox-demo-drugreview/-/blob/main/explabox_demo_drugreview.ipynb) for you that runs all necessary lines for the demo.
+We have prepared a [Jupyter Notebook](https://colab.research.google.com/drive/14lXvXV01DaSruSAhD1RLbILRl2mPQ4nS?usp=sharing) for you that runs all necessary lines for the demo.
 
 > Having trouble? Want to know which functionalities the [explabox](https://explabox.rtfd.io) includes? Check out the API reference at [https://explabox.readthedocs.io/en/latest/api/explabox.html](https://explabox.readthedocs.io/en/latest/api/explabox.html).
 
 ### Let's get started!
-The [Jupyter Notebook demo](https://git.science.uu.nl/m.j.robeer/explabox-demo-drugreview/-/blob/main/explabox_demo_drugreview.ipynb) will walk you through importing your data and model into the `explabox`, and go over some examples for the `explore`, `examine`, `expose` and `explain` parts. The demo is structured as follows:
+The [Jupyter Notebook demo](https://colab.research.google.com/drive/14lXvXV01DaSruSAhD1RLbILRl2mPQ4nS?usp=sharing) will walk you through importing your data and model into the `explabox`, and go over some examples for the `explore`, `examine`, `expose` and `explain` parts. The demo is structured as follows:
 
 1. **[Ingestibles](#ingestibles)**: importing your model and data.
 2. **[Explore](#explore)**: exploring the dataset descriptives.
@@ -42,7 +42,7 @@ To get started, the `explabox` requires a `model` (e.g. a Scikit-learn classifie
 from explabox_demo_drugreview import model, dataset_file
 ```
 
-The [UCI Drug Reviews](https://archive.ics.uci.edu/ml/datasets/Drug+Review+Dataset+%28Drugs.com%29#) dataset contains over 200,000 patient reviews for drugs. The dataset includes the following columns:
+The [UCI Drug Reviews](https://archive.ics.uci.edu/dataset/461/drug+review+dataset+druglib+com) dataset contains over 200,000 patient reviews for drugs. The dataset includes the following columns:
 
 Column | Description | Data type
 -------|-------------|--------
