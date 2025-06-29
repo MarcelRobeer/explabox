@@ -49,7 +49,7 @@ The `explabox` is distributed on [PyPI](https://pypi.org/project/explabox/). To 
 ...                splits={'train': 'drugsComTrain.tsv', 'test': 'drugsComTest.tsv'})
 ```
 
-The example dataset and model used can be easily imported using demo package `explabox-demo-drugreview`.
+The example dataset and model shown here can be easily imported using demo package `explabox-demo-drugreview`.
 
 Then `.explore`, `.examine`, `.expose` and `.explain` your model:
 ```python
