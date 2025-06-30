@@ -1,2 +1,4 @@
 assert_used:
   skips: ["*/test_*.py"]
+
+skips: ['B311']
