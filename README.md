@@ -36,20 +36,23 @@ A number of experiments in the `explabox` can also be used to provide transparen
 
 <a name="quick-tour"/></a>
 ## Quick tour
-The `explabox` is distributed on [PyPI](https://pypi.org/project/explabox/). To use the package with Python, install it (`pip install explabox`), import your `data` and `model` and wrap them in the `Explabox`:
+The `explabox` is distributed on [PyPI](https://pypi.org/project/explabox/). To use the package with Python, install it (`pip install explabox`), import your `data` and `model` and wrap them in the `Explabox`. The example dataset and model shown here can be easily imported using demo package `explabox-demo-drugreview`.
+
+First, import the pre-provided `model`, and import the `data` from the `dataset_file`. All we need to know is in which column(s) your data is, and where we can find the corresponding labels:
 
 ```python
->>> from explabox import import_data, import_model
->>> data = import_data('./drugsCom.zip', data_cols='review', label_cols='rating')
->>> model = import_model('model.onnx', label_map={0: 'negative', 1: 'neutral', 2: 'positive'})
+>>> from explabox_demo_drugreview import model, dataset_file
+>>> from explabox import import_data
+>>> data = import_data(dataset_file, data_cols='review', label_cols='rating')
+```
 
+Second, we provide the `data` and `model` to the `Explabox`, and it does the rest! Rename the splits from your file names for easy access:
+```python
 >>> from explabox import Explabox
 >>> box = Explabox(data=data,
 ...                model=model,
 ...                splits={'train': 'drugsComTrain.tsv', 'test': 'drugsComTest.tsv'})
 ```
-
-The example dataset and model shown here can be easily imported using demo package `explabox-demo-drugreview`.
 
 Then `.explore`, `.examine`, `.expose` and `.explain` your model:
 ```python
@@ -84,6 +87,7 @@ For more information, visit the [explabox documentation](https://explabox.rtfd.i
 - [Installation](#installation)
 - [Documentation](#documentation)
 - [Example usage](#example-usage)
+- [Advanced set-up](#advanced-setup)
 - [Releases](#releases)
 - [Contributing](#contributing)
 - [Citation](#citation)
@@ -122,6 +126,30 @@ The [example usage guide](EXAMPLE_USAGE.md) showcases the `explabox` for a black
 Without requiring any local installations, the notebook is provided on [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14lXvXV01DaSruSAhD1RLbILRl2mPQ4nS?usp=sharing).
 
 If you want to follow along on your own device, simply `pip install explabox-demo-drugreview` and run the lines in the [Jupyter notebook](https://colab.research.google.com/drive/14lXvXV01DaSruSAhD1RLbILRl2mPQ4nS?usp=sharing) we have prepared for you!
+
+<a name="advanced-setup"></a>
+## Advanced set-up
+When importing your own model and data, you can refer to a(n) (archive of) file(s), on disk or with an online URL. The `explabox` does all the importing for you. Consult the [ingestibles documentation](https://explabox.readthedocs.io/en/latest/overview.html#ingestibles) for an up-to-date list of the supported file formats.
+
+```python
+>>> from explabox import import_data, import_model
+>>> data = import_data('./drugsCom.zip', data_cols='review', label_cols='rating')
+>>> model = import_model('model.onnx', label_map={0: 'negative', 1: 'neutral', 2: 'positive'})
+```
+
+In this example, the data in the archive `drugsCom.zip` contains two `.tsv` (tab-separated values) files with the data in the `review` column and the gold labels in the `rating` column. The two files in `drugsCom.zip` are `drugsComTrain.tsv` and `drugsComTest.tsv`, containing the training data and test data, respectively.
+
+The model is provided as an `onnx` file, where output `0` corresponds to a `negative` review, `1` to a `neutral` review, and `2` to a `positive` review.
+
+You can add a mapping from the files in `drugsCom.zip` that refer to your train/test/validation splits by renaming them for easy access:
+```python
+>>> from explabox import Explabox
+>>> box = Explabox(data=data,
+...                model=model,
+...                splits={'train': 'drugsComTrain.tsv', 'test': 'drugsComTest.tsv'})
+```
+
+Now you can `.explore`, `.examine`, `.expose` and `.explain` your data and model as usual.
 
 <a name="releases"/></a>
 ## Releases
