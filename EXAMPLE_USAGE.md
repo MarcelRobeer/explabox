@@ -1,7 +1,7 @@
 # Example Usage
 This page includes an extended example usage guide for using the `explabox` on a dataset and black-box model for multi-class classification.
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14lXvXV01DaSruSAhD1RLbILRl2mPQ4nS?usp=sharing)
+> :information_source: To easily follow along without a need for installation, run the Notebook in [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14lXvXV01DaSruSAhD1RLbILRl2mPQ4nS?usp=sharing)
 
 ## Demo: Drug Review Classification
 Welcome to the demo of the [explabox](https://explabox.rtfd.io) on the [UCI Drug Reviews](https://archive.ics.uci.edu/dataset/461/drug+review+dataset+druglib+com) dataset. To speed up the demo, we made a smaller subset of the train and test dataset. The demo
