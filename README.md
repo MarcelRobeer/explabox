@@ -38,6 +38,8 @@ A number of experiments in the `explabox` can also be used to provide transparen
 ## Quick tour
 The `explabox` is distributed on [PyPI](https://pypi.org/project/explabox/). To use the package with Python, install it (`pip install explabox`), import your `data` and `model` and wrap them in the `Explabox`. The example dataset and model shown here can be easily imported using demo package `explabox-demo-drugreview`.
 
+> :information_source: To easily follow along without a need for installation, run the Notebook in [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14lXvXV01DaSruSAhD1RLbILRl2mPQ4nS?usp=sharing)
+
 First, import the pre-provided `model`, and import the `data` from the `dataset_file`. All we need to know is in which column(s) your data is, and where we can find the corresponding labels:
 
 ```python
