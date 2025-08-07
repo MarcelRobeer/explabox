@@ -41,41 +41,45 @@ The `explabox` is distributed on [PyPI](https://pypi.org/project/explabox/). To 
 First, import the pre-provided `model`, and import the `data` from the `dataset_file`. All we need to know is in which column(s) your data is, and where we can find the corresponding labels:
 
 ```python
->>> from explabox_demo_drugreview import model, dataset_file
->>> from explabox import import_data
->>> data = import_data(dataset_file, data_cols='review', label_cols='rating')
+from explabox_demo_drugreview import model, dataset_file
+from explabox import import_data
+
+data = import_data(dataset_file,
+                   data_cols='review',
+                   label_cols='rating')
 ```
 
 Second, we provide the `data` and `model` to the `Explabox`, and it does the rest! Rename the splits from your file names for easy access:
 ```python
->>> from explabox import Explabox
->>> box = Explabox(data=data,
-...                model=model,
-...                splits={'train': 'drugsComTrain.tsv', 'test': 'drugsComTest.tsv'})
+from explabox import Explabox
+
+box = Explabox(data=data,
+               model=model,
+               splits={'train': 'drugsComTrain.tsv', 'test': 'drugsComTest.tsv'})
 ```
 
 Then `.explore`, `.examine`, `.expose` and `.explain` your model:
 ```python
->>> # Explore the descriptive statistics for each split
->>> box.explore()
+# Explore the descriptive statistics for each split
+box.explore()
 ```
 <img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explore.png?raw=true" alt="drugscom_explore" width="600"/>
 
 ```python
->>> # Show wrongly classified instances
->>> box.examine.wrongly_classified()
+# Show wrongly classified instances
+box.examine.wrongly_classified()
 ```
 <img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_examine.png?raw=true" alt="drugscom_examine" width="600"/>
 
 ```python
->>> # Compare the performance on the test split before and after adding typos to the text
->>> box.expose.compare_metrics(split='test', perturbation='add_typos')
+# Compare the performance on the test split before and after adding typos to the text
+box.expose.compare_metric(split='test', perturbation='add_typos')
 ```
 <img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_expose.png?raw=true" alt="drugscom_expose" width="600"/>
 
 ```python
->>> # Get a local explanation (uses LIME by default)
->>> box.explain.explain_prediction('Hate this medicine so much!')
+# Get a local explanation (uses LIME by default)
+box.explain.explain_prediction('Hate this medicine so much!')
 ```
 <img src="https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explain.png?raw=true" alt="drugscom_explain" width="600"/>
 
@@ -132,9 +136,14 @@ If you want to follow along on your own device, simply `pip install explabox-dem
 When importing your own model and data, you can refer to a(n) (archive of) file(s), on disk or with an online URL. The `explabox` does all the importing for you. Consult the [ingestibles documentation](https://explabox.readthedocs.io/en/latest/overview.html#ingestibles) for an up-to-date list of the supported file formats.
 
 ```python
->>> from explabox import import_data, import_model
->>> data = import_data('./drugsCom.zip', data_cols='review', label_cols='rating')
->>> model = import_model('model.onnx', label_map={0: 'negative', 1: 'neutral', 2: 'positive'})
+from explabox import import_data, import_model
+
+data = import_data('./drugsCom.zip',
+                   data_cols='review',
+                   label_cols='rating')
+
+model = import_model('model.onnx',
+                     label_map={0: 'negative', 1: 'neutral', 2: 'positive'})
 ```
 
 In this example, the data in the archive `drugsCom.zip` contains two `.tsv` (tab-separated values) files with the data in the `review` column and the gold labels in the `rating` column. The two files in `drugsCom.zip` are `drugsComTrain.tsv` and `drugsComTest.tsv`, containing the training data and test data, respectively.
@@ -143,10 +152,11 @@ The model is provided as an `onnx` file, where output `0` corresponds to a `nega
 
 You can add a mapping from the files in `drugsCom.zip` that refer to your train/test/validation splits by renaming them for easy access:
 ```python
->>> from explabox import Explabox
->>> box = Explabox(data=data,
-...                model=model,
-...                splits={'train': 'drugsComTrain.tsv', 'test': 'drugsComTest.tsv'})
+from explabox import Explabox
+
+box = Explabox(data=data,
+               model=model,
+               splits={'train': 'drugsComTrain.tsv', 'test': 'drugsComTest.tsv'})
 ```
 
 Now you can `.explore`, `.examine`, `.expose` and `.explain` your data and model as usual.
