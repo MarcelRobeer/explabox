@@ -46,25 +46,34 @@ A number of experiments in the ``explabox`` can also be used to provide transpar
 Quick tour
 ----------
 
-The ``explabox`` is distributed on `PyPI <https://pypi.org/project/explabox/>`_. To use the package with Python, install it (\ ``pip install explabox``\ ), import your ``data`` and ``model`` and wrap them in the ``Explabox``\ :
+The ``explabox`` is distributed on `PyPI <https://pypi.org/project/explabox/>`_. To use the package with Python, install it (\ ``pip install explabox``\ ), import your ``data`` and ``model`` and wrap them in the ``Explabox``. The example dataset and model shown here can be easily imported using demo package ``explabox-demo-drugreview``.
+
+.. note::
+   To easily follow along without a need for installation, run the Notebook in |googlecolab|
+
+First\ , import the pre-provided ``model``, and import the ``data`` from the ``dataset_file``. All we need to know is in which column(s) your data is\ , and where we can find the corresponding labels\ :
 
 .. code-block:: python
 
-   >>> from explabox import import_data, import_model
-   >>> data = import_data('./drugsCom.zip', data_cols='review', label_cols='rating')
-   >>> model = import_model('model.onnx', label_map={0: 'negative', 1: 'neutral', 2: 'positive'})
+   from explabox import import_data, import_model
+   data = import_data('./drugsCom.zip', data_cols='review', label_cols='rating')
+   model = import_model('model.onnx', label_map={0: 'negative', 1: 'neutral', 2: 'positive'})
 
-   >>> from explabox import Explabox
-   >>> box = Explabox(data=data,
-   ...                model=model,
-   ...                splits={'train': 'drugsComTrain.tsv', 'test': 'drugsComTest.tsv'})
+Second\ , we provide the data and model to the Explabox\ , and it does the rest! Rename the splits from your file names for easy access:
+
+.. code-block:: python
+
+   from explabox import Explabox
+   box = Explabox(data=data,
+                  model=model,
+                  splits={'train': 'drugsComTrain.tsv', 'test': 'drugsComTest.tsv'})
 
 Then ``.explore``\ , ``.examine``\ , ``.expose`` and ``.explain`` your model:
 
 .. code-block:: python
 
-   >>> # Explore the descriptive statistics for each split
-   >>> box.explore()
+   # Explore the descriptive statistics for each split
+   box.explore()
 
 
 .. image:: https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explore.png?raw=true
@@ -73,8 +82,8 @@ Then ``.explore``\ , ``.examine``\ , ``.expose`` and ``.explain`` your model:
 
 .. code-block:: python
 
-   >>> # Show wrongly classified instances
-   >>> box.examine.wrongly_classified()
+   # Show wrongly classified instances
+   box.examine.wrongly_classified()
 
 
 .. image:: https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_examine.png?raw=true
@@ -83,8 +92,8 @@ Then ``.explore``\ , ``.examine``\ , ``.expose`` and ``.explain`` your model:
 
 .. code-block:: python
 
-   >>> # Compare the performance on the test split before and after adding typos to the text
-   >>> box.expose.compare_metrics(split='test', perturbation='add_typos')
+   # Compare the performance on the test split before and after adding typos to the text
+   box.expose.compare_metric(split='test', perturbation='add_typos')
 
 
 .. image:: https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_expose.png?raw=true
@@ -93,8 +102,8 @@ Then ``.explore``\ , ``.examine``\ , ``.expose`` and ``.explain`` your model:
 
 .. code-block:: python
 
-   >>> # Get a local explanation (uses LIME by default)
-   >>> box.explain.explain_prediction('Hate this medicine so much!')
+   # Get a local explanation (uses LIME by default)
+   box.explain.explain_prediction('Hate this medicine so much!')
 
 
 .. image:: https://github.com/MarcelRobeer/explabox/blob/main/img/example/drugscom_explain.png?raw=true
