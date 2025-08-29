@@ -1,13 +1,13 @@
 ---
-title: 'Explabox: Model-Agnostic Machine Learning Transparency & Analysis'
+title: 'Explabox: A Python Toolkit for Standardized Auditing and Explanation of Text Models'
 tags:
     - Python
+    - AI auditing
     - explainable AI (XAI)
     - interpretability
     - fairness
     - robustness
     - AI safety
-    - AI auditing
 authors:
   - name: Marcel Robeer
     orcid: 0000-0002-6430-9774
@@ -32,26 +32,28 @@ affiliations:
   - name: School of Law, Utrecht University, The Netherlands
     index: 3
     ror: 04pp8hn57
-date: 13 March 2025
+date: 29 August 2025
 bibliography: paper.bib
 ---
 
 # Summary
 
-`Explabox` is an open-source toolkit for transparent and responsible machine learning (ML) development and usage. It promotes explainable, fair, and robust models using a four-step strategy: *explore*, *examine*, *explain* and *expose*. These model-agnostic steps transform complex `ingestibles` (models, data) into interpretable `digestibles`, covering descriptive statistics, performance, local/global explanations, and robustness, security and fairness assessments. Implemented in Python, `Explabox` supports multiple interaction modes, helping developers/testers operationalize explainability, fairness, auditability, and security. The initial release focuses on text data/models, with expansion planned. Code and documentation are available open-source at [https://explabox.readthedocs.io](https://explabox.readthedocs.io/en/stable).
+Developed to meet the practical machine learning (ML) auditing requirements of the Netherlands National Police, `Explabox` is an open-source Python toolkit that implements a standardized four-step analysis workflow: *explore*, *examine*, *explain* and *expose*. The framework transforms models and data (*ingestibles*) into interpretable reports and visualizations (*digestibles*), covering everything from data statistics and performance metrics to local/global explanations, and sensitivity testing for fairness, robustness and security. Designed for developers, testers, and auditors, `Explabox` operationalizes the entire audit lifecycle in a reproducible manner. The initial release is focused on text classification and regression models, with plans for future expansion. Code and documentation are available open-source at [https://explabox.readthedocs.io](https://explabox.readthedocs.io/en/stable).
 
 # Statement of need
 
-Responsible and transparent Machine Learning (ML) development and usage has become crucial. High-stakes decisions can significantly impact individuals and society, with severe consequences potentially stemming from biases or errors. For example, the EU AI Act requires high-risk systems to be tested, documented, and assessed before practical application [@Edwards2022]. However, operationalizing transparency (explainable ML) and testing model behavior (fairness, robustness, and security auditing) remains difficult due to the myriad techniques and their learning curves. We devised a four-step analysis strategy&mdash;*explore*, *examine*, *explain*, and *expose*&mdash;to ensure holistic model transparency and testing. The open-source `Explabox` offers these analyses through well-documented, reproducible steps. Data scientists gain a unified, model-agnostic approach, developed and used in a high-stakes environment, applicable to any text classifier/regressor.
+In high-stakes environments like law enforcement, machine learning (ML) models are subject to intense scrutiny and must comply with emerging regulations like the EU AI Act [@Edwards2022]. `Explabox` was developed to address the operational challenges of ML auditing at the Netherlands National Police, where models for text classification/regression require standardized, reproducible, and holistic evaluation to satisfy diverse stakeholders&mdash;from developers and internal auditors to legal and ethical oversight bodies. Existing tools, while powerful, were often fragmented, focusing on a single aspect of analysis (e.g., only explainability or testing) and lacking a unified framework for conducting a complete audit from data exploration to final reporting.
 
-`Explabox` was developed in an organizational environment where models and data are analyzed repeatedly, and where internal and external stakeholders have varying explanatory needs and preferred formats. Several related tools exist, such as `AIX360` [@Arya2019], `alibi` explain [@Klaise2021], `dalex` [@Baniecki2021], `CheckList` [@Ribeiro2020], and `AIF360` [@Bellamy2018]. However, these tools may be incompatible with recent Python versions (3.8&ndash;3.12), have restricted functionality (testing or explainability focus), lack reproducibility, or lack flexibility communicating results. `Explabox` is an open-source Python toolkit supporting responsible ML development with minimal workflow disruption for practitioners addressing this gap. Its four-step strategy applies to existing data/models and acts as a hub connecting research and best practices.
+To solve this workflow problem, we developed Explabox around a four-step analysis strategy&mdash;*explore*, *examine*, *explain* and *expose*&mdash;inspired by similar conceptualizations of the analytical process [@Biecek2021]. While comprehensive libraries like `OmniXAI` [@Yang2022] offer a broad, multi-modal collection of explainers and `dalex` [@Baniecki2021] provides a mature, research-driven framework for model exploration, `Explabox` was developed to fill a specific operational gap. Practitioners seeking to conduct a full audit in a model-agnostic manner often have to combine multiple, highly-specialized libraries, such as `AIF360` [@Bellamy2018] for fairness metrics, `alibi explain` [@Klaise2021] or `AIX360` [@Arya2019] for local explanations, and `CheckList` [@Ribeiro2020] for behavioral testing.
+
+This fragmentation introduces significant challenges, particularly regarding *reproducibility* and *flexibility in communicating results*. `Explabox` addresses the reproducibility challenge by providing a unified pipeline that not only offers centralized control over random seeds, but also tracks the specific data subsets and parameters used for each function call, ensuring full traceability. Furthermore, it provides flexibility through our *digestible* object system, which is designed to generate outputs tailored to diverse stakeholders. By integrating these critical components into a single, cohesive workflow, `Explabox` provides a practical framework that enhances the efficiency and methodological rigor of the ML auditing lifecycle, making it directly applicable to other high-stakes domains where model validation is critical, such as finance, healthcare, and law.
 
 # Explore, Examine, Explain & Expose your ML models
 
 `Explabox` transforms opaque *ingestibles* into transparent *digestibles* through four types of *analyses* to enhance explainability and aid fairness, robustness, and security audits.
 
 ## Ingestibles
-Ingestibles provide a unified model/data import interface, where layers abstract away access (\autoref{fig:layers}) to allow optimized processing. `Explabox` uses `instancelib` [@instancelib] for fast model/data encapsulation. The model can be any Python `Callable` containing a regression or (binary and multi-class) classification model. `scikit-learn` or `onnx` models (e.g., PyTorch, TensorFlow/Keras) import directly with optimizations and automatic input/output interpretation. Data can be automatically downloaded, extracted and loaded. Data inputs include `NumPy`/`Pandas`/`huggingface`, raw files (e.g., HDF5, CSV or TSV), and (compressed) file folders. Data can be subdivided into named splits (e.g., train-test-validation), and instance vectors and tokens can be precomputed (and optionally saved) for fast inferencing.
+Ingestibles provide a unified model/data import interface, where layers abstract away access (\autoref{fig:layers}) to allow optimized processing. `Explabox` uses `instancelib` [@instancelib] for fast model/data encapsulation. The model can be any Python `Callable` containing a regression or (binary and multi-class) classification model.  While this interface is model-agnostic, the current release provides data handling and analysis modules optimized specifically for text-based tasks. `scikit-learn` or `onnx` models (e.g., PyTorch, TensorFlow/Keras) import directly with optimizations and automatic input/output interpretation. Data can be automatically downloaded, extracted and loaded. Data inputs include `NumPy`/`Pandas`/`huggingface`, raw files (e.g., HDF5, CSV or TSV), and (compressed) file folders. Data can be subdivided into named splits (e.g., train-test-validation), and instance vectors and tokens can be precomputed (and optionally saved) for fast inferencing.
 
 ![Logical separation of `Explabox` into layers with interfaces.\label{fig:layers}](figure1.png){width=50%}
 
@@ -71,7 +73,7 @@ Ingestibles provide a unified model/data import interface, where layers abstract
 
 Digestibles serve stakeholders&mdash;such as creators, auditors, applicants, end-users or clients [@Tomsett2018]&mdash;via a Jupyter/web UI (\autoref{fig:ui}) (using `plotly` [@plotly] visuals), integrated API, and static reporting.
 
-![UI elements of the Jupyter Notebook interface for interactive explainability and analyses.\label{fig:ui}](figure2.png)
+![UI elements from the Jupyter Notebook interface, designed to present audit results to diverse stakeholders.\label{fig:ui}](figure2.png)
 
 # Acknowledgements
 
