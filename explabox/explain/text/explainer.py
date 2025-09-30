@@ -83,7 +83,7 @@ class Explainer(Readable, IngestiblesMixin):
 
         Args:
             sample: Identifier of sample in dataset (int) or input (str).
-            methods: List of methods to get explanations from. Choose from 'lime', 'shap', 'baylime', 
+            methods: List of methods to get explanations from. Choose from 'lime', 'shap', 'baylime',
                 'tree', 'rules', 'foil_tree'.
             *args: Positional arguments passed to local explanation technique.
             **kwargs: Keyword arguments passed to local explanation technique.

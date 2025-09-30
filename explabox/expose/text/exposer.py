@@ -18,8 +18,6 @@ from typing import List, Optional, Union
 from genbase import Readable
 from instancelib import AbstractClassifier, Environment, TextEnvironment
 from instancelib.typehints import LT
-from text_sensitivity.return_types import LabelMetrics, MeanScore, SuccessTest
-
 from text_sensitivity import (
     OneToOnePerturbation,
     RandomAscii,
@@ -37,11 +35,12 @@ from text_sensitivity import (
     invariance,
     mean_score,
 )
+from text_sensitivity.return_types import LabelMetrics, MeanScore, SuccessTest
 
 from ...ingestibles import Ingestible
 from ...mixins import IngestiblesMixin
-from ...utils import MultipleReturn
 from ...ui.notebook import restyle
+from ...utils import MultipleReturn
 
 compare_metric = restyle(compare_metric)
 input_space_robustness = restyle(input_space_robustness)

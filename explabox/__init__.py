@@ -28,13 +28,26 @@ License v3.0 (GNU LGPLv3).
 from genbase import get_locale, set_locale
 
 from explabox._version import __version__, __version_info__
-from explabox.ingestibles import Ingestible, import_data, import_model, rename_labels, train_test_split
-from explabox.explabox import Explabox
 from explabox.examine import Examiner
+from explabox.explabox import Explabox
 from explabox.explain import Explainer
 from explabox.explore import Explorer
 from explabox.expose import Exposer
+from explabox.ingestibles import Ingestible, import_data, import_model, rename_labels, train_test_split
 
-__all__ = ["Explabox", "Examiner", "Explainer", "Explorer", "Exposer", "Ingestible",
-           "get_locale", "import_data", "import_model", "rename_labels", "set_locale", "train_test_split",
-           "__version__", "__version_info__"]
+__all__ = [
+    "Explabox",
+    "Examiner",
+    "Explainer",
+    "Explorer",
+    "Exposer",
+    "Ingestible",
+    "get_locale",
+    "import_data",
+    "import_model",
+    "rename_labels",
+    "set_locale",
+    "train_test_split",
+    "__version__",
+    "__version_info__",
+]

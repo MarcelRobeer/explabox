@@ -22,28 +22,42 @@ from text_sensitivity import (
     perturbation,
 )
 
+from ...ui.notebook import restyle
 from .exposer import (
     Exposer,
     RandomAscii,
     RandomCyrillic,
     RandomDigits,
     RandomEmojis,
+    RandomLower,
     RandomPunctuation,
     RandomSpaces,
-    RandomLower,
     RandomString,
     RandomUpper,
     RandomWhitespace,
     compare_metric,
 )
 
-from ...ui.notebook import restyle
-
 compare_accuracy = restyle(compare_accuracy)
 compare_precision = restyle(compare_precision)
 compare_recall = restyle(compare_recall)
 
-__all__ = ["Exposer", "OneToManyPerturbation", "OneToOnePerturbation",
-           "RandomAscii", "RandomCyrillic", "RandomDigits", "RandomEmojis", "RandomPunctuation", "RandomSpaces",
-           "RandomLower", "RandomString", "RandomUpper", "RandomWhitespace",
-           "compare_accuracy", "compare_metric", "compare_precision", "compare_recall", "perturbation"]
+__all__ = [
+    "Exposer",
+    "OneToManyPerturbation",
+    "OneToOnePerturbation",
+    "RandomAscii",
+    "RandomCyrillic",
+    "RandomDigits",
+    "RandomEmojis",
+    "RandomLower," "RandomPunctuation",
+    "RandomSpaces",
+    "RandomString",
+    "RandomUpper",
+    "RandomWhitespace",
+    "compare_accuracy",
+    "compare_metric",
+    "compare_precision",
+    "compare_recall",
+    "perturbation",
+]
