@@ -19,4 +19,3 @@ from .ingestible import Ingestible
 from .model import import_model
 
 __all__ = ["Ingestible", "import_data", "import_model", "rename_labels", "train_test_split"]
-d
