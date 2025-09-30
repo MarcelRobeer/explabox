@@ -1,4 +1,4 @@
-# Copyright (C) 2021-2022 National Police Lab AI (NPAI).
+# Copyright (C) 2022 Marcel Robeer for National Police Lab AI (NPAI).
 #
 # This program is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General
 # Public License (LGPL) as published by the Free Software Foundation; either version 3 (LGPLv3) of the License, or (at
@@ -25,40 +25,29 @@ Explabox is developed by the Dutch National Police Lab AI (NPAI), and released u
 License v3.0 (GNU LGPLv3).
 """
 
-from typing import Optional
-
-from genbase import Readable, get_locale, set_locale
+from genbase import get_locale, set_locale
 
 from explabox._version import __version__, __version_info__
 from explabox.examine import Examiner
+from explabox.explabox import Explabox
 from explabox.explain import Explainer
 from explabox.explore import Explorer
 from explabox.expose import Exposer
 from explabox.ingestibles import Ingestible, import_data, import_model, rename_labels, train_test_split
-from explabox.mixins import IngestiblesMixin
 
-
-class Explabox(Readable, IngestiblesMixin):
-    def __init__(self, ingestibles: Optional[Ingestible] = None, locale: str = "en", **kwargs):
-        """Use the Explabox to `.explore`, `.examine`, `.expose` and `.explain` your AI model.
-
-        Example:
-            >>> from explabox import Explabox
-            >>> box = Explabox(data=data, model=model)
-
-        Args:
-            ingestibles (Optional[Ingestible], optional): Ingestibles (data and model). Defaults to None.
-            locale (str, optional): Language of dataset. Defaults to 'en'.
-            **kwargs: Arguments used to construct an Ingestible (if the ingestibles argument is None).
-        """
-        if ingestibles is None:
-            ingestibles = Ingestible(**kwargs)
-        self.ingestibles = ingestibles
-        self.check_requirements(["data", "model"])
-
-        set_locale(locale)
-
-        self.examine = Examiner(ingestibles=self.ingestibles)
-        self.explore = Explorer(ingestibles=self.ingestibles)
-        self.expose = Exposer(ingestibles=self.ingestibles)
-        self.explain = Explainer(ingestibles=self.ingestibles)
+__all__ = [
+    "Explabox",
+    "Examiner",
+    "Explainer",
+    "Explorer",
+    "Exposer",
+    "Ingestible",
+    "get_locale",
+    "import_data",
+    "import_model",
+    "rename_labels",
+    "set_locale",
+    "train_test_split",
+    "__version__",
+    "__version_info__",
+]

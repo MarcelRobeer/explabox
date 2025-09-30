@@ -1,4 +1,4 @@
-# Copyright (C) 2021-2022 National Police Lab AI (NPAI).
+# Copyright (c) 2022 Marcel Robeer for National Police Lab AI (NPAI).
 #
 # This program is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General
 # Public License (LGPL) as published by the Free Software Foundation; either version 3 (LGPLv3) of the License, or (at
@@ -11,6 +11,8 @@
 # warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more
 # details.
 
-"""Functions to import models from the genbase library."""
+"""Handling of data."""
 
-from genbase.model import import_model
+from genbase.data import import_data, rename_labels, train_test_split
+
+__all__ = ["import_data", "rename_labels", "train_test_split"]

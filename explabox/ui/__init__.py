@@ -1,4 +1,4 @@
-# Copyright (C) 2021-2022 National Police Lab AI (NPAI).
+# Copyright (c) 2022 Marcel Robeer for National Police Lab AI (NPAI).
 #
 # This program is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General
 # Public License (LGPL) as published by the Free Software Foundation; either version 3 (LGPLv3) of the License, or (at
