@@ -53,10 +53,10 @@ GOTO error
 	GOTO :EOF
 
 :quality
-	%PYTHON% -m black --line-length=120 --check explabox
-	%PYTHON% -m isort --line-length=120 --profile=black --check-only explabox
-	flake8 explabox --config .flake8
-	%PYTHON% -m doc8 ./docs
+	python3 -m black --line-length=120 --check explabox
+	python3 -m isort --line-length=120 --profile=black --check-only explabox
+	python3 -m flake8 explabox --config .flake8
+	python3 -m doc8 ./docs
 	check-manifest
 	GOTO :EOF
 
@@ -65,8 +65,8 @@ GOTO error
 	GOTO :EOF
 
 :coverage
-	coverage run -m pytest
-	coverage html
+	python3 -m coverage run -m pytest
+	python3 -m coverage html
 	open htmlcov/index.html
 	GOTO :EOF
 
