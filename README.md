@@ -15,20 +15,22 @@
 
 ---
 
-The `explabox` aims to support data scientists and machine learning (ML) engineers in explaining, testing and documenting AI/ML models, developed in-house or acquired externally. The `explabox` turns your **ingestibles** (AI/ML model and/or dataset) into **digestibles** (statistics, explanations or sensitivity insights)!
+Developed to meet the practical machine learning (ML) auditing requirements of the Netherlands National Police, `explabox` is an open-source Python toolkit for the complete ML auditing lifecycle. It implements a standardized four-step workflow&mdash;`Explore`, `Examine`, `Explain`, and `Expose`&mdash;to produce reproducible and holistic evaluations of text-based models.
+
+The framework turns opaque models and data (**ingestibles**) into interpretable reports and visualizations (**digestibles**) tailored for diverse stakeholders, from developers and auditors to legal and ethical oversight bodies. It aids in explaining, testing and documenting AI/ML models, developed in-house or acquired externally.
 
 *<p align="center">
   <img src="https://github.com/MarcelRobeer/explabox/blob/main/img/ingestibles-to-digestibles.png?raw=true" alt="ingestibles to digestibles">*
 </p>
 
-The `explabox` can be used to:
+`explabox` operationalizes the audit process through its standardized four-step workflow:
 
 - __Explore__: describe aspects of the model and data.
 - __Examine__: calculate quantitative metrics on how the model performs.
 - __Expose__: see model sensitivity to random inputs (_safety_), test model generalizability (e.g. sensitivity to typos; _robustness_), and see the effect of adjustments of attributes in the inputs (e.g. swapping male pronouns for female pronouns; _fairness_), for the dataset as a whole (_global_) as well as for individual instances (_local_).
 - __Explain__: use XAI methods for explaining the whole dataset (_global_), model behavior on the dataset (_global_), and specific predictions/decisions (_local_).
 
-A number of experiments in the `explabox` can also be used to provide transparency and explanations to stakeholders, such as end-users or clients.
+A number of analyses in the `explabox` can also be used to provide transparency and explanations to stakeholders, such as end-users or clients.
 
 > :information_source: The `explabox` currently only supports natural language text as a modality. In the future, we intend to extend to other modalities.
 
@@ -121,9 +123,9 @@ Documentation for the `explabox` is hosted externally on [explabox.rtfd.io](http
 <img src="https://github.com/MarcelRobeer/explabox/blob/main/img/layers.png?raw=true" alt="layers" width="400"/>
 
 The `explabox` consists of three layers:
-1. __Ingestibles__ provide a unified interface for importing models and data, which abstracts away how they are accessed and allows for optimized processing.
-2. __Analyses__ are used to turn opaque ingestibles into transparent digestibles. The four types of analyses are _explore_, _examine_, _explain_ and _expose_.
-3. __Digestibles__ provide insights into model behavior and data, assisting stakeholders in increasing the explainability, fairness, auditability and safety of their AI systems. Depending on their needs, these can be accessed interactively (e.g. via the Jupyter Notebook UI or embedded via the API) or through static reporting.
+1. __Ingestibles__: A unified interface for importing models (any Python `Callable`, `scikit-learn`, `onnx`) and data (`Pandas`, `huggingface`, raw files), abstracting away access for optimized processing.
+2. __Analyses__: The core four-step engine that transform ingestibles into insights using the _explore_, _examine_, _explain_ and _expose_ methods.
+3. __Digestibles__: The stakeholder-centric output system. Digestibles are interactive objects and static reports that present audit results in formats tailored to developers, auditors, and decision-makers provide insights into model behavior and data, assisting stakeholders in increasing the explainability, fairness, auditability and safety of their AI systems. Depending on their needs, these can be accessed interactively (e.g. via the Jupyter Notebook UI or embedded via the API) or through static reporting.
 
 <a name="example-usage"/></a>
 ## Example usage
@@ -177,7 +179,7 @@ If you use the Explabox in your work, please read the corresponding paper at [do
 
 ```bibtex
 @misc{Robeer2024,
-  title = {{The Explabox: Model-Agnostic Machine Learning Transparency \& Analysis}},
+  title = {{Explabox: A Python Toolkit for Standardized Auditing and Explanation of Text Models}},
   author = {Robeer,  Marcel and Bron,  Michiel and Herrewijnen,  Elize and Hoeseni,  Riwish and Bex,  Floris},
   publisher = {arXiv},
   doi = {10.48550/arXiv.2411.15257},
