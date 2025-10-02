@@ -178,12 +178,10 @@ The `explabox` is an open-source project developed and maintained primarily by t
 If you use the Explabox in your work, please read the corresponding paper at [doi:10.48550/arXiv.2411.15257](https://doi.org/10.48550/arXiv.2411.15257), and cite the paper as follows:
 
 ```bibtex
-@misc{Robeer2024,
+@article{Robeer2025,
   title = {{Explabox: A Python Toolkit for Standardized Auditing and Explanation of Text Models}},
   author = {Robeer,  Marcel and Bron,  Michiel and Herrewijnen,  Elize and Hoeseni,  Riwish and Bex,  Floris},
-  publisher = {arXiv},
-  doi = {10.48550/arXiv.2411.15257},
-  url = {https://arxiv.org/abs/2411.15257},
-  year = {2024},
+  journal = {Journal of Open Source Software},
+  year = {2025},
 }
 ```

@@ -24,20 +24,22 @@
 .. image:: https://codecov.io/gh/MarcelRobeer/explabox/branch/main/graph/badge.svg?token=7XVEUE5PDM
    :target: https://codecov.io/gh/MarcelRobeer/explabox
 
-The ``explabox`` aims to support data scientists and machine learning (ML) engineers in explaining, testing and documenting AI/ML models, developed in-house or acquired externally. The ``explabox`` turns your **ingestibles** (AI/ML model and/or dataset) into **digestibles** (statistics, explanations or sensitivity insights)!
+Developed to meet the practical machine learning (ML) auditing requirements of the Netherlands National Police, ``explabox`` is an open-source Python toolkit for the complete ML auditing lifecycle. It implements a standardized four-step workflow—``Explore``, ``Examine``, ``Explain``, and ``Expose``—to produce reproducible and holistic evaluations of text-based models.
+
+The framework turns opaque models and data (**ingestibles**) into interpretable reports and visualizations (**digestibles**) tailored for diverse stakeholders, from developers and auditors to legal and ethical oversight bodies. It aids in explaining, testing and documenting AI/ML models, developed in-house or acquired externally.
 
 .. image:: https://github.com/MarcelRobeer/explabox/blob/main/img/ingestibles-to-digestibles.png?raw=true
    :alt: Ingestibles to digestibles
    :align: center
 
-The ``explabox`` can be used to:
+``explabox`` operationalizes the audit process through its standardized four-step workflow:
 
 - **Explore**\ : describe aspects of the model and data.
 - **Examine**\ : calculate quantitative metrics on how the model performs.
 - **Expose**\ : see model sensitivity to random inputs (\ *safety*\ ), test model generalizability (\e.g. sensitivity to typos; *robustness*\ ), and see the effect of adjustments of attributes in the inputs (e.g. swapping male pronouns for female pronouns; *fairness*\ ), for the dataset as a whole (\ *global*\ ) as well as for individual instances (\ *local*\ ).
 - **Explain**\ : use XAI methods for explaining the whole dataset (\ *global*\ ), model behavior on the dataset (\ *global*\ ), and specific predictions/decisions (\ *local*\ ).
 
-A number of experiments in the ``explabox`` can also be used to provide transparency and explanations to stakeholders, such as end-users or clients.
+A number of analyses in the ``explabox`` can also be used to provide transparency and explanations to stakeholders, such as end-users or clients.
 
 .. note::
     The ``explabox`` currently only supports natural language text as a modality. In the future, we intend to extend to other modalities.
@@ -142,17 +144,15 @@ Development
 Citation
 --------
 
-If you use the Explabox in your work, please read the corresponding paper at `doi:10.48550/arXiv.2411.15257 <https://doi.org/10.48550/arXiv.2411.15257>`__, and cite the paper as follows:
+If you use the ``explabox`` in your work, please read the corresponding paper at `doi:10.48550/arXiv.2411.15257 <https://doi.org/10.48550/arXiv.2411.15257>`__, and cite the paper as follows:
 
 .. code:: bibtex
 
-   @misc{Robeer2024,
-     title = {{The Explabox: Model-Agnostic Machine Learning Transparency \& Analysis}},
+   @article{Robeer2025,
+     title = {{Explabox: A Python Toolkit for Standardized Auditing and Explanation of Text Models}},
      author = {Robeer,  Marcel and Bron,  Michiel and Herrewijnen,  Elize and Hoeseni,  Riwish and Bex,  Floris},
-     publisher = {arXiv},
-     doi = {10.48550/arXiv.2411.15257},
-     url = {https://arxiv.org/abs/2411.15257},
-     year = {2024},
+     journal = {Journal of Open Source Software},
+     year = {2025},
    }
 
 
