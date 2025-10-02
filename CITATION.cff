@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 title: >-
-  The Explabox: Model-Agnostic Machine Learning Transparency
-  & Analysis
+  Explabox: A Python Toolkit for Standardized Auditing 
+  and Explanation of Text Models
 message: >-
   If you use this software, please cite it using the
   metadata from this file.

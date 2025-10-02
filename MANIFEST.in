@@ -5,4 +5,5 @@ include CITATION.cff
 exclude *.bat
 exclude .shortlicense
 recursive-exclude explabox/test *.py
-recursive-include paper/*
+graft paper
+graft docs
