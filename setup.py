@@ -44,11 +44,11 @@ extras["all"] = list(set([i for subi in extras.values() for i in subi]))
 
 setuptools.setup(  # type: ignore
     name="explabox",
-    version="1.0.1",
+    version="1.0.2",
     description="Explore/examine/explain/expose your model with the explabox!",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    author="NPAI",
+    author="Marcel Robeer for NPAI and other contributors",
     license="GNU LGPL v3",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
