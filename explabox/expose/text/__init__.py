@@ -25,6 +25,8 @@ from text_sensitivity import (
 from ...ui.notebook import restyle
 from .exposer import (
     Exposer,
+    LabelMetrics,
+    MeanScore,
     RandomAscii,
     RandomCyrillic,
     RandomDigits,
@@ -35,6 +37,7 @@ from .exposer import (
     RandomString,
     RandomUpper,
     RandomWhitespace,
+    SuccessTest,
     compare_metric,
 )
 
@@ -44,6 +47,8 @@ compare_recall = restyle(compare_recall)
 
 __all__ = [
     "Exposer",
+    "LabelMetrics",
+    "MeanScore",
     "OneToManyPerturbation",
     "OneToOnePerturbation",
     "RandomAscii",
@@ -55,6 +60,7 @@ __all__ = [
     "RandomString",
     "RandomUpper",
     "RandomWhitespace",
+    "SuccessTest",
     "compare_accuracy",
     "compare_metric",
     "compare_precision",

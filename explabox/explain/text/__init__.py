@@ -13,6 +13,6 @@
 
 """Add explainability to your text model/dataset."""
 
-from .explainer import Explainer
+from .explainer import Explainer, FeatureList, Instances
 
-__all__ = ["Explainer"]
+__all__ = ["Explainer", "FeatureList", "Instances"]

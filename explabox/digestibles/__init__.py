@@ -13,6 +13,6 @@
 
 """Ingestibles are turned into digestibles, containing information to explore/examine/explain/expose your model."""
 
-from .digestibles import Dataset, Descriptives, Performance, WronglyClassified
+from .digestibles import Dataset, Descriptives, Instances, Performance, WronglyClassified
 
-__all__ = ["Dataset", "Descriptives", "Performance", "WronglyClassified"]
+__all__ = ["Dataset", "Descriptives", "Instances", "Performance", "WronglyClassified"]

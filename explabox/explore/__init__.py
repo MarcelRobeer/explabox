@@ -13,6 +13,6 @@
 
 """Functions/classes for exploring your data (dataset descriptives)."""
 
-from .explorer import Explorer
+from .explorer import Explorer, Dataset, Descriptives
 
-__all__ = ["Explorer"]
+__all__ = ["Explorer", "Dataset", "Descriptives"]

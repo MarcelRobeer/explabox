@@ -13,6 +13,6 @@
 
 """Calculate quantitative metrics on how the model performs, and examine where the model went wrong."""
 
-from .examiner import Examiner
+from .examiner import Examiner, Performance, WronglyClassified
 
-__all__ = ["Examiner"]
+__all__ = ["Examiner", "Performance", "WronglyClassified"]

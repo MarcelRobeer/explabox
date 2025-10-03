@@ -13,6 +13,6 @@
 
 """Add explainability to your model/dataset with the Explainer class."""
 
-from .text import Explainer
+from .text import Explainer, FeatureList, Instances
 
-__all__ = ["Explainer"]
+__all__ = ["Explainer", "FeatureList", "Instances"]
