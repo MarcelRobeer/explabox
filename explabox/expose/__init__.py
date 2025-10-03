@@ -13,6 +13,6 @@
 
 """Functions/classes for sensitivity testing (fairness and robustness)."""
 
-from .text import Exposer
+from .text import Exposer, LabelMetrics, MeanScore, SuccessTest
 
-__all__ = ["Exposer"]
+__all__ = ["Exposer", "LabelMetrics", "MeanScore", "SuccessTest"]
