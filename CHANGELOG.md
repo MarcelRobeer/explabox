@@ -4,7 +4,14 @@ All notable changes to `explabox` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.2]
+## [1.0.3]
+### Added
+- Journal of Open Source Software (JOSS) paper
+
+### Fixed
+- Proper exposure of testing functions
+- Documentation update for `compare_metric()`
+
 ### Changed
 - Updated code structure to remove classes from `__init__.py` files
 - Updated copyright notice
@@ -68,7 +75,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `git` setup
 
 [Unreleased]: https://github.com/MarcelRobeer/explabox
-[1.0.2]: https://pypi.org/project/explabox/1.0.2
+[1.0.3]: https://pypi.org/project/explabox/1.0.3
 [1.0.1]: https://pypi.org/project/explabox/1.0.1
 [1.0.0]: https://pypi.org/project/explabox/1.0.0
 [0.9b6]: https://pypi.org/project/explabox/0.9b6
