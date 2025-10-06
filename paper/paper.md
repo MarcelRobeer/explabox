@@ -38,7 +38,7 @@ bibliography: paper.bib
 
 # Summary
 
-Developed to meet the practical machine learning (ML) auditing requirements of the Netherlands National Police, `Explabox` is an open-source Python toolkit that implements a standardized four-step analysis workflow: *explore*, *examine*, *explain* and *expose*. The framework transforms models and data (*ingestibles*) into interpretable reports and visualizations (*digestibles*), covering everything from data statistics and performance metrics to local/global explanations, and sensitivity testing for fairness, robustness and security. Designed for developers, testers, and auditors, `Explabox` operationalizes the entire audit lifecycle in a reproducible manner. The initial release is focused on text classification and regression models, with plans for future expansion. Code and documentation are available open-source at [https://explabox.readthedocs.io](https://explabox.readthedocs.io/en/stable).
+Developed to meet the practical machine learning (ML) auditing requirements of the Netherlands National Police, `Explabox` is an open-source Python toolkit that implements a standardized four-step analysis workflow: *explore*, *examine*, *explain* and *expose*. The framework transforms models and data (*ingestibles*) into interpretable reports and visualizations (*digestibles*), covering everything from data statistics and performance metrics to local and global explanations, and sensitivity testing for fairness, robustness and security. Designed for developers, testers, and auditors, `Explabox` operationalizes the entire audit lifecycle in a reproducible manner. The initial release is focused on text classification and regression models, with plans for future expansion. Code and documentation are available open-source at [https://explabox.readthedocs.io](https://explabox.readthedocs.io/en/stable).
 
 # Statement of need
 
@@ -53,7 +53,7 @@ This fragmentation introduces significant challenges, particularly regarding *re
 `Explabox` transforms opaque *ingestibles* into transparent *digestibles* through four types of *analyses* to enhance explainability and aid fairness, robustness, and security audits.
 
 ## Ingestibles
-Ingestibles provide a unified model/data import interface, where layers abstract away access (\autoref{fig:layers}) to allow optimized processing. `Explabox` uses `instancelib` [@instancelib] for fast model/data encapsulation. The model can be any Python `Callable` containing a regression or (binary and multi-class) classification model. While this interface is model-agnostic, the current release provides data handling and analysis modules optimized specifically for text-based tasks. `scikit-learn` or `ONNX` models (e.g., `PyTorch`, `TensorFlow`, or `Keras`) import directly with optimizations and automatic input/output interpretation. Data can be automatically downloaded, extracted and loaded. Data inputs include `NumPy`, `Pandas`, `Hugging Face`, raw files (e.g., HDF5, CSV or TSV), and (compressed) file folders. Data can be subdivided into named splits (e.g., train-test-validation), and instance vectors and tokens can be precomputed and optionally saved for fast inferencing.
+Ingestibles provide a unified import interface for data and models, where layers abstract away access (\autoref{fig:layers}) to allow optimized processing. `Explabox` uses `instancelib` [@instancelib] for fast model and data encapsulation. The model can be any Python `Callable` containing a regression or (binary and multi-class) classification model. While this interface is model-agnostic, the current release provides data handling and analysis modules optimized specifically for text-based tasks. `scikit-learn` or `ONNX` models (e.g., `PyTorch`, `TensorFlow`, or `Keras`) import directly with optimizations and automatic input/output interpretation. Data can be automatically downloaded, extracted and loaded. Data inputs include `NumPy`, `Pandas`, `Hugging Face`, raw files (e.g., HDF5, CSV or TSV), and (compressed) file folders. Data can be subdivided into named splits (e.g., train-test-validation), and instance vectors and tokens can be precomputed and optionally saved for fast inferencing.
 
 ![Logical separation of `Explabox` into layers with interfaces.\label{fig:layers}](figure1.png){width=50%}
 
@@ -71,7 +71,7 @@ Ingestibles provide a unified model/data import interface, where layers abstract
 
 ## Digestibles
 
-Digestibles serve stakeholders&mdash;such as creators, auditors, applicants, end-users or clients [@Tomsett2018]&mdash;via a Jupyter/web UI (\autoref{fig:ui}) (using `plotly` [@plotly] visuals), integrated API, and static reporting.
+Digestibles serve stakeholders&mdash;such as creators, auditors, applicants, end-users or clients [@Tomsett2018]&mdash;via a Jupyter Notebook or Web UI (\autoref{fig:ui}) (using `plotly` [@plotly] visuals), integrated API, and static reporting.
 
 ![UI elements from the Jupyter Notebook interface, designed to present audit results to diverse stakeholders.\label{fig:ui}](figure2.png)
 
