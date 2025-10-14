@@ -10,6 +10,7 @@
 
 | Status | |
 |:-----------------|:------------------
+| _Publication_ | [![DOI](https://joss.theoj.org/papers/10.21105/joss.08253/status.svg)](https://doi.org/10.21105/joss.08253)
 | _Latest release_ | [![PyPI](https://img.shields.io/pypi/v/explabox)](https://pypi.org/project/explabox/)  [![Downloads](https://pepy.tech/badge/explabox)](https://pepy.tech/project/explabox)  [![Python_version](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)](https://pypi.org/project/explabox/)  [![License](https://img.shields.io/pypi/l/explabox)](https://www.gnu.org/licenses/lgpl-3.0.en.html)
 | _Development_ | [![Lint, Security & Tests](https://github.com/MarcelRobeer/explabox/actions/workflows/check.yml/badge.svg)](https://github.com/MarcelRobeer/explabox/actions/workflows/check.yml)  [![codecov](https://codecov.io/gh/MarcelRobeer/explabox/branch/main/graph/badge.svg?token=7XVEUE5PDM)](https://codecov.io/gh/MarcelRobeer/explabox)  [![Documentation Status](https://readthedocs.org/projects/explabox/badge/?version=latest)](https://explabox.readthedocs.io/en/latest/?badge=latest)  [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
@@ -33,6 +34,8 @@ The framework turns opaque models and data (**ingestibles**) into interpretable 
 A number of analyses in the `explabox` can also be used to provide transparency and explanations to stakeholders, such as end-users or clients.
 
 > :information_source: The `explabox` currently only supports natural language text as a modality. In the future, we intend to extend to other modalities.
+
+:bulb: :page_facing_up: The corresponding paper for the `explabox` can be accessed online at https://doi.org/10.21105/joss.08253.
 
 &copy; National Police Lab AI (NPAI), 2022
 
@@ -175,13 +178,17 @@ The `explabox` is an open-source project developed and maintained primarily by t
 
 <a name="citation"></a>
 ## Citation
-If you use the Explabox in your work, please read the corresponding paper at [doi:10.48550/arXiv.2411.15257](https://doi.org/10.48550/arXiv.2411.15257), and cite the paper as follows:
+If you use the Explabox in your work, please read the corresponding paper at [doi:https://doi.org/10.21105/joss.08253](https://doi.org/10.21105/joss.08253), and cite the paper as follows:
 
 ```bibtex
 @article{Robeer2025,
   title = {{Explabox: A Python Toolkit for Standardized Auditing and Explanation of Text Models}},
-  author = {Robeer,  Marcel and Bron,  Michiel and Herrewijnen,  Elize and Hoeseni,  Riwish and Bex,  Floris},
+  author = {Robeer, Marcel and Bron, Michiel and Herrewijnen, Elize and Hoeseni, Riwish and Bex, Floris},
+  doi = {10.21105/joss.08253},
   journal = {Journal of Open Source Software},
   year = {2025},
+  volume = {10},
+  number = {114},
+  pages = {8253},
 }
 ```

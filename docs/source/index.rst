@@ -6,6 +6,9 @@
 { ``Explore`` | ``Examine`` | ``Expose`` | ``Explain`` } your model with the *explabox*!
 ----------------------------------------------------------------------------------------
 
+.. image:: https://joss.theoj.org/papers/10.21105/joss.08253/status.svg
+   :target: https://doi.org/10.21105/joss.08253
+
 .. image:: https://img.shields.io/pypi/v/explabox
    :target: https://pypi.org/project/explabox/
 
@@ -42,8 +45,10 @@ The framework turns opaque models and data (**ingestibles**) into interpretable 
 A number of analyses in the ``explabox`` can also be used to provide transparency and explanations to stakeholders, such as end-users or clients.
 
 .. note::
-    The ``explabox`` currently only supports natural language text as a modality. In the future, we intend to extend to other modalities.
+   The ``explabox`` currently only supports natural language text as a modality. In the future, we intend to extend to other modalities.
 
+.. important::
+   The corresponding paper for the `explabox` can be accessed online at `doi:10.21105/joss.08253 <https://doi.org/10.21105/joss.08253>`_.
 
 Quick tour
 ----------
@@ -144,15 +149,19 @@ Development
 Citation
 --------
 
-If you use the ``explabox`` in your work, please read the corresponding paper at `doi:10.48550/arXiv.2411.15257 <https://doi.org/10.48550/arXiv.2411.15257>`__, and cite the paper as follows:
+If you use the ``explabox`` in your work, please read the corresponding paper at `doi:10.21105/joss.08253 <https://doi.org/10.21105/joss.08253>`__, and cite the paper as follows:
 
 .. code:: bibtex
 
    @article{Robeer2025,
      title = {{Explabox: A Python Toolkit for Standardized Auditing and Explanation of Text Models}},
-     author = {Robeer,  Marcel and Bron,  Michiel and Herrewijnen,  Elize and Hoeseni,  Riwish and Bex,  Floris},
+     author = {Robeer, Marcel and Bron, Michiel and Herrewijnen, Elize and Hoeseni, Riwish and Bex, Floris},
+     doi = {10.21105/joss.08253},
      journal = {Journal of Open Source Software},
      year = {2025},
+     volume = {10},
+     number = {114},
+     pages = {8253},
    }
 
 

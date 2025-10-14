@@ -1,26 +1,53 @@
-cff-version: 1.2.0
-title: >-
-  Explabox: A Python Toolkit for Standardized Auditing 
-  and Explanation of Text Models
-message: >-
-  If you use this software, please cite it using the
-  metadata from this file.
-type: software
+cff-version: "1.2.0"
 authors:
-  - given-names: Marcel
-    family-names: Robeer
-    orcid: 'https://orcid.org/0000-0002-6430-9774'
-  - given-names: Michiel
-    family-names: Bron
-    orcid: 'https://orcid.org/0000-0002-4823-6085'
-  - given-names: Elize
-    family-names: Herrewijnen
-    orcid: 'https://orcid.org/0000-0002-2729-6599'
-  - given-names: Riwish
-    family-names: Hoeseni
-  - given-names: Floris
-    family-names: Bex
-    orcid: 'https://orcid.org/0000-0002-5699-9656'
-repository-code: 'https://github.com/MarcelRobeer/explabox'
-url: 'https://explabox.readthedocs.io'
+- family-names: Robeer
+  given-names: Marcel
+  orcid: "https://orcid.org/0000-0002-6430-9774"
+- family-names: Bron
+  given-names: Michiel
+  orcid: "https://orcid.org/0000-0002-4823-6085"
+- family-names: Herrewijnen
+  given-names: Elize
+  orcid: "https://orcid.org/0000-0002-2729-6599"
+- family-names: Hoeseni
+  given-names: Riwish
+- family-names: Bex
+  given-names: Floris
+  orcid: "https://orcid.org/0000-0002-5699-9656"
+doi: 10.5281/zenodo.17256331
+message: If you use this software, please cite our article in the
+  Journal of Open Source Software.
+repository-code: "https://github.com/MarcelRobeer/explabox"
+url: "https://explabox.readthedocs.io"
 license: LGPL-3.0
+preferred-citation:
+  authors:
+  - family-names: Robeer
+    given-names: Marcel
+    orcid: "https://orcid.org/0000-0002-6430-9774"
+  - family-names: Bron
+    given-names: Michiel
+    orcid: "https://orcid.org/0000-0002-4823-6085"
+  - family-names: Herrewijnen
+    given-names: Elize
+    orcid: "https://orcid.org/0000-0002-2729-6599"
+  - family-names: Hoeseni
+    given-names: Riwish
+  - family-names: Bex
+    given-names: Floris
+    orcid: "https://orcid.org/0000-0002-5699-9656"
+  date-published: 2025-10-13
+  doi: 10.21105/joss.08253
+  issn: 2475-9066
+  issue: 114
+  journal: Journal of Open Source Software
+  publisher:
+    name: Open Journals
+  start: 8253
+  title: "Explabox: A Python Toolkit for Standardized Auditing and
+    Explanation of Text Models"
+  type: article
+  url: "https://joss.theoj.org/papers/10.21105/joss.08253"
+  volume: 10
+title: "Explabox: A Python Toolkit for Standardized Auditing and
+  Explanation of Text Models"
