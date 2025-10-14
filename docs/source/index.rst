@@ -48,7 +48,7 @@ A number of analyses in the ``explabox`` can also be used to provide transparenc
    The ``explabox`` currently only supports natural language text as a modality. In the future, we intend to extend to other modalities.
 
 .. important::
-   The corresponding paper for the `explabox` can be accessed online at `doi:10.21105/joss.08253 <https://doi.org/10.21105/joss.08253>`_.
+   The corresponding paper for the ``explabox``, published in the *Journal of Open Source Software* (JOSS), can be accessed online at `doi:10.21105/joss.08253 <https://doi.org/10.21105/joss.08253>`_.
 
 Quick tour
 ----------
