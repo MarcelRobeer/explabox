@@ -35,7 +35,7 @@ A number of analyses in the `explabox` can also be used to provide transparency 
 
 > :information_source: The `explabox` currently only supports natural language text as a modality. In the future, we intend to extend to other modalities.
 
-:bulb: :page_facing_up: The corresponding paper for the `explabox` can be accessed online at https://doi.org/10.21105/joss.08253.
+:bulb: :page_facing_up: The corresponding paper for the `explabox`, published in the _Journal of Open Source Software_ (JOSS), can be accessed online at https://doi.org/10.21105/joss.08253.
 
 &copy; National Police Lab AI (NPAI), 2022
 
@@ -178,7 +178,7 @@ The `explabox` is an open-source project developed and maintained primarily by t
 
 <a name="citation"></a>
 ## Citation
-If you use the Explabox in your work, please read the corresponding paper at [doi:https://doi.org/10.21105/joss.08253](https://doi.org/10.21105/joss.08253), and cite the paper as follows:
+If you use the Explabox in your work, please read the corresponding paper at [doi:10.21105/joss.08253](https://doi.org/10.21105/joss.08253), and cite the paper as follows:
 
 ```bibtex
 @article{Robeer2025,
